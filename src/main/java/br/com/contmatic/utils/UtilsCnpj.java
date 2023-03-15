@@ -1,7 +1,8 @@
 package br.com.contmatic.utils;
 
 import static br.com.contmatic.utils.CnpjUtilsConstants.*;
-import static br.com.contmatic.utils.Utils.*;
+import static br.com.contmatic.utils.Utils.validarCaracterString;
+import static br.com.contmatic.utils.Utils.validarObjetoNulo;
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.floor;
 import static java.lang.Math.round;

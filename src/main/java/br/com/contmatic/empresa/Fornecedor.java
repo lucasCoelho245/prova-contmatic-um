@@ -2,13 +2,11 @@ package br.com.contmatic.empresa;
 
 import br.com.contmatic.contato.Contato;
 import br.com.contmatic.endereco.Endereco;
-import br.com.contmatic.utils.UtilsCnpj;
 
 import java.util.List;
 import java.util.Objects;
 
 import static br.com.contmatic.utils.Utils.*;
-import static br.com.contmatic.utils.Utils.validarCaracterEspecial;
 import static br.com.contmatic.utils.UtilsCnpj.validaCnpj;
 
 public class Fornecedor {
