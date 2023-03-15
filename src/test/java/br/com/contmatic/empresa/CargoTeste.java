@@ -3,6 +3,7 @@ package br.com.contmatic.empresa;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class CargoTeste {
     private Cargo cargo;
@@ -20,16 +21,20 @@ public class CargoTeste {
     @Test
     public void deve_aceitar_nome_correto() {
         cargo.setNome("lucas");
+        assertEquals(cargo.getNome(), "lucas");
     }
 
     @Test
     public void deve_aceitar_setor_correto() {
         cargo.setSetor("tecnologia");
+        assertEquals(cargo.getSetor(), "tecnologia");
     }
 
     @Test
     public void deve_aceitar_codigo_correto() {
+        Integer codigo = 54521;
         cargo.setCodigo(54521);
+        assertEquals(cargo.getCodigo(), codigo);
     }
 
     @Test(expected = IllegalArgumentException.class)

@@ -22,6 +22,13 @@ public class Endereco {
     public Endereco() {
 
     }
+    private String nomeClasse = "endereco";
+    private String enderecoLogradouro = "logradouro";
+    private String enderecoNumero = "numero";
+    private String enderecoBairro = "bairro";
+    private String enderecoCidade = "cidade";
+    private String enderecoComplemento = "complemento";
+    private String enderecoCep = "cep";
 
     public Endereco(Integer numero, String cep, String nomeLogradouro) {
         this.numero = numero;
@@ -34,10 +41,10 @@ public class Endereco {
     }
 
     public void setLogradouro(String logradouro) {
-        validarStringTamanhoMinimo(logradouro, 3, "logradouro", "Endereco");
-        validarNumerosString(logradouro, "logradouro", "Endereco");
-        validarObjetoNulo(logradouro, "logradouro", "Endereco");
-        validarStringTamanhoMaximo(String.valueOf(numero), 20, "logradouro", "Endereco");
+        validarStringTamanhoMinimo(logradouro, 3, enderecoLogradouro, nomeClasse);
+        validarNumerosString(logradouro, enderecoLogradouro, nomeClasse);
+        validarObjetoNulo(logradouro, enderecoLogradouro, nomeClasse);
+        validarStringTamanhoMaximo(String.valueOf(numero), 20, enderecoLogradouro, nomeClasse);
         this.logradouro = logradouro;
     }
 
@@ -54,7 +61,7 @@ public class Endereco {
     }
 
     public void setNumero(Integer numero) {
-        validarObjetoNulo(numero.toString(), "numero", "Endereco");
+        validarObjetoNulo(numero.toString(), enderecoNumero, nomeClasse);
         this.numero = numero;
     }
 
@@ -63,10 +70,10 @@ public class Endereco {
     }
 
     public void setBairro(String bairro) {
-        validarStringTamanhoMinimo(bairro, 3, "Bairro", "Endereco");
-        validarNumerosString(bairro, "Bairro", "Endereco");
-        validarObjetoNulo(bairro, "Bairro", "Endereco");
-        validarStringTamanhoMaximo(bairro, 20, "Bairro", "Endereco");
+        validarStringTamanhoMinimo(bairro, 3, enderecoBairro, nomeClasse);
+        validarNumerosString(bairro, enderecoBairro, nomeClasse);
+        validarObjetoNulo(bairro, enderecoBairro, nomeClasse);
+        validarStringTamanhoMaximo(bairro, 20, enderecoBairro, nomeClasse);
         this.bairro = bairro;
     }
 
@@ -75,10 +82,10 @@ public class Endereco {
     }
 
     public void setCidade(String cidade) {
-        validarStringTamanhoMinimo(cidade, 3, "cidade", "Endereco");
-        validarNumerosString(cidade, "cidade", "Endereco");
-        validarObjetoNulo(cidade, "cidade", "Endereco");
-        validarStringTamanhoMaximo(cidade, 20, "cidade", "Endereco");
+        validarStringTamanhoMinimo(cidade, 3, enderecoCidade, nomeClasse);
+        validarNumerosString(cidade, enderecoCidade, nomeClasse);
+        validarObjetoNulo(cidade, enderecoCidade, nomeClasse);
+        validarStringTamanhoMaximo(cidade, 20, enderecoCidade, nomeClasse);
         this.cidade = cidade;
     }
 
@@ -88,10 +95,10 @@ public class Endereco {
     }
 
     public void setComplemento(String complemento) {
-        validarStringTamanhoMinimo(complemento, 3, "complemento", "Endereco");
-        validarNumerosString(complemento, "complemento", "Endereco");
-        validarObjetoNulo(complemento, "complemento", "Endereco");
-        validarStringTamanhoMaximo(complemento, 20, "complemento", "Endereco");
+        validarStringTamanhoMinimo(complemento, 3, enderecoComplemento, nomeClasse);
+        validarNumerosString(complemento, enderecoComplemento, nomeClasse);
+        validarObjetoNulo(complemento, enderecoComplemento, nomeClasse);
+        validarStringTamanhoMaximo(complemento, 20, enderecoComplemento, nomeClasse);
         this.complemento = complemento;
     }
 
@@ -100,7 +107,7 @@ public class Endereco {
     }
 
     public void setCep(String cep) {
-        validarCep(cep, "cep", "Endereco");
+        validarCep(cep, enderecoCep, nomeClasse);
         this.cep = cep;
     }
 

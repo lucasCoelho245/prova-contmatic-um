@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static br.com.contmatic.contato.DDDType.DDD11;
+import static org.junit.Assert.assertEquals;
 
 public class EmpresaTeste {
     private Empresa empresa;
@@ -34,8 +35,6 @@ public class EmpresaTeste {
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe empresa");
-        List<Telefone> telefones = new ArrayList<>();
-        telefones.add(new Telefone(DDD11, 555, "941584007"));
     }
 
     @Before
@@ -47,23 +46,19 @@ public class EmpresaTeste {
     @Test
     public void deve_aceitar_nome_correto() {
         empresa.setNome("salgadelicia");
-    }
-
-    @Test
-    public void deve_aceitar_endereco_correto() {
-        List<Endereco> enderecos = new ArrayList<>();
-        enderecos.add(new Endereco(232, "0123500", "teste"));
-        empresa.setEnderecos(enderecos);
+        assertEquals(empresa.getNome(), "salgadelicia");
     }
 
     @Test
     public void deve_aceitar_cnpj_correto() {
         empresa.setCnpj("26631884000176");
+        assertEquals(empresa.getCnpj(), "26631884000176");
     }
 
     @Test
     public void deve_aceitar_razao_social_correta() {
-        empresa.setRazaoSocial("Coca Cola Indústrias Ltda”");
+        empresa.setRazaoSocial("Coca Cola Indústrias Ltda");
+        assertEquals(empresa.getRazaoSocial(), "Coca Cola Indústrias Ltda");
     }
 
     @Test
@@ -73,6 +68,7 @@ public class EmpresaTeste {
         contatos.add(new Contato("contmatic@gmail.com", telefones));
 
         empresa.setContatos(contatos);
+        assertEquals(empresa.getContatos(), contatos);
     }
 
     @Test
@@ -89,17 +85,21 @@ public class EmpresaTeste {
         funcionario.add(new Funcionario("nome", cargos, "50279302835", salario, data, empresas, contatos));
 
         empresa.setFuncionarios(funcionario);
+        assertEquals(empresa.getFuncionarios(), funcionario);
     }
 
     @Test
     public void deve_aceitar_endereco_valido() {
         enderecos.add(new Endereco(123, "0123500", "Pacaembu"));
         empresa.setEnderecos(enderecos);
+        assertEquals(empresa.getEnderecos(), enderecos);
+
     }
 
     @Test
     public void deve_aceitar_status_correto_de_atividade_correto() {
         empresa.setAtiva(true);
+        assertEquals(empresa.getAtiva(), true);
     }
 
     @Test(expected = IllegalArgumentException.class)

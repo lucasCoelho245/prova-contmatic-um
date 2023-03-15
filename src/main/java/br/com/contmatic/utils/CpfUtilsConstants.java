@@ -1,5 +1,9 @@
 package br.com.contmatic.utils;
-public class CpfUtilsConstants {
+public final class CpfUtilsConstants {
+
+    private CpfUtilsConstants() {
+    }
+
     protected static final int CPF_CARACTERS = 11;
     protected static final int NUM_CALCULAR_DIGITO_CPF_PRIMEIRO = 2;
     protected static final int NUM_CALCULAR_DIGITO_CPF_SEGUNDO = 3;

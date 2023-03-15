@@ -6,17 +6,22 @@ import java.util.Objects;
 import static br.com.contmatic.utils.Utils.*;
 
 public class Produto {
-    private String Id;
+    private String id;
     private String nome;
     private BigDecimal quantidade;
     private BigDecimal valor;
+    private String nomeClasse = "produto";
+    private String produtoNome = "nome";
+    private String produtoId = "id";
+    private String produtoQuantidade = "quantidade";
+    private String produtoValor = "valor";
 
     public Produto() {
     }
 
     public Produto(String nome, String id, BigDecimal quantidade, BigDecimal valor) {
         this.nome = nome;
-        Id = id;
+        this.id = id;
         this.quantidade = quantidade;
         this.valor = valor;
     }
@@ -26,21 +31,22 @@ public class Produto {
     }
 
     public void setNome(String nome) {
-        validarStringTamanhoMinimo(nome, 3, "nome", "Produto");
-        validarNumerosString(nome, "Nome", "Produto");
-        validarObjetoNulo(nome, "Nome", "Produto");
-        validarStringTamanhoMaximo(nome, 60, "nome", "Produto");
+        validarStringNula(nome, produtoNome, nomeClasse);
+        validarStringTamanhoMinimo(nome, 3, produtoNome, nomeClasse);
+        validarNumerosString(nome, produtoNome, nomeClasse);
+        validarObjetoNulo(nome, produtoNome, nomeClasse);
+        validarStringTamanhoMaximo(nome, 60, produtoNome, nomeClasse);
         this.nome = nome;
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        validarStringTamanhoMinimo(id, 2, "Id", "Produto");
-        validarObjetoNulo(id, "Id", "Produto");
-        Id = id;
+        validarStringTamanhoMinimo(id, 2, produtoId, nomeClasse);
+        validarObjetoNulo(id, produtoId, nomeClasse);
+        this.id = id;
     }
 
     public BigDecimal getQuantidade() {
@@ -48,7 +54,7 @@ public class Produto {
     }
 
     public void setQuantidade(BigDecimal quantidade) {
-        validarStringTamanhoMinimo(String.valueOf(quantidade), 1, "Quantidade", "Produto");
+        validarStringTamanhoMinimo(String.valueOf(quantidade), 1, produtoQuantidade, nomeClasse);
         this.quantidade = quantidade;
     }
 
@@ -57,7 +63,7 @@ public class Produto {
     }
 
     public void setValor(BigDecimal valor) {
-        validarStringTamanhoMinimo(String.valueOf(valor), 3, "Valor", "Produto");
+        validarStringTamanhoMinimo(String.valueOf(valor), 3, produtoValor, nomeClasse);
         this.valor = valor;
     }
 
@@ -66,12 +72,12 @@ public class Produto {
         if (this == o) return true;
         if (!(o instanceof Produto)) return false;
         Produto produto = (Produto) o;
-        return Id.equals(produto.Id);
+        return id.equals(produto.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id);
+        return Objects.hash(id);
     }
 
     @Override
@@ -80,7 +86,7 @@ public class Produto {
         builder.append("Produto {nome= ");
         builder.append(nome);
         builder.append(", Id= ");
-        builder.append(Id);
+        builder.append(id);
         builder.append(", quantidade= ");
         builder.append(quantidade);
         builder.append(", valor= ");

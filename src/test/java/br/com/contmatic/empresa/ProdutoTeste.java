@@ -3,6 +3,7 @@ package br.com.contmatic.empresa;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 
@@ -23,25 +24,31 @@ public class ProdutoTeste {
     @Test
     public void deve_aceitar_nome_correto() {
         produto.setNome("lucas");
+        assertEquals(produto.getNome(), "lucas");
     }
 
     @Test
     public void deve_aceitar_id_correto() {
         produto.setId("abc2332");
+        assertEquals(produto.getId(), "abc2332");
+
     }
 
     @Test
     public void aceitar_quantidade_correta() {
         BigDecimal quantidade = new BigDecimal(12);
         produto.setQuantidade(quantidade);
+        assertEquals(produto.getQuantidade(), quantidade);
     }
     @Test
     public void aceitar_salario_correto() {
         BigDecimal salario = new BigDecimal(1000);
         produto.setValor(salario);
+        assertEquals(produto.getValor(), salario);
     }
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_nome_menor_que_2() {
+
         produto.setNome("s");
     }
 
@@ -54,8 +61,12 @@ public class ProdutoTeste {
         produto.setNome("3223232");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NullPointerException.class)
     public void nao_deve_aceitar_nome_nulo() {
+        produto.setNome(null);
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void nao_deve_aceitar_nome_vazio() {
         produto.setNome("");
     }
     @Test(expected = IllegalArgumentException.class)

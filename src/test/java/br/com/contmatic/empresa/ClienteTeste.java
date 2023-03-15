@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import static org.junit.Assert.*;
 
 
 public class ClienteTeste {
@@ -25,10 +26,12 @@ public class ClienteTeste {
     @Test
     public void deve_aceitar_nome_correto() {
         cliente.setNome("lucas");
+        assertEquals(cliente.getNome(), "lucas");
     }
     @Test
     public void deve_aceitar_cpf_correto() {
         cliente.setCpf("50279302835");
+        assertEquals(cliente.getCpf(), "50279302835");
     }
     @Test
     public void deve_aceitar_produto_correto() {
@@ -37,6 +40,7 @@ public class ClienteTeste {
         BigDecimal quantidade = new BigDecimal(1000);
         produtos.add(new Produto("produtoA", "110", quantidade, valor));
         cliente.setProdutos(produtos);
+        assertEquals(cliente.getProdutos(), produtos);
     }
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_nome_menor_que_3() {

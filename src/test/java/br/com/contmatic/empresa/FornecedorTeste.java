@@ -10,6 +10,7 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import static org.junit.Assert.*;
 
 import static br.com.contmatic.contato.DDDType.DDD11;
 
@@ -29,6 +30,7 @@ public class FornecedorTeste {
     @Test
     public void deve_aceitar_nome_correto(){
         fornecedor.setNome("salgadelicia");
+        assertEquals(fornecedor.getNome(), "salgadelicia");
     }
     @Test
     public void deve_aceitar_contato_valido() {
@@ -36,11 +38,15 @@ public class FornecedorTeste {
         telefones.add(new Telefone(DDD11, 555, "941584007"));
         List<Contato> contatos = new ArrayList<>();
         contatos.add(new Contato("contmatic@gmail.com", telefones));
+
         fornecedor.setContatos(contatos);
+        assertEquals(fornecedor.getContatos(), contatos);
     }
     @Test
     public void deve_aceitar_cnpj_correto() {
         fornecedor.setCnpj("26631884000176");
+        assertEquals(fornecedor.getCnpj(), "26631884000176");
+
     }
     @Test
     public void deve_aceitar_produto_correto() {
@@ -49,12 +55,14 @@ public class FornecedorTeste {
         BigDecimal quantidade = new BigDecimal(1000);
         produtos.add(new Produto("produtoA", "110", quantidade, valor));
         fornecedor.setProdutos(produtos);
+        assertEquals(fornecedor.getProdutos(), produtos);
     }
     @Test
     public void deve_aceitar_endereco_correto() {
         List<Endereco> enderecos = new ArrayList<>();
         enderecos.add(new Endereco(232, "0123500", "teste"));
         fornecedor.setEnderecos(enderecos);
+        assertEquals(fornecedor.getEnderecos(), enderecos);
     }
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_mais_30_caracteres () {

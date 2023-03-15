@@ -17,26 +17,38 @@ public class Cliente {
         return nome;
     }
 
+    private String nomeClasse = "cliente";
+    
+    private String nomeCliente = "nome";
+    
+    private String produtoCliente = "produto";
+    private String cpfCLiente = "cpf";
+
+    
     public void setNome(String nome) {
-        validarStringTamanhoMinimo(nome, 3, "nome", "Cliente");
-        validarStringTamanhoMaximo(nome, 60, "nome", "Cliente");
-        validarNumerosString(nome, "Nome", "Cliente");
-        validarObjetoNulo(nome, "Nome", "Cliente");
+        validarStringTamanhoMinimo(nome, 3, nomeCliente, nomeClasse);
+        validarStringTamanhoMaximo(nome, 60, nomeCliente, nomeClasse);
+        validarNumerosString(nome, nomeCliente, nomeClasse);
+        validarObjetoNulo(nome, nomeCliente, nomeClasse);
         this.nome = nome;
     }
     public List<Produto> getProdutos() {
         return produtos;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
     public void setCpf(String cpf) {
-        validarCpf(cpf, "cpf", "Cliente");
+        validarCpf(cpf, cpfCLiente, nomeClasse);
         this.cpf = cpf;
     }
 
     public void setProdutos(List<Produto> produtos) {
-        validarStringTamanhoMinimo(produtos.toString(), 60, "Produtos", "Cliente");
-        validarStringTamanhoMaximo(produtos.toString(), 100, "Produtos", "Cliente");
-        validarObjetoNulo(produtos, "Produtos", "Cliente");
+        validarStringTamanhoMinimo(produtos.toString(), 60, produtoCliente, nomeClasse);
+        validarStringTamanhoMaximo(produtos.toString(), 100, produtoCliente, nomeClasse);
+        validarObjetoNulo(produtos, produtoCliente, nomeClasse);
         this.produtos = produtos;
     }
 

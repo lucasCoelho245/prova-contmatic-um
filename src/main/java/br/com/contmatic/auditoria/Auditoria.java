@@ -21,15 +21,20 @@ public class Auditoria {
 
     private LocalDateTime dataLogout;
 
+    private String nomeClasseauditoria = "auditoria";
+    private String loginDaCriacao = "login criacao";
+    private String loginDaAlteracao = "login alteracao";
+    private String ipDaCriacao = "ipcriacao";
+
     public String getLoginCriacao() {
         return loginCriacao;
     }
 
     public void setLoginCriacao(String loginCriacao) {
-        validarStringTamanhoMaximo(loginCriacao, 25, "loginCriação", "Auditoria");
-        validarStringTamanhoMinimo(loginCriacao, 2, "loginCriação", "Auditoria");
-        validarObjetoNulo(loginCriacao, "loginCriação", "Auditoria");
-        validarCaracterEspecial(loginCriacao, "loginCriação", "Auditoria");
+        validarStringTamanhoMaximo(loginCriacao, 25, loginDaCriacao, nomeClasseauditoria);
+        validarStringTamanhoMinimo(loginCriacao, 2, loginDaCriacao, nomeClasseauditoria);
+        validarObjetoNulo(loginCriacao, loginDaCriacao, nomeClasseauditoria);
+        validarCaracterEspecial(loginCriacao, loginDaCriacao, nomeClasseauditoria);
         this.loginCriacao = loginCriacao;
     }
 
@@ -38,10 +43,10 @@ public class Auditoria {
     }
 
     public void setLoginAlteracao(String loginAlteracao) {
-        validarStringTamanhoMaximo(loginAlteracao, 25, "loginAlteração", "Auditoria");
-        validarStringTamanhoMinimo(loginAlteracao, 2, "loginAlteração", "Auditoria");
-        validarObjetoNulo(loginAlteracao, "loginAlteração", "Auditoria");
-        validarCaracterEspecial(loginAlteracao, "loginAlteração", "Auditoria");
+        validarStringTamanhoMaximo(loginAlteracao, 25, loginDaAlteracao, nomeClasseauditoria);
+        validarStringTamanhoMinimo(loginAlteracao, 2, loginDaAlteracao, nomeClasseauditoria);
+        validarObjetoNulo(loginAlteracao, loginDaAlteracao, nomeClasseauditoria);
+        validarCaracterEspecial(loginAlteracao, loginDaAlteracao, nomeClasseauditoria);
         this.loginAlteracao = loginAlteracao;
     }
 
@@ -50,11 +55,11 @@ public class Auditoria {
     }
 
     public void setIpCriacao(String ipCriacao) {
-        validarStringTamanhoMinimo(ipCriacao, 6, "ipcriação", "Auditoria");
-        validarStringTamanhoMaximo(ipCriacao, 12, "ipcriação", "Auditoria");
-        validarObjetoNulo(ipCriacao, "ipcriação", "Auditoria");
-        validarCaracterString(ipCriacao, "ipcriação", "Auditoria");
-        validarIp(ipCriacao, "ipcriação", "Auditoria");
+        validarStringTamanhoMinimo(ipCriacao, 6, ipDaCriacao, nomeClasseauditoria);
+        validarStringTamanhoMaximo(ipCriacao, 12, ipDaCriacao, nomeClasseauditoria);
+        validarObjetoNulo(ipCriacao, ipDaCriacao, nomeClasseauditoria);
+        validarCaracterString(ipCriacao, ipDaCriacao, nomeClasseauditoria);
+        validarIp(ipCriacao, ipDaCriacao, nomeClasseauditoria);
         this.ipCriacao = ipCriacao;
     }
 
@@ -63,7 +68,7 @@ public class Auditoria {
     }
 
     public void setDataCriacao(LocalDateTime dataCriacao) {
-        validarDate(dataCriacao, "data criação", "auditoria");
+        validarDate(dataCriacao, "data criação", nomeClasseauditoria);
         this.dataCriacao = dataCriacao;
     }
 
@@ -72,7 +77,7 @@ public class Auditoria {
     }
 
     public void setDataAlteracao(LocalDateTime dataAlteracao) {
-        validarDate(dataAlteracao, "data alteracao", "auditoria");
+        validarDate(dataAlteracao, "data alteracao", nomeClasseauditoria);
         this.dataAlteracao = dataAlteracao;
     }
 
@@ -81,7 +86,7 @@ public class Auditoria {
     }
 
     public void setDataLogin(LocalDateTime dataLogin) {
-        validarDate(dataLogin, "data login", "auditoria");
+        validarDate(dataLogin, "data login", nomeClasseauditoria);
         this.dataLogin = dataLogin;
     }
 
@@ -90,7 +95,7 @@ public class Auditoria {
     }
 
     public void setDataLogout(LocalDateTime dataLogout) {
-        validarDate(dataLogout, "data logout", "auditoria");
+        validarDate(dataLogout, "data logout", nomeClasseauditoria);
         this.dataLogout = dataLogout;
     }
 

@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static br.com.contmatic.contato.DDDType.DDD11;
+import static org.junit.Assert.assertEquals;
 
 public class TelefoneTeste {
     private Telefone telefone;
@@ -23,16 +24,20 @@ public class TelefoneTeste {
     @Test
     public void deve_aceitar_DDD_correto() {
         telefone.setDdd(DDD11);
+        assertEquals(telefone.getDdd(), DDD11);
     }
 
     @Test
     public void deve_aceitar_numero_correto() {
         telefone.setNumero("941584007");
+        assertEquals(telefone.getNumero(), "941584007");
     }
 
     @Test
     public void deve_aceitar_ddi_correto() {
+        Integer ddi = 55;
         telefone.setDdi(55);
+        assertEquals(telefone.getDdi(), ddi);
     }
 
     @Test(expected = IllegalArgumentException.class)

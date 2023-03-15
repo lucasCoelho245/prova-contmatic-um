@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.*;
+
 public class FuncionarioTeste {
 
 
@@ -28,6 +30,7 @@ public class FuncionarioTeste {
     @Test
     public void deve_aceitar_nome_correto() {
         funcionario.setNome("Lucas Coelho Galhanone da Cunha");
+        assertEquals(funcionario.getNome(), "Lucas Coelho Galhanone da Cunha");
     }
 
     @Test
@@ -35,17 +38,20 @@ public class FuncionarioTeste {
         List<Cargo> cargos = new ArrayList<>();
         cargos.add(new Cargo("analista", "desenvolvimento", 553));
         funcionario.setCargos(cargos);
+        assertEquals(funcionario.getCargos(), cargos);
     }
 
     @Test
     public void deve_aceitar_cpf_correto() {
         funcionario.setCpf("50279302835");
+        assertEquals(funcionario.getCpf(), "50279302835");
     }
 
     @Test
     public void deve_aceitar_salario_correto() {
         BigDecimal salario = new BigDecimal(1000);
         funcionario.setSalario(salario);
+        assertEquals(funcionario.getSalario(), salario);
     }
 
     @Test
@@ -53,6 +59,7 @@ public class FuncionarioTeste {
         Funcionario funcionario = new Funcionario();
         LocalDateTime data = LocalDateTime.now();
         funcionario.setDataNascimento(data);
+        assertEquals(funcionario.getDataNascimento(), data);
     }
 
     @Test(expected = IllegalArgumentException.class)

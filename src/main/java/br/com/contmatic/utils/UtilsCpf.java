@@ -35,8 +35,7 @@ public final class UtilsCpf {
     }
 
     private static int getDigitoDois(int[] digitos, int digitoUm) {
-        int digitoDois = calculosParaDigitoDois(digitos, digitoUm);
-        return digitoDois;
+        return calculosParaDigitoDois(digitos, digitoUm);
     }
 
     private static int calculosParaDigitoDois(int[] digitos, int digitoUm) {
@@ -51,8 +50,7 @@ public final class UtilsCpf {
     }
 
     private static int getDigitoUm(int[] digitos) {
-        int digitoUm = calculoParaDigitoUm(digitos);
-        return digitoUm;
+        return calculoParaDigitoUm(digitos);
     }
 
     private static int calculoParaDigitoUm(int[] digitos) {

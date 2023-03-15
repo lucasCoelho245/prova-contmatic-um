@@ -9,6 +9,10 @@ public class Cargo {
     private String setor;
     private Integer codigo;
 
+    private String setorCargo = "setorCargo";
+    private String nomeClasse = "cargo";
+    private String nomeCargo = "nome";
+
     public Cargo(String nome, String setor, Integer codigo) {
         this.nome = nome;
         this.setor = setor;
@@ -29,18 +33,18 @@ public class Cargo {
     }
 
     public void setSetor(String setor) {
-        validarStringTamanhoMinimo(setor, 2, "setor", "Cargo");
-        validarStringTamanhoMaximo(setor, 30, "setor", "Cargo");
-        validarObjetoNulo(setor, "setor", "Cargo");
-        validarCaracterEspecial(setor, "setor", "Cargo");
+        validarStringTamanhoMinimo(setor, 2, setorCargo, nomeClasse);
+        validarStringTamanhoMaximo(setor, 30, setorCargo, nomeClasse);
+        validarObjetoNulo(setor, setorCargo, nomeClasse);
+        validarCaracterEspecial(setor, setorCargo, nomeClasse);
         this.setor = setor;
     }
 
     public void setNome(String nome) {
-        validarStringTamanhoMinimo(nome, 2, "Nome", "Cargo");
-        validarStringTamanhoMaximo(nome, 60, "Nome", "Cargo");
-        validarNumerosString(nome, "Nome", "Cargo");
-        validarObjetoNulo(nome, "Nome", "Cargo");
+        validarStringTamanhoMinimo(nome, 2, nomeCargo, nomeClasse);
+        validarStringTamanhoMaximo(nome, 60, nomeCargo, nomeClasse);
+        validarNumerosString(nome, nomeCargo, nomeClasse);
+        validarObjetoNulo(nome, nomeCargo, nomeClasse);
         this.nome = nome;
     }
 
@@ -49,8 +53,8 @@ public class Cargo {
     }
 
     public void setCodigo(Integer codigo) {
-        validarObjetoNulo(codigo, "Codigo", "Cargo");
-        validarStringTamanhoMinimo(codigo.toString(), 2, "Codigo", "Cargo");
+        validarObjetoNulo(codigo, "Codigo", nomeClasse);
+        validarStringTamanhoMinimo(codigo.toString(), 2, "Codigo", nomeClasse);
         this.codigo = codigo;
     }
 

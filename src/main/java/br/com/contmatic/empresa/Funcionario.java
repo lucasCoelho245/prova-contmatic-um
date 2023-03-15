@@ -27,6 +27,10 @@ public class Funcionario {
 
     public Funcionario() {
     }
+    private String nomeClasse = "funcionario";
+    private String funcionarioNome = "nome";
+    private String funcionarioCargo = "cargo";
+    private String funcionarioEmpresa = "funcionario";
 
     public Funcionario(String nome, List<Cargo> cargos, String cpf, BigDecimal salario, LocalDateTime dataNascimento,  List<Empresa> empresa, List<Contato> contatos) {
         this.nome = nome;
@@ -43,11 +47,11 @@ public class Funcionario {
     }
 
     public void setNome(String nome) {
-        validarStringTamanhoMinimo(nome, 3, "nome", "Funcionario");
-        validarStringTamanhoMaximo(nome, 40, "nome", "Funcionario");
-        validarNumerosString(nome, "nome", "Funcionario" );
-        validarObjetoNulo(nome, "nome", "Funcionario");
-        validarCaracterEspecial(nome,"nome", "Funcionario");
+        validarStringTamanhoMinimo(nome, 3, funcionarioNome, nomeClasse);
+        validarStringTamanhoMaximo(nome, 40, funcionarioNome, nomeClasse);
+        validarNumerosString(nome, funcionarioNome, nomeClasse );
+        validarObjetoNulo(nome, funcionarioNome, nomeClasse);
+        validarCaracterEspecial(nome,funcionarioNome, nomeClasse);
         this.nome = nome;
     }
 
@@ -56,7 +60,7 @@ public class Funcionario {
     }
 
     public void setCargos(List<Cargo> cargos) {
-        validarObjetoNulo(cargos.get(0), "Cargo", "Funcionario");
+        validarObjetoNulo(cargos.get(0), funcionarioCargo, nomeClasse);
         Cargos = cargos;
     }
 
@@ -65,7 +69,7 @@ public class Funcionario {
     }
 
     public void setEmpresa(List<Empresa> empresa) {
-        validarObjetoNulo(empresa.get(0), "Empresa", "Funcionario");
+        validarObjetoNulo(empresa.get(0), funcionarioEmpresa, nomeClasse);
         this.empresas = empresa;
     }
 
@@ -74,7 +78,7 @@ public class Funcionario {
     }
 
     public void setContatos(List<Contato> contatos) {
-        validarObjetoNulo(contatos.get(0), "contatos", "Funcionario");
+        validarObjetoNulo(contatos.get(0), "contatos", nomeClasse);
         this.contatos = contatos;
     }
 
@@ -83,7 +87,7 @@ public class Funcionario {
     }
 
     public void setCpf(String cpf) {
-        validarCpf(cpf, "contatos", "Funcionario");
+        validarCpf(cpf, "contatos", nomeClasse);
         this.cpf = cpf;
     }
 
@@ -93,7 +97,7 @@ public class Funcionario {
     }
 
     public void setSalario(BigDecimal salario) {
-        validarStringTamanhoMinimo(String.valueOf(salario), 3, "Salario", "Funcionario");
+        validarStringTamanhoMinimo(String.valueOf(salario), 3, "Salario", nomeClasse);
         this.salario = salario;
     }
 
@@ -102,7 +106,7 @@ public class Funcionario {
     }
 
     public void setDataNascimento(LocalDateTime dataNascimento) {
-        validarDate(dataNascimento, "data nascimento", "Funcionario");
+        validarDate(dataNascimento, "data nascimento", nomeClasse);
         this.dataNascimento = dataNascimento;
     }
 

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static br.com.contmatic.contato.DDDType.DDD11;
+import static org.junit.Assert.assertEquals;
 
 public class ContatoTeste {
     private Contato contato;
@@ -27,13 +28,16 @@ public class ContatoTeste {
     @Test
     public void deve_aceitar_email_correto() {
         contato.setEmail("testegmail.com");
+        assertEquals(contato.getEmail(), "testegmail.com");
+
     }
 
     @Test
     public void deve_aceitar_telefone_correto() {
         List<Telefone> telefones = new ArrayList<>();
         telefones.add(new Telefone(DDD11, 5255 ,"1234"));
-            contato.setTelefones(telefones);
+        contato.setTelefones(telefones);
+        assertEquals(contato.getTelefones(), telefones);
     }
 
     @Test(expected = IllegalArgumentException.class)

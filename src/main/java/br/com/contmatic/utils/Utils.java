@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 
 public class Utils {
+    private Utils() {
+    }
+
     public static void validarStringTamanhoMinimo(String str, Integer minimo, String nomeDoCampo, String classe) {
         if (str.length() <= minimo) {
             throw new IllegalArgumentException("Tamanho de string " + nomeDoCampo + " em " + classe + " está abaixo de " + minimo + " caracteres ");
@@ -18,7 +21,7 @@ public class Utils {
     }
 
     public static void validarCaracterEspecial(String str, String nomeDoCampo, String classe) {
-        if (str.matches("(?=.*[}{,.^?~=+\\-_\\/*\\-+.\\|])(?=.*[a-zA-Z])(?=.*[0-9]).{8,}")) {
+        if (str.matches("(?=.*[}{,.^?~=+\\-_\\/*\\-+.\\|])(?=.*[a-zA-Z])(?=.*\\d).{8,}")) {
             throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não pode ter caracteres especiais ");
         }
     }
@@ -29,7 +32,7 @@ public class Utils {
     }
 
     public static void validarEmail(String str, String nomeDoCampo, String classe) {
-        if (str.matches("/^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\. [a-zA-Z0-9-]+)*$/")) {
+        if (str.matches("/[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\. [a-zA-Z0-9-]+)*/")) {
             throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não é um email válido ");
         }
     }
@@ -39,7 +42,7 @@ public class Utils {
         }
     }
     public static void validarNumerosString(String str, String nomeDoCampo, String classe) {
-        if (str.matches("[0-9]+")) {
+        if (str.matches("\\d+")) {
             throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não pode ter caracteres numeros ");
         }
     }
@@ -52,6 +55,11 @@ public class Utils {
 
     public static void validarObjetoNulo(Object obj, String nomeDoCampo, String classe) {
         if (obj == null) {
+            throw new IllegalArgumentException("O Campo " + nomeDoCampo + " em " + classe + " está vazio");
+        }
+    }
+    public static void validarStringNula(String str, String nomeDoCampo, String classe) {
+        if (str.length() == 0) {
             throw new IllegalArgumentException("O Campo " + nomeDoCampo + " em " + classe + " está vazio");
         }
     }

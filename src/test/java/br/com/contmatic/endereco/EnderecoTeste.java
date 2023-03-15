@@ -3,6 +3,7 @@ package br.com.contmatic.endereco;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 import static br.com.contmatic.endereco.UFType.MA;
 
@@ -23,31 +24,39 @@ public class EnderecoTeste {
     @Test
     public void deve_aceitar_logradouro_correto() {
         endereco.setLogradouro("avenida brasil");
+        assertEquals(endereco.getLogradouro(), "avenida brasil");
     }
 
     @Test
     public void deve_aceitar_uf_correto() {
         endereco.setUf(MA);
+        assertEquals(endereco.getUf(), MA);
     }
 
     @Test
     public void deve_aceitar_numero_correto() {
-        endereco.setNumero(23);
+        Integer numero = 23;
+        endereco.setNumero(numero);
+        assertEquals(endereco.getNumero(), numero);
     }
 
     @Test
     public void deve_aceitar_cep_correto() {
         endereco.setCep("01235000");
+        assertEquals(endereco.getCep(), "01235000");
     }
 
     @Test
     public void deve_aceitar_bairro_correto() {
-        endereco.setBairro("avenida brasil");
+        endereco.setBairro("barata ribeiro");
+        assertEquals(endereco.getBairro(), "barata ribeiro");
+
     }
 
     @Test
     public void deve_aceitar_cidade_correto() {
         endereco.setCidade("são paulo");
+        assertEquals(endereco.getCidade(), "são paulo");
     }
 
     @Test(expected = NullPointerException.class)

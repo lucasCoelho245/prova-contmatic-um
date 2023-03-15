@@ -25,6 +25,16 @@ public class Empresa {
 
     private List<Contato> contatos;
 
+    private String nomeClasse = "empresa";
+    private String nomeEmpresa = "nome empresa";
+    private String empresaAtiva = "empresa Ativa";
+    private String contatoEmpresa = "contatos";
+    private String cnpjEmpresa = contatoEmpresa;
+    private String empresaRazaoSocial = "razao social";
+    private String empresaEndereco = "endereco";
+    private String empresaFuncionario = "funcionario";
+    
+
     public Empresa() {
     }
 
@@ -45,9 +55,9 @@ public class Empresa {
     }
 
     public void setNome(String nome) {
-        validarObjetoNulo(nome, "nome da empresa", "Empresa");
-        validarStringTamanhoMaximo(nome, 60, "nome da empresa", "Empresa");
-        validarStringTamanhoMinimo(nome, 2, "nome da empresa", "Empresa");
+        validarObjetoNulo(nome, nomeEmpresa, nomeClasse);
+        validarStringTamanhoMaximo(nome, 60, nomeEmpresa, nomeClasse);
+        validarStringTamanhoMinimo(nome, 2, nomeEmpresa, nomeClasse);
         this.nome = nome;
     }
 
@@ -56,7 +66,7 @@ public class Empresa {
     }
 
     public void setAtiva(Boolean ativa) {
-        validarObjetoNulo(ativa, "Empresa Ativa?", "Empresa");
+        validarObjetoNulo(ativa, empresaAtiva, nomeClasse);
         this.ativa = ativa;
     }
 
@@ -66,7 +76,7 @@ public class Empresa {
 
 
     public void setContatos(List<Contato> contatos) {
-        validarObjetoNulo(contatos.get(0), "contatos", "Empresa");
+        validarObjetoNulo(contatos.get(0), contatoEmpresa, nomeClasse);
         this.contatos = contatos;
     }
 
@@ -75,7 +85,7 @@ public class Empresa {
     }
 
     public void setCnpj(String cnpj) {
-        validaCnpj(cnpj, "CNPJ", "Empresa");
+        validaCnpj(cnpj, cnpjEmpresa, nomeClasse);
         this.cnpj = cnpj;
     }
 
@@ -85,11 +95,11 @@ public class Empresa {
     }
 
     public void setRazaoSocial(String razaoSocial) {
-        validarStringTamanhoMinimo(razaoSocial, 10, "razaoSocial", "Empresa");
-        validarStringTamanhoMaximo(razaoSocial, 60, "razaoSocial", "Empresa");
-        validarNumerosString(razaoSocial, "razaoSocial", "Empresa");
-        validarCaracterEspecial(razaoSocial, "razaoSocial", "Empresa");
-        validarObjetoNulo(razaoSocial, "razaoSocial", "Empresa");
+        validarStringTamanhoMinimo(razaoSocial, 10, empresaRazaoSocial, nomeClasse);
+        validarStringTamanhoMaximo(razaoSocial, 60, empresaRazaoSocial, nomeClasse);
+        validarNumerosString(razaoSocial, empresaRazaoSocial, nomeClasse);
+        validarCaracterEspecial(razaoSocial, empresaRazaoSocial, nomeClasse);
+        validarObjetoNulo(razaoSocial, empresaRazaoSocial, nomeClasse);
         this.razaoSocial = razaoSocial;
     }
 
@@ -99,7 +109,7 @@ public class Empresa {
     }
 
     public void setEnderecos(List<Endereco> enderecos) {
-        validarObjetoNulo(enderecos.get(0), "enderecos", "Empresa");
+        validarObjetoNulo(enderecos.get(0), empresaEndereco, nomeClasse);
         this.enderecos = enderecos;
     }
 
@@ -108,7 +118,7 @@ public class Empresa {
     }
 
     public void setFuncionarios(List<Funcionario> funcionarios) {
-        validarObjetoNulo(funcionarios.get(0), "funcionarios", "Empresa");
+        validarObjetoNulo(funcionarios.get(0), empresaFuncionario, nomeClasse);
         this.funcionarios = funcionarios;
     }
 

@@ -8,6 +8,9 @@ import static java.lang.Math.floor;
 import static java.lang.Math.round;
 
 public class UtilsCnpj {
+    protected UtilsCnpj() {
+    }
+
     public static void validaCnpj(String cnpj, String nomeDoCampo, String classe) {
         validarObjetoNulo(cnpj, nomeDoCampo, classe);
         validarCaracterString(cnpj, nomeDoCampo, classe);
@@ -31,8 +34,7 @@ public class UtilsCnpj {
     }
 
     private static int getDigitoDois(int[] digitos, int digitoUm) {
-        int digitoDois = calcularDigitoDois(digitoUm, digitos);
-        return digitoDois;
+        return calcularDigitoDois(digitoUm, digitos);
     }
 
     private static int calcularDigitoDois(int digitoUm, int[] digitos) {

@@ -20,11 +20,18 @@ public class Fornecedor {
         return nome;
     }
 
+    private String nomeClasse = "fornecedor";
+    private String fornecedorEmpresa = "nome";
+    private String fornecedorProduto = "produtos";
+    private String fornecedorCnpj = "CNPJ";
+    private String fornecedorContato = "contatos";
+    private String fornecedorEndereco = "endereco";
+
     public void setNome(String nome) {
-        validarStringTamanhoMinimo(nome, 3, "nome", "Fornecedor");
-        validarStringTamanhoMaximo(nome, 30, "nome", "Fornecedor");
-        validarNumerosString(nome, "Nome", "Fornecedor");
-        validarObjetoNulo(nome, "Nome", "Fornecedor");
+        validarStringTamanhoMinimo(nome, 3, fornecedorEmpresa, nomeClasse);
+        validarStringTamanhoMaximo(nome, 30, fornecedorEmpresa, nomeClasse);
+        validarNumerosString(nome, fornecedorEmpresa, nomeClasse);
+        validarObjetoNulo(nome, fornecedorEmpresa, nomeClasse);
         this.nome = nome;
     }
 
@@ -33,7 +40,7 @@ public class Fornecedor {
     }
 
     public void setProdutos(List<Produto> produtos) {
-        validarObjetoNulo(produtos.get(0),  "produtos", "Fornecedor");
+        validarObjetoNulo(produtos.get(0),  fornecedorProduto, nomeClasse);
         this.produtos = produtos;
     }
 
@@ -42,7 +49,7 @@ public class Fornecedor {
     }
 
     public void setCnpj(String cnpj) {
-        validaCnpj(cnpj, "CNPJ", "Fornecedor");
+        validaCnpj(cnpj, fornecedorCnpj, nomeClasse);
         this.cnpj = cnpj;
     }
 
@@ -51,7 +58,7 @@ public class Fornecedor {
     }
 
     public void setContatos(List<Contato> contatos) {
-        validarObjetoNulo(contatos.get(0),  "contatos", "Fornecedor");
+        validarObjetoNulo(contatos.get(0),  fornecedorContato, nomeClasse);
         this.contatos = contatos;
     }
 
@@ -60,7 +67,7 @@ public class Fornecedor {
     }
 
     public void setEnderecos(List<Endereco> enderecos) {
-        validarObjetoNulo(enderecos.get(0), "enderecos", "Fornecedor");
+        validarObjetoNulo(enderecos.get(0), fornecedorEndereco, nomeClasse);
         this.enderecos = enderecos;
     }
 
