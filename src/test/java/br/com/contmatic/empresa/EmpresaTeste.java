@@ -4,8 +4,8 @@ import br.com.contmatic.contato.Contato;
 import br.com.contmatic.contato.Telefone;
 import br.com.contmatic.endereco.Endereco;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

@@ -1,8 +1,8 @@
 package br.com.contmatic.endereco;
 
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 import static br.com.contmatic.endereco.UFType.MA;
 

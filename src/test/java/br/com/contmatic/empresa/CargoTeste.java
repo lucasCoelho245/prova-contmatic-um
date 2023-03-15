@@ -1,8 +1,8 @@
 package br.com.contmatic.empresa;
 
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class CargoTeste {
     private Cargo cargo;

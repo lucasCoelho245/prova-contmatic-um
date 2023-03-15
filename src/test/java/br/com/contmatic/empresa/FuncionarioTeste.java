@@ -2,8 +2,8 @@ package br.com.contmatic.empresa;
 
 import br.com.contmatic.contato.Contato;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
