@@ -1,12 +1,18 @@
 package br.com.contmatic.empresa;
 
+import br.com.contmatic.contato.Telefone;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import static br.com.contmatic.contato.DDDType.DDD11;
 import static org.junit.Assert.*;
 
 public class CargoTeste {
     private Cargo cargo;
+
+    private Cargo cargoCompleto = new Cargo("lucas", "contabilidade", 555);
+    private Cargo cargoErrado = new Cargo("gerson", "teste", 5434355);
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -16,6 +22,7 @@ public class CargoTeste {
     @Before
     public void setBeforeCargo() {
         cargo = new Cargo();
+
     }
 
     @Test
@@ -36,7 +43,22 @@ public class CargoTeste {
         cargo.setCodigo(54521);
         assertEquals(cargo.getCodigo(), codigo);
     }
+    @Test
+    public void testCargoEqualsAndHashCode() {
+        Cargo cargoPadrao = new Cargo("lucas", "contabilidade", 555);
 
+        assertEquals(cargoCompleto.hashCode(), cargoPadrao.hashCode());
+        assertNotEquals(cargoCompleto.hashCode(), cargoErrado.hashCode());
+
+        assertTrue(cargoCompleto.equals(cargoPadrao));
+        assertFalse(cargoErrado.equals(cargoCompleto));
+    }
+
+    @Test
+    public void testCargoToString() {
+        String expectedString = "Cargo {nome= lucas, codigo= 555}";
+        assertEquals(expectedString, cargoCompleto.toString());
+    }
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_nome_menor_que_2() {
         cargo.setNome("s");

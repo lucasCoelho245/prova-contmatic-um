@@ -3,6 +3,8 @@ package br.com.contmatic.endereco;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import static br.com.contmatic.endereco.UFType.AP;
 import static org.junit.Assert.*;
 
 import static br.com.contmatic.endereco.UFType.MA;
@@ -10,6 +12,9 @@ import static br.com.contmatic.endereco.UFType.MA;
 public class EnderecoTeste {
 
     private Endereco endereco;
+
+    private Endereco enderecoCompleto = new Endereco("cambuci", 22, "barata Ribeiro" ,"01235000", MA ,"apto 61", "01233300");;
+    private Endereco enderecoErrado = new Endereco("cambu", 232, "barata" ,"01231000", AP ,"apto", "01235300");;
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -58,7 +63,20 @@ public class EnderecoTeste {
         endereco.setCidade("são paulo");
         assertEquals(endereco.getCidade(), "são paulo");
     }
+    @Test
+    public void testEnderecoEqualsAndHashCode() {
+        Endereco enderecoPadrao = new Endereco("cambuci", 22, "barata Ribeiro" ,"01235000", MA ,"apto 61", "01233300");
+        assertEquals(enderecoCompleto.hashCode(), enderecoPadrao.hashCode());
+        assertNotEquals(enderecoCompleto.hashCode(), enderecoErrado.hashCode());
 
+        assertTrue(enderecoCompleto.equals(enderecoPadrao));
+        assertFalse(enderecoErrado.equals(enderecoCompleto));
+    }
+    @Test
+    public void testEnderecoToString() {
+        String expectedString = "Endereco {logradouro= cambuci, numero= 22, bairro= barata Ribeiro, cidade= 01235000, uf= MA, complemento= apto 61, cep= 01233300}";
+        assertEquals(expectedString, enderecoCompleto.toString());
+    }
     @Test(expected = NullPointerException.class)
     public void nao_deve_aceitar_numero_nulo() {
         endereco.setNumero(null);

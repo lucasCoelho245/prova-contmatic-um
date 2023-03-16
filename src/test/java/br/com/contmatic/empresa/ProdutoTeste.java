@@ -10,6 +10,10 @@ import java.math.BigDecimal;
 public class ProdutoTeste {
 
     private Produto produto;
+    private BigDecimal valor = new BigDecimal(1000);
+    private BigDecimal quantidade = new BigDecimal(12);
+    private Produto produtoCompleto = new Produto("Produto soja", "3232", quantidade, valor);
+    private Produto produtoErrado = new Produto("Produto pao", "2222", quantidade, valor);
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -36,19 +40,33 @@ public class ProdutoTeste {
 
     @Test
     public void aceitar_quantidade_correta() {
-        BigDecimal quantidade = new BigDecimal(12);
         produto.setQuantidade(quantidade);
         assertEquals(produto.getQuantidade(), quantidade);
     }
     @Test
     public void aceitar_salario_correto() {
-        BigDecimal salario = new BigDecimal(1000);
-        produto.setValor(salario);
-        assertEquals(produto.getValor(), salario);
+        produto.setValor(valor);
+        assertEquals(produto.getValor(), valor);
     }
+    @Test
+    public void testCargoEqualsAndHashCode() {
+        Produto produtoPadrao = new Produto("Produto soja", "3232", quantidade, valor);
+
+        assertEquals(produtoCompleto.hashCode(), produtoPadrao.hashCode());
+        assertNotEquals(produtoCompleto.hashCode(), produtoErrado.hashCode());
+
+        assertTrue(produtoCompleto.equals(produtoPadrao));
+        assertFalse(produtoErrado.equals(produtoCompleto));
+    }
+
+    @Test
+    public void testCargoToString() {
+        String expectedString = "Produto {nome= Produto soja, Id= 3232, quantidade= 12, valor= 1000}";
+        assertEquals(expectedString, produtoCompleto.toString());
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_nome_menor_que_2() {
-
         produto.setNome("s");
     }
 

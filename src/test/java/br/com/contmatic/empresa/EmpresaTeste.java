@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static br.com.contmatic.contato.DDDType.DDD11;
-import static org.junit.Assert.assertEquals;
+import static br.com.contmatic.endereco.UFType.MA;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 public class EmpresaTeste {
     private Empresa empresa;
@@ -32,6 +34,10 @@ public class EmpresaTeste {
 
     private List<Endereco> enderecos = new ArrayList<>();
 
+    private List<Funcionario> funcionario = new ArrayList<>();
+    private Empresa empresaCompleta = new Empresa("502793028385","Coca Cola Indústrias Ltda", enderecos, funcionario, contatos);
+    private Empresa empresaErrada = new Empresa("502993028385","Coca Cola", enderecos, funcionario, contatos);
+
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe empresa");
@@ -39,8 +45,19 @@ public class EmpresaTeste {
 
     @Before
     public void setBeforeFornecedor() {
-
         empresa = new Empresa();
+
+        telefones.add(new Telefone(DDD11, 555, "941584007"));
+
+        contatos.add(new Contato("contmatic@gmail.com", telefones));
+
+        cargos.add(new Cargo("analista", "desenvolvimento", 553));
+
+        empresas.add(new Empresa("26631884000176"));
+
+        funcionario.add(new Funcionario("nome", cargos, "50279302835", salario, data, empresas, contatos));
+
+        enderecos.add(new Endereco("cambuci", 22, "barata Ribeiro" ,"01235000", MA ,"apto 61", "01233300"));
     }
 
     @Test
@@ -63,39 +80,38 @@ public class EmpresaTeste {
 
     @Test
     public void deve_aceitar_contato_valido() {
-        telefones.add(new Telefone(DDD11, 555, "941584007"));
-
-        contatos.add(new Contato("contmatic@gmail.com", telefones));
-
         empresa.setContatos(contatos);
         assertEquals(empresa.getContatos(), contatos);
     }
 
     @Test
     public void deve_aceitar_funcionario_valido() {
-        telefones.add(new Telefone(DDD11, 555, "941584007"));
-
-        contatos.add(new Contato("contmatic@gmail.com", telefones));
-
-        cargos.add(new Cargo("analista", "desenvolvimento", 553));
-
-        empresas.add(new Empresa("26631884000176"));
-
-        List<Funcionario> funcionario = new ArrayList<>();
-        funcionario.add(new Funcionario("nome", cargos, "50279302835", salario, data, empresas, contatos));
-
         empresa.setFuncionarios(funcionario);
         assertEquals(empresa.getFuncionarios(), funcionario);
     }
 
     @Test
     public void deve_aceitar_endereco_valido() {
-        enderecos.add(new Endereco(123, "0123500", "Pacaembu"));
         empresa.setEnderecos(enderecos);
         assertEquals(empresa.getEnderecos(), enderecos);
 
     }
+    @Test
+    public void testEmpresaEqualsAndHashCode() {
+        Empresa empresaPadrao = new Empresa("502793028385","Coca Cola Indústrias Ltda", enderecos, funcionario, contatos);
 
+        assertEquals(empresaCompleta.hashCode(), empresaPadrao.hashCode());
+        assertNotEquals(empresaCompleta.hashCode(), empresaErrada.hashCode());
+
+        assertTrue(empresaCompleta.equals(empresaPadrao));
+        assertFalse(empresaErrada.equals(empresaCompleta));
+    }
+
+    @Test
+    public void testEmpresaToString() {
+        String expectedString = "Empresa {cnpj= 502793028385, razaoSocial= Coca Cola Indústrias Ltda, enderecos= [Endereco {logradouro= cambuci, numero= 22, bairro= barata Ribeiro, cidade= 01235000, uf= MA, complemento= apto 61, cep= 01233300}], funcionarios= [Funcionario {nomeCompleto= nome, Cargos= [Cargo {nome= analista, codigo= 553}], cpf= 50279302835, salario= 1000, dataNascimento= 2024-12-02T12:00, empresa= [Empresa {cnpj= 26631884000176, razaoSocial= null, enderecos= null, funcionarios= null, contatos= null], Contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}]}], contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}]";
+        assertEquals(expectedString, empresaCompleta.toString());
+    }
     @Test
     public void deve_aceitar_status_correto_de_atividade_correto() {
         empresa.setAtiva(true);

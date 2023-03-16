@@ -10,10 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static br.com.contmatic.contato.DDDType.DDD11;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 public class ContatoTeste {
     private Contato contato;
+
+    List<Telefone> telefones = new ArrayList<>();
+
+    private Contato contatoErrado = new Contato("testeee@gmail.com", telefones);
+    private Contato contatoCompleto = new Contato("test@gmail.com", telefones);
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -31,7 +37,21 @@ public class ContatoTeste {
         assertEquals(contato.getEmail(), "testegmail.com");
 
     }
+    @Test
+    public void testContatoEqualsAndHashCode() {
+        assertEquals(contato.hashCode(), contato.hashCode());
+        assertNotEquals(contato.hashCode(), contatoErrado.hashCode());
 
+        assertTrue(contato.equals(contato));
+        assertFalse(contatoErrado.equals(contato));
+    }
+
+    @Test
+    public void testContatoToString() {
+        telefones.add(new Telefone(DDD11, 555, "941584007"));
+        String expectedString = "Contato {email= test@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}";
+        assertEquals(expectedString, contatoCompleto.toString());
+    }
     @Test
     public void deve_aceitar_telefone_correto() {
         List<Telefone> telefones = new ArrayList<>();
@@ -62,7 +82,6 @@ public class ContatoTeste {
 
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_telefone_nulo() {
-        List<Telefone> telefones = new ArrayList<>();
         telefones.add(null);
         contato.setTelefones(telefones);
     }

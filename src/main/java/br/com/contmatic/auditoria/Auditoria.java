@@ -26,6 +26,28 @@ public class Auditoria {
     private String loginDaAlteracao = "login alteracao";
     private String ipDaCriacao = "ipcriacao";
 
+    public Auditoria() {
+    }
+
+    public Auditoria(String loginCriacao, String loginAlteracao, String ipCriacao, LocalDateTime dataCriacao, LocalDateTime dataAlteracao, LocalDateTime dataLogin, LocalDateTime dataLogout, String nomeClasseauditoria, String loginDaCriacao, String loginDaAlteracao, String ipDaCriacao) {
+        this.loginCriacao = loginCriacao;
+        this.loginAlteracao = loginAlteracao;
+        this.ipCriacao = ipCriacao;
+        this.dataCriacao = dataCriacao;
+        this.dataAlteracao = dataAlteracao;
+        this.dataLogin = dataLogin;
+        this.dataLogout = dataLogout;
+        this.nomeClasseauditoria = nomeClasseauditoria;
+        this.loginDaCriacao = loginDaCriacao;
+        this.loginDaAlteracao = loginDaAlteracao;
+        this.ipDaCriacao = ipDaCriacao;
+    }
+
+    public Auditoria(String loginCriacao, String ipCriacao) {
+        this.loginCriacao = loginCriacao;
+        this.ipCriacao = ipCriacao;
+    }
+
     public String getLoginCriacao() {
         return loginCriacao;
     }
@@ -102,14 +124,14 @@ public class Auditoria {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Auditoria)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Auditoria auditoria = (Auditoria) o;
-        return getLoginCriacao().equals(auditoria.getLoginCriacao()) && ipCriacao.equals(auditoria.ipCriacao);
+        return ipCriacao.equals(auditoria.ipCriacao) && loginDaCriacao.equals(auditoria.loginDaCriacao);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getLoginCriacao(), ipCriacao);
+        return Objects.hash(ipCriacao, loginDaCriacao);
     }
 
     @Override

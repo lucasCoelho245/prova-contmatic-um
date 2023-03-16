@@ -30,10 +30,15 @@ public class Endereco {
     private String enderecoComplemento = "complemento";
     private String enderecoCep = "cep";
 
-    public Endereco(Integer numero, String cep, String nomeLogradouro) {
+
+    public Endereco(String logradouro, Integer numero, String bairro, String cidade, UFType uf, String complemento, String cep) {
+        this.logradouro = logradouro;
         this.numero = numero;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
+        this.complemento = complemento;
         this.cep = cep;
-        this.logradouro = nomeLogradouro;
     }
 
     public String getLogradouro() {

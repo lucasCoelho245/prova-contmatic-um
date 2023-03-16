@@ -8,7 +8,6 @@ import static br.com.contmatic.utils.Utils.*;
 public class Contato {
     private String email;
     private List<Telefone> telefones;
-    
     private String contatoEmpresa = "contato";
     private String emailEmpresa = "email";
     public Contato() {

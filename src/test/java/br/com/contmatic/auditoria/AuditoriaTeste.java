@@ -10,6 +10,11 @@ import static org.junit.Assert.*;
 
 public class AuditoriaTeste {
     private Auditoria auditoria;
+    private LocalDateTime exemploData = LocalDateTime.of(2022, 1, 1, 12, 30);
+    private Auditoria auditoriaTeste = new Auditoria("teste@login", "2552552551");
+    private Auditoria auditoriaTesteCompleto = new Auditoria("teste@login", "teste@login", "2552552550", exemploData, exemploData, exemploData, exemploData, "auditoriaTeste", "auditoriaTeste", "auditoriaTeste", "2552552550");
+    private Auditoria auditoriaTesteIgual = new Auditoria("teste@login", "2552552551");
+    private Auditoria auditoriaerrado = new Auditoria("teste2@login", "33223");
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -41,15 +46,13 @@ public class AuditoriaTeste {
 
     @Test
     public void deve_aceitar_data_alteracao_correta() {
-        LocalDateTime dataAlteracao = LocalDateTime.of(2022, 1, 1, 12, 30);
-        auditoria.setDataAlteracao(dataAlteracao);
+        auditoria.setDataAlteracao(exemploData);
         assertEquals(auditoria.getDataAlteracao(), LocalDateTime.of(2022, 1, 1, 12, 30));
     }
 
     @Test
     public void deve_aceitar_data_criacao_correta() {
-        LocalDateTime dataCriacao = LocalDateTime.of(2022, 1, 1, 12, 30);
-        auditoria.setDataCriacao(dataCriacao);
+        auditoria.setDataCriacao(exemploData);
         assertEquals(auditoria.getDataCriacao(), LocalDateTime.of(2022, 1, 1, 12, 30));
     }
 
@@ -66,6 +69,22 @@ public class AuditoriaTeste {
         auditoria.setDataLogin(datalogin);
         assertEquals(auditoria.getDataLogin(), LocalDateTime.of(2022, 1, 1, 12, 30));
     }
+
+    @Test
+    public void testAuditoriaEqualsAndHashCode() {
+        assertEquals(auditoriaTeste.hashCode(), auditoriaTesteIgual.hashCode());
+        assertNotEquals(auditoriaTeste.hashCode(), auditoriaerrado.hashCode());
+
+        assertTrue(auditoriaTeste.equals(auditoriaTesteIgual));
+        assertFalse(auditoriaerrado.equals(auditoriaTesteIgual));
+    }
+
+    @Test
+    public void testAuditoriaToString() {
+        String expectedString = "Auditoria {dataCriacao= 2022-01-01T12:30, dataAlteracao= 2022-01-01T12:30, loginCriacao= teste@login, loginAlteracao= teste@login, ipCriacao= 2552552550, dataLogin= 2022-01-01T12:30, dataLogout= 2022-01-01T12:30}";
+        assertEquals(expectedString, auditoriaTesteCompleto.toString());
+    }
+
 
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_login_maior_que_25() {

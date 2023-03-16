@@ -27,6 +27,17 @@ public class Fornecedor {
     private String fornecedorContato = "contatos";
     private String fornecedorEndereco = "endereco";
 
+    public Fornecedor() {
+    }
+
+    public Fornecedor(String cnpj, String nome, List<Produto> produtos, List<Contato> contatos, List<Endereco> enderecos) {
+        this.cnpj = cnpj;
+        this.nome = nome;
+        this.produtos = produtos;
+        this.contatos = contatos;
+        this.enderecos = enderecos;
+    }
+
     public void setNome(String nome) {
         validarStringTamanhoMinimo(nome, 3, fornecedorEmpresa, nomeClasse);
         validarStringTamanhoMaximo(nome, 30, fornecedorEmpresa, nomeClasse);

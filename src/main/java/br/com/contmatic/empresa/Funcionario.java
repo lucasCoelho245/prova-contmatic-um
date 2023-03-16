@@ -32,6 +32,8 @@ public class Funcionario {
     private String funcionarioCargo = "cargo";
     private String funcionarioEmpresa = "funcionario";
 
+
+
     public Funcionario(String nome, List<Cargo> cargos, String cpf, BigDecimal salario, LocalDateTime dataNascimento,  List<Empresa> empresa, List<Contato> contatos) {
         this.nome = nome;
         Cargos = cargos;

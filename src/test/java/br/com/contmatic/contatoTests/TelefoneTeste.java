@@ -5,11 +5,18 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static br.com.contmatic.contato.DDDType.DDD11;
-import static org.junit.Assert.assertEquals;
+import static br.com.contmatic.contato.DDDType.DDD12;
+import static org.junit.Assert.*;
 
 public class TelefoneTeste {
     private Telefone telefone;
+    private List<Telefone> telefoneErrado = new ArrayList<>();
+    private List<Telefone> telefoneCompleto = new ArrayList<>();
+    private List<Telefone> telefonePadrao = new ArrayList<>();
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -19,6 +26,9 @@ public class TelefoneTeste {
     @Before
     public void setBeforeProduto() {
         telefone = new Telefone();
+        telefoneErrado.add(new Telefone(DDD12, 55555, "43433443"));
+        telefoneCompleto.add(new Telefone(DDD11, 555, "941584007"));
+
     }
 
     @Test
@@ -39,6 +49,24 @@ public class TelefoneTeste {
         telefone.setDdi(55);
         assertEquals(telefone.getDdi(), ddi);
     }
+    @Test
+    public void testContatoEqualsAndHashCode() {
+
+        telefonePadrao.add(new Telefone(DDD11, 555, "941584007"));
+
+        assertEquals(telefoneCompleto.hashCode(), telefonePadrao.hashCode());
+        assertNotEquals(telefoneCompleto.hashCode(), telefoneErrado.hashCode());
+
+        assertTrue(telefoneCompleto.equals(telefoneCompleto));
+        assertFalse(telefoneErrado.equals(telefoneCompleto));
+    }
+
+    @Test
+    public void testContatoToString() {
+        String expectedString = "[Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]";
+        assertEquals(expectedString, telefoneCompleto.toString());
+    }
+
 
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_ddi_nulo() {

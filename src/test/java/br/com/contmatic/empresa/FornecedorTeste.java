@@ -10,12 +10,20 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import static br.com.contmatic.endereco.UFType.MA;
 import static org.junit.Assert.*;
 
 import static br.com.contmatic.contato.DDDType.DDD11;
 
 public class FornecedorTeste {
     private Fornecedor fornecedor;
+    private List<Telefone> telefones = new ArrayList<>();
+    private List<Contato> contatos = new ArrayList<>();
+    private List<Produto> produtos = new ArrayList<>();
+    private List<Endereco> enderecos = new ArrayList<>();
+    private Fornecedor fornecedorCompleto = new Fornecedor("26631884000176", "julio", produtos, contatos, enderecos);
+    private Fornecedor fornecedorErrado = new Fornecedor("25531884000176", "joao", produtos, contatos, enderecos);
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -25,6 +33,8 @@ public class FornecedorTeste {
     @Before
     public void setBeforeFornecedor(){
         fornecedor = new Fornecedor();
+        telefones.add(new Telefone(DDD11, 555, "941584007"));
+        contatos.add(new Contato("contmatic@gmail.com", telefones));
     }
 
     @Test
@@ -34,11 +44,6 @@ public class FornecedorTeste {
     }
     @Test
     public void deve_aceitar_contato_valido() {
-        List<Telefone> telefones = new ArrayList<>();
-        telefones.add(new Telefone(DDD11, 555, "941584007"));
-        List<Contato> contatos = new ArrayList<>();
-        contatos.add(new Contato("contmatic@gmail.com", telefones));
-
         fornecedor.setContatos(contatos);
         assertEquals(fornecedor.getContatos(), contatos);
     }
@@ -50,7 +55,6 @@ public class FornecedorTeste {
     }
     @Test
     public void deve_aceitar_produto_correto() {
-        List<Produto> produtos = new ArrayList<>();
         BigDecimal valor = new BigDecimal(1000);
         BigDecimal quantidade = new BigDecimal(1000);
         produtos.add(new Produto("produtoA", "110", quantidade, valor));
@@ -59,10 +63,25 @@ public class FornecedorTeste {
     }
     @Test
     public void deve_aceitar_endereco_correto() {
-        List<Endereco> enderecos = new ArrayList<>();
-        enderecos.add(new Endereco(232, "0123500", "teste"));
+        enderecos.add(new Endereco("cambuci", 22, "barata Ribeiro" ,"01235000", MA ,"apto 61", "01233300"));
         fornecedor.setEnderecos(enderecos);
         assertEquals(fornecedor.getEnderecos(), enderecos);
+    }
+    @Test
+    public void testCargoEqualsAndHashCode() {
+         Fornecedor fornecedorPadrao = new Fornecedor("26631884000176", "julio", produtos, contatos, enderecos);
+
+        assertEquals(fornecedorCompleto.hashCode(), fornecedorPadrao.hashCode());
+        assertNotEquals(fornecedorCompleto.hashCode(), fornecedorErrado.hashCode());
+
+        assertTrue(fornecedorCompleto.equals(fornecedorPadrao));
+        assertFalse(fornecedorErrado.equals(fornecedorCompleto));
+    }
+
+    @Test
+    public void testCargoToString() {
+        String expectedString = "Fornecedor {nome= julio, produtos= [], cnpj= 26631884000176, contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}], enderecos= []}";
+        assertEquals(expectedString, fornecedorCompleto.toString());
     }
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_mais_30_caracteres () {

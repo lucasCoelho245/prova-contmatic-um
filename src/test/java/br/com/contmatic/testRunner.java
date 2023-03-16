@@ -1,8 +1,7 @@
 package br.com.contmatic;
 
 import br.com.contmatic.auditoria.AuditoriaTeste;
-import br.com.contmatic.contatoTests.ContatoTeste;
-import br.com.contmatic.contatoTests.TelefoneTeste;
+import br.com.contmatic.contatoTests.*;
 import br.com.contmatic.empresa.*;
 import br.com.contmatic.endereco.EnderecoTeste;
 import br.com.contmatic.utils.UtilsCnpjTest;

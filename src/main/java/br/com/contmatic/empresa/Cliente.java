@@ -18,13 +18,21 @@ public class Cliente {
     }
 
     private String nomeClasse = "cliente";
-    
+
     private String nomeCliente = "nome";
-    
+
     private String produtoCliente = "produto";
     private String cpfCLiente = "cpf";
 
-    
+    public Cliente() {
+    }
+
+    public Cliente(String cpf, String nome, List<Produto> produtos) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.produtos = produtos;
+    }
+
     public void setNome(String nome) {
         validarStringTamanhoMinimo(nome, 3, nomeCliente, nomeClasse);
         validarStringTamanhoMaximo(nome, 60, nomeCliente, nomeClasse);
@@ -32,6 +40,7 @@ public class Cliente {
         validarObjetoNulo(nome, nomeCliente, nomeClasse);
         this.nome = nome;
     }
+
     public List<Produto> getProdutos() {
         return produtos;
     }

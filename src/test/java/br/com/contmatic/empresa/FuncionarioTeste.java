@@ -16,6 +16,14 @@ public class FuncionarioTeste {
 
 
     private Funcionario funcionario;
+    private BigDecimal salario = new BigDecimal(1000);
+    private LocalDateTime dataNascimento = LocalDateTime.of(2002, 12, 2, 12, 00);
+    private List<Empresa> empresas = new ArrayList<>();
+    private List<Contato> contatos = new ArrayList<>();
+    private List<Cargo> cargos = new ArrayList<>();
+
+    private Funcionario funcionarioCompleto = new Funcionario("João", cargos, "50279302835", salario, dataNascimento, empresas, contatos);
+    private Funcionario funcionarioErrado = new Funcionario("julio", cargos, "502793022828", salario, dataNascimento, empresas, contatos);
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -35,7 +43,6 @@ public class FuncionarioTeste {
 
     @Test
     public void deve_aceitar_cargo_correto() {
-        List<Cargo> cargos = new ArrayList<>();
         cargos.add(new Cargo("analista", "desenvolvimento", 553));
         funcionario.setCargos(cargos);
         assertEquals(funcionario.getCargos(), cargos);
@@ -49,7 +56,7 @@ public class FuncionarioTeste {
 
     @Test
     public void deve_aceitar_salario_correto() {
-        BigDecimal salario = new BigDecimal(1000);
+
         funcionario.setSalario(salario);
         assertEquals(funcionario.getSalario(), salario);
     }
@@ -57,11 +64,26 @@ public class FuncionarioTeste {
     @Test
     public void deve_aceitar_data_correto() {
         Funcionario funcionario = new Funcionario();
-        LocalDateTime data = LocalDateTime.now();
-        funcionario.setDataNascimento(data);
-        assertEquals(funcionario.getDataNascimento(), data);
+        funcionario.setDataNascimento(dataNascimento);
+        assertEquals(funcionario.getDataNascimento(), dataNascimento);
     }
 
+    @Test
+    public void testFuncionarioEqualsAndHashCode() {
+        Funcionario funcionarioPadrao = new Funcionario("João", cargos, "50279302835", salario, dataNascimento, empresas, contatos);
+
+        assertEquals(funcionarioCompleto.hashCode(), funcionarioPadrao.hashCode());
+        assertNotEquals(funcionarioCompleto.hashCode(), funcionarioErrado.hashCode());
+
+        assertTrue(funcionarioCompleto.equals(funcionarioPadrao));
+        assertFalse(funcionarioErrado.equals(funcionarioCompleto));
+    }
+
+    @Test
+    public void testCargoToString() {
+        String expectedString = "Funcionario {nomeCompleto= João, Cargos= [], cpf= 50279302835, salario= 1000, dataNascimento= 2002-12-02T12:00, empresa= [], Contatos= []}";
+        assertEquals(expectedString, funcionarioCompleto.toString());
+    }
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_cargo_nulo() {
         List<Cargo> cargos = new ArrayList<>();
