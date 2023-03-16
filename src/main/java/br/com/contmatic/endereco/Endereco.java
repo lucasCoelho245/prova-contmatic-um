@@ -20,8 +20,8 @@ public class Endereco {
     private String cep;
 
     public Endereco() {
-
     }
+
     private String nomeClasse = "endereco";
     private String enderecoLogradouro = "logradouro";
     private String enderecoNumero = "numero";
