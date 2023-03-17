@@ -1,8 +1,7 @@
 package br.com.contmatic.utils;
 
 import static br.com.contmatic.utils.CnpjUtilsConstants.*;
-import static br.com.contmatic.utils.Utils.validarCaracterString;
-import static br.com.contmatic.utils.Utils.validarObjetoNulo;
+import static br.com.contmatic.utils.Utils.*;
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.floor;
 import static java.lang.Math.round;
@@ -13,6 +12,7 @@ public class UtilsCnpj {
 
     public static void validaCnpj(String cnpj, String nomeDoCampo, String classe) {
         validarObjetoNulo(cnpj, nomeDoCampo, classe);
+        validarStringVazio(cnpj, nomeDoCampo, classe);
         validarCaracterString(cnpj, nomeDoCampo, classe);
         basicErrosCnpj(cnpj);
         int digitos[] = new int[CARACTERES_CNPJ];

@@ -31,10 +31,10 @@ public class Produto {
     }
 
     public void setNome(String nome) {
-        validarStringNula(nome, produtoNome, nomeClasse);
+        validarObjetoNulo(nome, produtoNome, nomeClasse);
+        validarStringVazio(nome, produtoNome, nomeClasse);
         validarStringTamanhoMinimo(nome, 3, produtoNome, nomeClasse);
         validarNumerosString(nome, produtoNome, nomeClasse);
-        validarObjetoNulo(nome, produtoNome, nomeClasse);
         validarStringTamanhoMaximo(nome, 60, produtoNome, nomeClasse);
         this.nome = nome;
     }

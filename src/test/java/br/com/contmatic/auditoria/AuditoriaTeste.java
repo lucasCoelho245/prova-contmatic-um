@@ -5,6 +5,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.util.regex.Pattern;
 
 import static org.junit.Assert.*;
 
@@ -28,14 +29,14 @@ public class AuditoriaTeste {
 
     @Test
     public void deve_aceitar_login_alteracao_correto() {
-        auditoria.setLoginAlteracao("teste.log");
-        assertEquals(auditoria.getLoginAlteracao(), "teste.log");
+        auditoria.setLoginAlteracao("testelog");
+        assertEquals(auditoria.getLoginAlteracao(), "testelog");
     }
 
     @Test
     public void deve_aceitar_login_criacao_correto() {
-        auditoria.setLoginCriacao("teste.log");
-        assertEquals(auditoria.getLoginCriacao(), "teste.log");
+        auditoria.setLoginCriacao("testelog");
+        assertEquals(auditoria.getLoginCriacao(), "testelog");
     }
 
     @Test
@@ -100,14 +101,19 @@ public class AuditoriaTeste {
 
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_login_nulo() {
-        auditoria.setLoginCriacao(" ");
-        auditoria.setLoginAlteracao(" ");
+        auditoria.setLoginCriacao(null);
+        auditoria.setLoginAlteracao(null);
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void nao_deve_aceitar_login_vazio() {
+        auditoria.setLoginCriacao("");
+        auditoria.setLoginAlteracao("");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_login_caracter_especial() {
-        auditoria.setLoginCriacao("%%");
-        auditoria.setLoginAlteracao("%%");
+        auditoria.setLoginCriacao("sded&%");
+        auditoria.setLoginAlteracao("sdvkjbsd&%");
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -146,13 +152,18 @@ public class AuditoriaTeste {
 
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_ip_criacao_nulo() {
-        auditoria.setIpCriacao("257765677656565722232992");
+        auditoria.setIpCriacao(" ");
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void nao_deve_aceitar_ip_criacao_vazio() {
+        auditoria.setIpCriacao("");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_ip_criacao_com_caracteres() {
         auditoria.setIpCriacao("65ssfwfew992");
     }
+
 
 
 }

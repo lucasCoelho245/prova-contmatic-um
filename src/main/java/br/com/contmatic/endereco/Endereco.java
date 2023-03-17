@@ -46,9 +46,10 @@ public class Endereco {
     }
 
     public void setLogradouro(String logradouro) {
+        validarObjetoNulo(logradouro, enderecoLogradouro, nomeClasse);
+        validarStringVazio(logradouro, enderecoLogradouro, nomeClasse);
         validarStringTamanhoMinimo(logradouro, 3, enderecoLogradouro, nomeClasse);
         validarNumerosString(logradouro, enderecoLogradouro, nomeClasse);
-        validarObjetoNulo(logradouro, enderecoLogradouro, nomeClasse);
         validarStringTamanhoMaximo(String.valueOf(numero), 20, enderecoLogradouro, nomeClasse);
         this.logradouro = logradouro;
     }
@@ -75,9 +76,10 @@ public class Endereco {
     }
 
     public void setBairro(String bairro) {
+        validarObjetoNulo(bairro, enderecoBairro, nomeClasse);
+        validarStringVazio(bairro, enderecoBairro, nomeClasse);
         validarStringTamanhoMinimo(bairro, 3, enderecoBairro, nomeClasse);
         validarNumerosString(bairro, enderecoBairro, nomeClasse);
-        validarObjetoNulo(bairro, enderecoBairro, nomeClasse);
         validarStringTamanhoMaximo(bairro, 20, enderecoBairro, nomeClasse);
         this.bairro = bairro;
     }
@@ -87,9 +89,10 @@ public class Endereco {
     }
 
     public void setCidade(String cidade) {
+        validarObjetoNulo(cidade, enderecoCidade, nomeClasse);
+        validarStringVazio(cidade, enderecoCidade, nomeClasse);
         validarStringTamanhoMinimo(cidade, 3, enderecoCidade, nomeClasse);
         validarNumerosString(cidade, enderecoCidade, nomeClasse);
-        validarObjetoNulo(cidade, enderecoCidade, nomeClasse);
         validarStringTamanhoMaximo(cidade, 20, enderecoCidade, nomeClasse);
         this.cidade = cidade;
     }
@@ -100,9 +103,10 @@ public class Endereco {
     }
 
     public void setComplemento(String complemento) {
+        validarObjetoNulo(complemento, enderecoComplemento, nomeClasse);
+        validarStringVazio(complemento, enderecoComplemento, nomeClasse);
         validarStringTamanhoMinimo(complemento, 3, enderecoComplemento, nomeClasse);
         validarNumerosString(complemento, enderecoComplemento, nomeClasse);
-        validarObjetoNulo(complemento, enderecoComplemento, nomeClasse);
         validarStringTamanhoMaximo(complemento, 20, enderecoComplemento, nomeClasse);
         this.complemento = complemento;
     }

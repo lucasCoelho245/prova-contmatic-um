@@ -53,10 +53,11 @@ public class Auditoria {
     }
 
     public void setLoginCriacao(String loginCriacao) {
+        validarObjetoNulo(loginCriacao, loginDaCriacao, nomeClasseauditoria);
+        validarStringVazio(loginCriacao, loginDaCriacao, nomeClasseauditoria);
+        validarCaracterEspecial(loginCriacao, loginDaCriacao, nomeClasseauditoria);
         validarStringTamanhoMaximo(loginCriacao, 25, loginDaCriacao, nomeClasseauditoria);
         validarStringTamanhoMinimo(loginCriacao, 2, loginDaCriacao, nomeClasseauditoria);
-        validarObjetoNulo(loginCriacao, loginDaCriacao, nomeClasseauditoria);
-        validarCaracterEspecial(loginCriacao, loginDaCriacao, nomeClasseauditoria);
         this.loginCriacao = loginCriacao;
     }
 
@@ -65,9 +66,10 @@ public class Auditoria {
     }
 
     public void setLoginAlteracao(String loginAlteracao) {
+        validarObjetoNulo(loginAlteracao, loginDaAlteracao, nomeClasseauditoria);
+        validarStringVazio(loginAlteracao, loginDaAlteracao, nomeClasseauditoria);
         validarStringTamanhoMaximo(loginAlteracao, 25, loginDaAlteracao, nomeClasseauditoria);
         validarStringTamanhoMinimo(loginAlteracao, 2, loginDaAlteracao, nomeClasseauditoria);
-        validarObjetoNulo(loginAlteracao, loginDaAlteracao, nomeClasseauditoria);
         validarCaracterEspecial(loginAlteracao, loginDaAlteracao, nomeClasseauditoria);
         this.loginAlteracao = loginAlteracao;
     }
@@ -77,9 +79,10 @@ public class Auditoria {
     }
 
     public void setIpCriacao(String ipCriacao) {
+        validarObjetoNulo(ipCriacao, ipDaCriacao, nomeClasseauditoria);
+        validarStringVazio(ipCriacao, ipDaCriacao, nomeClasseauditoria);
         validarStringTamanhoMinimo(ipCriacao, 6, ipDaCriacao, nomeClasseauditoria);
         validarStringTamanhoMaximo(ipCriacao, 12, ipDaCriacao, nomeClasseauditoria);
-        validarObjetoNulo(ipCriacao, ipDaCriacao, nomeClasseauditoria);
         validarCaracterString(ipCriacao, ipDaCriacao, nomeClasseauditoria);
         validarIp(ipCriacao, ipDaCriacao, nomeClasseauditoria);
         this.ipCriacao = ipCriacao;

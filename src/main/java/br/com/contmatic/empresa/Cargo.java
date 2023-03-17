@@ -33,18 +33,20 @@ public class Cargo {
     }
 
     public void setSetor(String setor) {
+        validarObjetoNulo(setor, setorCargo, nomeClasse);
+        validarStringVazio(setor, setorCargo, nomeClasse);
         validarStringTamanhoMinimo(setor, 2, setorCargo, nomeClasse);
         validarStringTamanhoMaximo(setor, 30, setorCargo, nomeClasse);
-        validarObjetoNulo(setor, setorCargo, nomeClasse);
         validarCaracterEspecial(setor, setorCargo, nomeClasse);
         this.setor = setor;
     }
 
     public void setNome(String nome) {
+        validarObjetoNulo(nome, nomeCargo, nomeClasse);
+        validarStringVazio(nome, nomeCargo, nomeClasse);
         validarStringTamanhoMinimo(nome, 2, nomeCargo, nomeClasse);
         validarStringTamanhoMaximo(nome, 60, nomeCargo, nomeClasse);
         validarNumerosString(nome, nomeCargo, nomeClasse);
-        validarObjetoNulo(nome, nomeCargo, nomeClasse);
         this.nome = nome;
     }
 

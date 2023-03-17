@@ -1,7 +1,7 @@
 package br.com.contmatic.utils;
 
 import static br.com.contmatic.utils.CpfUtilsConstants.*;
-import static br.com.contmatic.utils.Utils.validarObjetoNulo;
+import static br.com.contmatic.utils.Utils.*;
 import static java.lang.Integer.parseInt;
 
 public final class UtilsCpf {
@@ -11,6 +11,7 @@ public final class UtilsCpf {
 
     public static void validarCpf(String cpf, String nomeDoCampo, String classe) {
         validarObjetoNulo(cpf, nomeDoCampo, classe);
+        validarStringVazio(cpf, nomeDoCampo, classe);
         errosCnpjBasicos(cpf);
         int[] digitos = separadorDigitos(cpf);
         int digitoUm = getDigitoUm(digitos);

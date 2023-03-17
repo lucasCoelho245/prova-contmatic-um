@@ -23,10 +23,11 @@ public class Contato {
     }
 
     public void setEmail(String email) {
+        validarObjetoNulo(email, emailEmpresa, contatoEmpresa);
+        validarStringVazio(email, emailEmpresa, contatoEmpresa);
         validarEmail(email, emailEmpresa, contatoEmpresa);
         validarStringTamanhoMaximo(email, 60, emailEmpresa, contatoEmpresa);
         validarStringTamanhoMinimo(email, 6, emailEmpresa, contatoEmpresa);
-        validarObjetoNulo(email, emailEmpresa, contatoEmpresa);
         this.email = email;
     }
 

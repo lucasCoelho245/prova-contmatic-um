@@ -39,10 +39,11 @@ public class Fornecedor {
     }
 
     public void setNome(String nome) {
+        validarObjetoNulo(nome, fornecedorEmpresa, nomeClasse);
+        validarStringVazio(nome, fornecedorEmpresa, nomeClasse);
         validarStringTamanhoMinimo(nome, 3, fornecedorEmpresa, nomeClasse);
         validarStringTamanhoMaximo(nome, 30, fornecedorEmpresa, nomeClasse);
         validarNumerosString(nome, fornecedorEmpresa, nomeClasse);
-        validarObjetoNulo(nome, fornecedorEmpresa, nomeClasse);
         this.nome = nome;
     }
 

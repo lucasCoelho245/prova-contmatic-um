@@ -33,8 +33,8 @@ public class ContatoTeste {
 
     @Test
     public void deve_aceitar_email_correto() {
-        contato.setEmail("testegmail.com");
-        assertEquals(contato.getEmail(), "testegmail.com");
+        contato.setEmail("teste@gmail.com");
+        assertEquals(contato.getEmail(), "teste@gmail.com");
 
     }
     @Test
@@ -77,7 +77,7 @@ public class ContatoTeste {
 
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_email_invalido() {
-        contato.setEmail("55555@");
+        contato.setEmail("55232@");
     }
 
     @Test(expected = IllegalArgumentException.class)

@@ -53,7 +53,6 @@ public class Funcionario {
         validarStringTamanhoMaximo(nome, 40, funcionarioNome, nomeClasse);
         validarNumerosString(nome, funcionarioNome, nomeClasse );
         validarObjetoNulo(nome, funcionarioNome, nomeClasse);
-        validarCaracterEspecial(nome,funcionarioNome, nomeClasse);
         this.nome = nome;
     }
 

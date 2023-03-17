@@ -47,6 +47,7 @@ public class Telefone {
 
     public void setNumero(String numero) {
         validarObjetoNulo(numero, numeroTelefone, nomeClasse);
+        validarStringVazio(numero, numeroTelefone, nomeClasse);
         validarStringTamanhoMinimo(numero, 8, numeroTelefone, nomeClasse);
         validarStringTamanhoMaximo(numero, 10, numeroTelefone, nomeClasse);
         validarCaracterString(numero, numeroTelefone, nomeClasse);

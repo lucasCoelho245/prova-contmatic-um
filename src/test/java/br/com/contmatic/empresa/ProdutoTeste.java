@@ -79,7 +79,7 @@ public class ProdutoTeste {
         produto.setNome("3223232");
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_nome_nulo() {
         produto.setNome(null);
     }

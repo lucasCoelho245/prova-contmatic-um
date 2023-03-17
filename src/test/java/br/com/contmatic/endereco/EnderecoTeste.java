@@ -47,8 +47,8 @@ public class EnderecoTeste {
 
     @Test
     public void deve_aceitar_cep_correto() {
-        endereco.setCep("01235000");
-        assertEquals(endereco.getCep(), "01235000");
+        endereco.setCep("01235-000");
+        assertEquals(endereco.getCep(), "01235-000");
     }
 
     @Test
@@ -63,6 +63,13 @@ public class EnderecoTeste {
         endereco.setCidade("são paulo");
         assertEquals(endereco.getCidade(), "são paulo");
     }
+
+    @Test
+    public void deve_aceitar_complemento_correto() {
+        endereco.setComplemento("apto61");
+        assertEquals(endereco.getComplemento(), "apto61");
+    }
+
     @Test
     public void testEnderecoEqualsAndHashCode() {
         Endereco enderecoPadrao = new Endereco("cambuci", 22, "barata Ribeiro" ,"01235000", MA ,"apto 61", "01233300");
@@ -144,6 +151,6 @@ public class EnderecoTeste {
 
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_cep_invalido() {
-        endereco.setComplemento("054515");
+        endereco.setCep("054515");
     }
 }

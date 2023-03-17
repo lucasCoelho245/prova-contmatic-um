@@ -1,6 +1,7 @@
 package br.com.contmatic.empresa;
 
 import br.com.contmatic.contato.Contato;
+import br.com.contmatic.contato.Telefone;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static br.com.contmatic.contato.DDDType.DDD11;
 import static org.junit.Assert.*;
 
 public class FuncionarioTeste {
@@ -21,6 +23,7 @@ public class FuncionarioTeste {
     private List<Empresa> empresas = new ArrayList<>();
     private List<Contato> contatos = new ArrayList<>();
     private List<Cargo> cargos = new ArrayList<>();
+    private List<Telefone> telefones = new ArrayList<>();
 
     private Funcionario funcionarioCompleto = new Funcionario("João", cargos, "50279302835", salario, dataNascimento, empresas, contatos);
     private Funcionario funcionarioErrado = new Funcionario("julio", cargos, "502793022828", salario, dataNascimento, empresas, contatos);
@@ -66,6 +69,19 @@ public class FuncionarioTeste {
         Funcionario funcionario = new Funcionario();
         funcionario.setDataNascimento(dataNascimento);
         assertEquals(funcionario.getDataNascimento(), dataNascimento);
+    }
+    @Test
+    public void deve_aceitar_empresa_correto() {
+        empresas.add(new Empresa());
+        funcionario.setEmpresa(empresas);
+        assertEquals(funcionario.getEmpresa(), empresas);
+    }
+    @Test
+    public void deve_aceitar_contato_correto() {
+        telefones.add(new Telefone(DDD11, 555, "941584007"));
+        contatos.add(new Contato("contmatic@gmail.com", telefones));
+        funcionario.setContatos(contatos);
+        assertEquals(funcionario.getContatos(), contatos);
     }
 
     @Test

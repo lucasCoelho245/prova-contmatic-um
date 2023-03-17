@@ -34,10 +34,11 @@ public class Cliente {
     }
 
     public void setNome(String nome) {
+        validarObjetoNulo(nome, nomeCliente, nomeClasse);
+        validarStringVazio(nome, nomeCliente, nomeClasse);
         validarStringTamanhoMinimo(nome, 3, nomeCliente, nomeClasse);
         validarStringTamanhoMaximo(nome, 60, nomeCliente, nomeClasse);
         validarNumerosString(nome, nomeCliente, nomeClasse);
-        validarObjetoNulo(nome, nomeCliente, nomeClasse);
         this.nome = nome;
     }
 

@@ -3,6 +3,7 @@ package br.com.contmatic.utils;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.regex.Pattern;
 
 public class Utils {
     private Utils() {
@@ -21,26 +22,32 @@ public class Utils {
     }
 
     public static void validarCaracterEspecial(String str, String nomeDoCampo, String classe) {
-        if (str.matches("(?=.*[}{,.^?~=+\\-_\\/*\\-+.\\|])(?=.*[a-zA-Z])(?=.*\\d).{8,}")) {
-            throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não pode ter caracteres especiais ");
-        }
-    }
-    public static void validarCep(String str, String nomeDoCampo, String classe) {
-        if (str.matches("\\d{5}-\\d{3}")) {
+        Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
+        if (pattern.matcher(str).find()) {
             throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não pode ter caracteres especiais ");
         }
     }
 
+    public static void validarCep(String str, String nomeDoCampo, String classe) {
+        Pattern pattern = Pattern.compile("^\\d{5}-\\d{3}$");
+        if (!pattern.matcher(str).matches()) {
+            throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não é válido");
+        }
+    }
+
     public static void validarEmail(String str, String nomeDoCampo, String classe) {
-        if (str.matches("/[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\. [a-zA-Z0-9-]+)*/")) {
+        Pattern pattern = Pattern.compile("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        if (!pattern.matcher(str).matches()) {
             throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não é um email válido ");
         }
     }
+
     public static void validarIp(String str, String nomeDoCampo, String classe) {
         if (str.matches("^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}$")) {
             throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não é um ip válido ");
         }
     }
+
     public static void validarNumerosString(String str, String nomeDoCampo, String classe) {
         if (str.matches("\\d+")) {
             throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não pode ter caracteres numeros ");
@@ -55,14 +62,16 @@ public class Utils {
 
     public static void validarObjetoNulo(Object obj, String nomeDoCampo, String classe) {
         if (obj == null) {
+            throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não pode ser nulo ");
+        }
+    }
+
+    public static void validarStringVazio(String str, String nomeDoCampo, String classe) {
+        if (str.trim().length() == 0) {
             throw new IllegalArgumentException("O Campo " + nomeDoCampo + " em " + classe + " está vazio");
         }
     }
-    public static void validarStringNula(String str, String nomeDoCampo, String classe) {
-        if (str.length() == 0) {
-            throw new IllegalArgumentException("O Campo " + nomeDoCampo + " em " + classe + " está vazio");
-        }
-    }
+
     public static void validarDate(LocalDateTime data, String nomeDoCampo, String classe) {
         LocalDateTime dataAtual = LocalDateTime.now();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
