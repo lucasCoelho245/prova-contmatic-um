@@ -1,6 +1,7 @@
 package br.com.contmatic.empresa;
 
 import br.com.contmatic.contato.Contato;
+import br.com.contmatic.utils.ValidaDate;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -107,7 +108,7 @@ public class Funcionario {
     }
 
     public void setDataNascimento(LocalDateTime dataNascimento) {
-        validarDate(dataNascimento, "data nascimento", nomeClasse);
+        ValidaDate.isValidLocalDateTime(dataNascimento, "data nascimento", nomeClasse);
         this.dataNascimento = dataNascimento;
     }
 

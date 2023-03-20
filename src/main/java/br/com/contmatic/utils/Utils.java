@@ -80,13 +80,6 @@ public class Utils {
         }
     }
 
-    public static void validarDate(LocalDateTime data, String nomeDoCampo, String classe) {
-        LocalDateTime dataAtual = LocalDateTime.now();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        if (dataAtual.compareTo(data) < 0) {
-            throw new IllegalArgumentException(nomeDoCampo + " na classe " + classe + " está no futuro: " + sdf.format(data));
-        }
-    }
 
 
 }

@@ -128,7 +128,7 @@ public class AuditoriaTeste {
     @Test
     public void nao_deve_aceitar_login_caracter_especial() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(LOG_ALTERACAO_CARACTER_ESPECIAL);
+        exceptionRule.expectMessage(LOG_ALTERACAO_INVALIDA);
         auditoria.setLoginCriacao("sded&%");
         auditoria.setLoginAlteracao("sdvkjbsd&%");
     }
@@ -136,14 +136,16 @@ public class AuditoriaTeste {
     @Test
     public void nao_deve_aceitar_data_alteracao_invalida() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(LOG_ALTERACAO_CARACTER_ESPECIAL);
-        LocalDateTime dataAlteracao = LocalDateTime.of(2024, 1, 1, 12, 30);
+        exceptionRule.expectMessage(LOG_ALTERACAO_INVALIDA);
+        LocalDateTime dataAlteracao = LocalDateTime.of(2024, 13, 55, 25, 108);
         auditoria.setDataAlteracao(dataAlteracao);
     }
 
     @Test
     public void nao_deve_aceitar_data_criacao_invalida() {
-        LocalDateTime dataCriacao = LocalDateTime.of(2024, 1, 1, 12, 30);
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(LOG_ALTERACAO_INVALIDA);
+        LocalDateTime dataCriacao = LocalDateTime.of(2024, 13, 55, 25, 108);
         auditoria.setDataCriacao(dataCriacao);
     }
 

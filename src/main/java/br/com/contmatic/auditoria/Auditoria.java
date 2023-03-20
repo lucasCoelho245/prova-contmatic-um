@@ -1,5 +1,7 @@
 package br.com.contmatic.auditoria;
 
+import br.com.contmatic.utils.ValidaDate;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -93,7 +95,7 @@ public class Auditoria {
     }
 
     public void setDataCriacao(LocalDateTime dataCriacao) {
-        validarDate(dataCriacao, "data criação", nomeClasseauditoria);
+        ValidaDate.isValidLocalDateTime(dataCriacao, "data criação", nomeClasseauditoria);
         this.dataCriacao = dataCriacao;
     }
 
@@ -102,7 +104,7 @@ public class Auditoria {
     }
 
     public void setDataAlteracao(LocalDateTime dataAlteracao) {
-        validarDate(dataAlteracao, "data alteracao", nomeClasseauditoria);
+        ValidaDate.isValidLocalDateTime(dataAlteracao, "data alteracao", nomeClasseauditoria);
         this.dataAlteracao = dataAlteracao;
     }
 
@@ -111,7 +113,7 @@ public class Auditoria {
     }
 
     public void setDataLogin(LocalDateTime dataLogin) {
-        validarDate(dataLogin, "data login", nomeClasseauditoria);
+        ValidaDate.isValidLocalDateTime(dataLogin, "data login", nomeClasseauditoria);
         this.dataLogin = dataLogin;
     }
 
@@ -120,7 +122,7 @@ public class Auditoria {
     }
 
     public void setDataLogout(LocalDateTime dataLogout) {
-        validarDate(dataLogout, "data logout", nomeClasseauditoria);
+        ValidaDate.isValidLocalDateTime(dataLogout, "data logout", nomeClasseauditoria);
         this.dataLogout = dataLogout;
     }
 
