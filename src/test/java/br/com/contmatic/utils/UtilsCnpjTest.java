@@ -3,7 +3,6 @@ package br.com.contmatic.utils;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class UtilsCnpjTest {
     private UtilsCnpj cnpj;
@@ -16,12 +15,9 @@ public class UtilsCnpjTest {
     public void setBeforeProduto() {
         cnpj = new UtilsCnpj();
     }
+
     @Test
     public void deve_aceitar_cnpj_correto() {
-        cnpj.validaCnpj("26631884000176", "Cnpj", "UtilsCnpj");
-    }
-    @Test
-    public void deve_aceitar_email_correto() {
         cnpj.validaCnpj("26631884000176", "Cnpj", "UtilsCnpj");
     }
     @Test(expected = IllegalArgumentException.class)

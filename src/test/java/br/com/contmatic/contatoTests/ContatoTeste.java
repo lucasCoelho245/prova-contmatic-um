@@ -4,14 +4,16 @@ import br.com.contmatic.contato.Contato;
 import br.com.contmatic.contato.Telefone;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static br.com.contmatic.contato.DDDType.DDD11;
+import static br.com.contmatic.contatoTests.constants.contato.ContatoConstants.*;
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertFalse;
 
 public class ContatoTeste {
     private Contato contato;
@@ -30,6 +32,9 @@ public class ContatoTeste {
     public void setBeforeProduto() {
         contato = new Contato();
     }
+
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
 
     @Test
     public void deve_aceitar_email_correto() {
@@ -60,28 +65,44 @@ public class ContatoTeste {
         assertEquals(contato.getTelefones(), telefones);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_email_nulo() {
+    @Test
+    public void nao_deve_aceitar_email_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(MSG_EMAIL_VAZIO);
         contato.setEmail("");
     }
+    @Test
+    public void nao_deve_aceitar_email_nulo() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(MSG_EMAIL_NULO);
+        contato.setEmail(null);
+    }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_email_maior_que_60() {
-        contato.setEmail("444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444");
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(MSG_EMAIL_MAIOR_QUE_60);
+        contato.setEmail("444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444@gmail.com");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_email_menor_que_6() {
-        contato.setEmail("55555");
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(MSG_EMAIL_MENOR_QUE_12);
+        contato.setEmail("5@gmail.com");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_email_invalido() {
-        contato.setEmail("55232@");
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(MSG_EMAIL_INVALIDO);
+        contato.setEmail("55232sdsdffsdfdsdffdsd656567s");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_telefone_nulo() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(MSG_TELEFONE_NULO);
         telefones.add(null);
         contato.setTelefones(telefones);
     }

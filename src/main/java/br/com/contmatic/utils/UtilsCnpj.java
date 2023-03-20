@@ -29,7 +29,7 @@ public class UtilsCnpj {
 
     private static void basicErrosCnpj(String eCnpj) {
         if (basicErrorCnpjVerifier(eCnpj)) {
-            throw new IllegalArgumentException("O CPF é invalido");
+            throw new IllegalArgumentException("O CNPJ tem caracteres repetidos ou está fora da formatação padrão");
         }
     }
 

@@ -43,7 +43,8 @@ public class Utils {
     }
 
     public static void validarIp(String str, String nomeDoCampo, String classe) {
-        if (str.matches("^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}$")) {
+        Pattern pattern = Pattern.compile("^(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
+        if (!pattern.matcher(str).matches()) {
             throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não é um ip válido ");
         }
     }
@@ -55,7 +56,14 @@ public class Utils {
     }
 
     public static void validarCaracterString(String str, String nomeDoCampo, String classe) {
-        if (str.matches("(?=.*[ a-zA-Z á]).{8,}")) {
+        Pattern pattern = Pattern.compile("^[0-9.-]*$");
+        if (!pattern.matcher(str).matches()) {
+            throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não pode ter caracteres ");
+        }
+    }
+    public static void validarStringSomenteNumeros(String str, String nomeDoCampo, String classe) {
+        Pattern pattern = Pattern.compile(".*[a-zA-Z]+.*");
+        if (pattern.matcher(str).matches()) {
             throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não pode ter caracteres ");
         }
     }
@@ -79,5 +87,6 @@ public class Utils {
             throw new IllegalArgumentException(nomeDoCampo + " na classe " + classe + " está no futuro: " + sdf.format(data));
         }
     }
+
 
 }

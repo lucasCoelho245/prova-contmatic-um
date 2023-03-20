@@ -4,7 +4,9 @@ import br.com.contmatic.contato.Contato;
 import br.com.contmatic.contato.Telefone;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,21 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static br.com.contmatic.contato.DDDType.DDD11;
+import static br.com.contmatic.empresa.constants.funcionario.FuncionarioConstants.*;
 import static org.junit.Assert.*;
 
 public class FuncionarioTeste {
 
 
     private Funcionario funcionario;
-    private BigDecimal salario = new BigDecimal(1000);
-    private LocalDateTime dataNascimento = LocalDateTime.of(2002, 12, 2, 12, 00);
-    private List<Empresa> empresas = new ArrayList<>();
-    private List<Contato> contatos = new ArrayList<>();
-    private List<Cargo> cargos = new ArrayList<>();
-    private List<Telefone> telefones = new ArrayList<>();
-
-    private Funcionario funcionarioCompleto = new Funcionario("João", cargos, "50279302835", salario, dataNascimento, empresas, contatos);
-    private Funcionario funcionarioErrado = new Funcionario("julio", cargos, "502793022828", salario, dataNascimento, empresas, contatos);
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -37,6 +31,8 @@ public class FuncionarioTeste {
     public void setBeforeFornecedor() {
         funcionario = new Funcionario();
     }
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
 
     @Test
     public void deve_aceitar_nome_correto() {
@@ -100,42 +96,54 @@ public class FuncionarioTeste {
         String expectedString = "Funcionario {nomeCompleto= João, Cargos= [], cpf= 50279302835, salario= 1000, dataNascimento= 2002-12-02T12:00, empresa= [], Contatos= []}";
         assertEquals(expectedString, funcionarioCompleto.toString());
     }
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_cargo_nulo() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CAMPO_FUNCIONARIO_ESTA_NULO);
         List<Cargo> cargos = new ArrayList<>();
         cargos.add(null);
         funcionario.setCargos(cargos);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_empresa_nula() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CAMPO_EMPRESA_ESTA_NULO);
         List<Empresa> empresas = new ArrayList<>();
         empresas.add(null);
         funcionario.setEmpresa(empresas);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_contato_nula() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CAMPO_CONTATOS_ESTA_NULO);
         List<Contato> contatos = new ArrayList<>();
         contatos.add(null);
         funcionario.setContatos(contatos);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_salario_menor_que_4_caracteres() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CAMPO_SALARIO_CURTO);
         BigDecimal salario = new BigDecimal(224);
         funcionario.setSalario(salario);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_data_nascimento_invalida() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CAMPO_SALARIO_CURTO);
         Funcionario funcionario = new Funcionario();
         LocalDateTime data = LocalDateTime.of(2024, 12, 2, 12, 00);
         funcionario.setDataNascimento(data);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_cpf_invalido() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CPF_INVALIDO);
         funcionario.setCpf("11111111111");
     }
 }

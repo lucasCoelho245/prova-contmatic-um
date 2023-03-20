@@ -32,7 +32,7 @@ public class Empresa {
     private final String empresaRazaoSocial = "razao social";
     private final String empresaEndereco = "endereco";
     private final String empresaFuncionario = "funcionario";
-    private final String cnpjEmpresa = contatoEmpresa;
+    private final String cnpjEmpresa = "CNPJ";
 
 
     public Empresa() {

@@ -27,7 +27,7 @@ public class Contato {
         validarStringVazio(email, emailEmpresa, contatoEmpresa);
         validarEmail(email, emailEmpresa, contatoEmpresa);
         validarStringTamanhoMaximo(email, 60, emailEmpresa, contatoEmpresa);
-        validarStringTamanhoMinimo(email, 6, emailEmpresa, contatoEmpresa);
+        validarStringTamanhoMinimo(email, 12, emailEmpresa, contatoEmpresa);
         this.email = email;
     }
 

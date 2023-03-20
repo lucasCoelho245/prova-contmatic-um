@@ -30,7 +30,7 @@ public class Funcionario {
     private String nomeClasse = "funcionario";
     private String funcionarioNome = "nome";
     private String funcionarioCargo = "cargo";
-    private String funcionarioEmpresa = "funcionario";
+    private String funcionarioEmpresa = "empresa";
 
 
 

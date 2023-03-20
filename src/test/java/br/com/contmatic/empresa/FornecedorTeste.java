@@ -5,25 +5,21 @@ import br.com.contmatic.contato.Telefone;
 import br.com.contmatic.endereco.Endereco;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import static br.com.contmatic.contato.DDDType.DDD11;
+import static br.com.contmatic.empresa.constants.fornecedor.FornecedorConstants.*;
 import static br.com.contmatic.endereco.UFType.MA;
 import static org.junit.Assert.*;
 
-import static br.com.contmatic.contato.DDDType.DDD11;
-
 public class FornecedorTeste {
     private Fornecedor fornecedor;
-    private List<Telefone> telefones = new ArrayList<>();
-    private List<Contato> contatos = new ArrayList<>();
-    private List<Produto> produtos = new ArrayList<>();
-    private List<Endereco> enderecos = new ArrayList<>();
-    private Fornecedor fornecedorCompleto = new Fornecedor("26631884000176", "julio", produtos, contatos, enderecos);
-    private Fornecedor fornecedorErrado = new Fornecedor("25531884000176", "joao", produtos, contatos, enderecos);
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -36,7 +32,8 @@ public class FornecedorTeste {
         telefones.add(new Telefone(DDD11, 555, "941584007"));
         contatos.add(new Contato("contmatic@gmail.com", telefones));
     }
-
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
     @Test
     public void deve_aceitar_nome_correto(){
         fornecedor.setNome("salgadelicia");
@@ -83,63 +80,88 @@ public class FornecedorTeste {
         String expectedString = "Fornecedor {nome= julio, produtos= [], cnpj= 26631884000176, contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}], enderecos= []}";
         assertEquals(expectedString, fornecedorCompleto.toString());
     }
-    @Test(expected = IllegalArgumentException.class)
+
+    @Test
     public void nao_deve_aceitar_mais_30_caracteres () {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(NOME_LONGO);
         fornecedor.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_nome_menor_que_3() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(NOME_CURTO);
         fornecedor.setNome("s");
     }
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_nulo() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(NOME_VAZIO);
         fornecedor.setNome("");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_numero() {
-        fornecedor.setNome("3223");
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(NOME_NUMERICO);
+        fornecedor.setNome("32SDADSA23");
     }
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_contato_nulo() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CONTATO_NULO);
         List<Contato> contatos = new ArrayList<>();
         contatos.add(null);
         fornecedor.setContatos(contatos);
     }
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_enderecos_nulo() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(ENDERECO_NULO);
         List<Endereco> enderecos = new ArrayList<>();
         enderecos.add(null);
         fornecedor.setEnderecos(enderecos);
     }
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_produtos_nulo() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(PRODUTO_NULO);
         List<Produto> produtos = new ArrayList<>();
         produtos.add(null);
         fornecedor.setProdutos(produtos);
     }
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_cnpj_com_caracteres_iguais() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CNPJ_INVALIDO_REPETIDO);
         fornecedor.setCnpj("00000000000000");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_cnpj_invalido() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CNPJ_INVALIDO);
         fornecedor.setCnpj("74756244765647");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_cnpj_com_mais_de_14_caracteres() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CNPJ_INVALIDO_REPETIDO);
         fornecedor.setCnpj("7475624476564722232");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_cnpj_com_menos_de_14_caracteres() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CNPJ_INVALIDO_REPETIDO);
         fornecedor.setCnpj("5454");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_cnpj_nulo() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CNPJ_VAZIO);
         fornecedor.setCnpj(" ");
     }
 

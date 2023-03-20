@@ -2,19 +2,16 @@ package br.com.contmatic.endereco;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
-import static br.com.contmatic.endereco.UFType.AP;
+import static br.com.contmatic.empresa.constants.endereco.enderecoConstants.*;
+import static br.com.contmatic.endereco.UFType.MA;
 import static org.junit.Assert.*;
 
-import static br.com.contmatic.endereco.UFType.MA;
-
 public class EnderecoTeste {
-
     private Endereco endereco;
-
-    private Endereco enderecoCompleto = new Endereco("cambuci", 22, "barata Ribeiro" ,"01235000", MA ,"apto 61", "01233300");;
-    private Endereco enderecoErrado = new Endereco("cambu", 232, "barata" ,"01231000", AP ,"apto", "01235300");;
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -25,6 +22,9 @@ public class EnderecoTeste {
     public void setBeforeEndereco() {
         endereco = new Endereco();
     }
+
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
 
     @Test
     public void deve_aceitar_logradouro_correto() {
@@ -72,85 +72,120 @@ public class EnderecoTeste {
 
     @Test
     public void testEnderecoEqualsAndHashCode() {
-        Endereco enderecoPadrao = new Endereco("cambuci", 22, "barata Ribeiro" ,"01235000", MA ,"apto 61", "01233300");
+        Endereco enderecoPadrao = new Endereco("cambuci", 22, "barata Ribeiro", "01235000", MA, "apto 61", "01233300");
         assertEquals(enderecoCompleto.hashCode(), enderecoPadrao.hashCode());
         assertNotEquals(enderecoCompleto.hashCode(), enderecoErrado.hashCode());
 
         assertTrue(enderecoCompleto.equals(enderecoPadrao));
         assertFalse(enderecoErrado.equals(enderecoCompleto));
     }
+
     @Test
     public void testEnderecoToString() {
         String expectedString = "Endereco {logradouro= cambuci, numero= 22, bairro= barata Ribeiro, cidade= 01235000, uf= MA, complemento= apto 61, cep= 01233300}";
         assertEquals(expectedString, enderecoCompleto.toString());
     }
-    @Test(expected = NullPointerException.class)
+
+    @Test
     public void nao_deve_aceitar_numero_nulo() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(NUMERO_NULO);
         endereco.setNumero(null);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_bairro_com_menos_de_3_caracteres() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(BAIRRO_CURTO);
         endereco.setBairro("ww");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_bairro_com_mais_de_20_caracteres() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(BAIRRO_LONGO);
         endereco.setBairro("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_bairro_com_numeros() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(BAIRRO_COM_NUMEROS);
         endereco.setBairro("74145");
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_bairro_nulo() {
+    @Test
+    public void nao_deve_aceitar_bairro_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(BAIRRO_VAZIO);
         endereco.setBairro("");
     }
+    @Test
+    public void nao_deve_aceitar_bairro_nulo() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(BAIRRO_NULO);
+        endereco.setBairro(null);
+    }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_cidade_com_menos_de_3_caracteres() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CIDADE_CURTA);
         endereco.setCidade("ww");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_cidade_com_mais_de_20_caracteres() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CIDADE_CURTA);
         endereco.setCidade("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_cidade_com_numeros() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CIDADE_COM_NUMEROS);
         endereco.setCidade("74145");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_cidade_nulo() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CIDADE_VAZIA);
         endereco.setCidade("");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_complemento_com_menos_de_3_caracteres() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(COMPLEMENTO_CURTO);
         endereco.setComplemento("ww");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_complemento_com_mais_de_20_caracteres() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(COMPLEMENTO_LONGO);
         endereco.setComplemento("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_complemento_com_numeros() {
-        endereco.setComplemento("74145");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_complemento_nulo() {
+    @Test
+    public void nao_deve_aceitar_complemento_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(COMPLEMENTO_VAZIO);
         endereco.setComplemento("");
     }
+    @Test
+    public void nao_deve_aceitar_complemento_nulo() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(COMPLEMENTO_NULO);
+        endereco.setComplemento(null);
+    }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_cep_invalido() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CEP_INVALIDO);
         endereco.setCep("054515");
     }
 }

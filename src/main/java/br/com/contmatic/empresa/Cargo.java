@@ -37,7 +37,6 @@ public class Cargo {
         validarStringVazio(setor, setorCargo, nomeClasse);
         validarStringTamanhoMinimo(setor, 2, setorCargo, nomeClasse);
         validarStringTamanhoMaximo(setor, 30, setorCargo, nomeClasse);
-        validarCaracterEspecial(setor, setorCargo, nomeClasse);
         this.setor = setor;
     }
 

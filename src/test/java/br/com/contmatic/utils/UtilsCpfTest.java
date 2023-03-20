@@ -4,6 +4,11 @@ import org.junit.Test;
 
 public class UtilsCpfTest {
     private UtilsCpf cpf;
+
+    public UtilsCpfTest(UtilsCpf cpf) {
+        this.cpf = cpf;
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_cpf_se_nulo() {
         cpf.validarCpf(" ", "cpf", "utilsCpf");

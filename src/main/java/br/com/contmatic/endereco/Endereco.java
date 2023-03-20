@@ -67,7 +67,7 @@ public class Endereco {
     }
 
     public void setNumero(Integer numero) {
-        validarObjetoNulo(numero.toString(), enderecoNumero, nomeClasse);
+        validarObjetoNulo(numero, enderecoNumero, nomeClasse);
         this.numero = numero;
     }
 
@@ -106,7 +106,6 @@ public class Endereco {
         validarObjetoNulo(complemento, enderecoComplemento, nomeClasse);
         validarStringVazio(complemento, enderecoComplemento, nomeClasse);
         validarStringTamanhoMinimo(complemento, 3, enderecoComplemento, nomeClasse);
-        validarNumerosString(complemento, enderecoComplemento, nomeClasse);
         validarStringTamanhoMaximo(complemento, 20, enderecoComplemento, nomeClasse);
         this.complemento = complemento;
     }

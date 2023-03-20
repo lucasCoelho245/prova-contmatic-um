@@ -26,7 +26,6 @@ public class Telefone {
 
     public void setDdd(DDDType ddd) {
         validarObjetoNulo(ddd, "DDD", nomeClasse);
-        validarCaracterString(String.valueOf(ddd), "DDD", nomeClasse);
         this.ddd = ddd;
     }
 
@@ -35,8 +34,8 @@ public class Telefone {
     }
 
     public void setDdi(Integer ddi) {
-        validarStringTamanhoMaximo(String.valueOf(ddi), 3, "DDI", nomeClasse);
         validarObjetoNulo(ddi, "DDI", nomeClasse);
+        validarStringTamanhoMaximo(String.valueOf(ddi), 3, "DDI", nomeClasse);
         validarCaracterString(String.valueOf(ddi), "DDI", nomeClasse);
         this.ddi = ddi;
     }
@@ -48,9 +47,9 @@ public class Telefone {
     public void setNumero(String numero) {
         validarObjetoNulo(numero, numeroTelefone, nomeClasse);
         validarStringVazio(numero, numeroTelefone, nomeClasse);
+        validarStringSomenteNumeros(numero, numeroTelefone, nomeClasse);
         validarStringTamanhoMinimo(numero, 8, numeroTelefone, nomeClasse);
         validarStringTamanhoMaximo(numero, 10, numeroTelefone, nomeClasse);
-        validarCaracterString(numero, numeroTelefone, nomeClasse);
         this.numero = numero;
     }
 

@@ -44,8 +44,9 @@ public class Produto {
     }
 
     public void setId(String id) {
-        validarStringTamanhoMinimo(id, 2, produtoId, nomeClasse);
         validarObjetoNulo(id, produtoId, nomeClasse);
+        validarStringVazio(id, produtoId, nomeClasse);
+        validarStringTamanhoMinimo(id, 2, produtoId, nomeClasse);
         this.id = id;
     }
 

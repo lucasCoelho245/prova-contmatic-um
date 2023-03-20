@@ -23,7 +23,7 @@ public final class UtilsCpf {
 
     private static void errosCnpjBasicos(String cpf) {
         if (verificaCaracteresBasicos(cpf)) {
-            throw new IllegalArgumentException("O CPF é invalido");
+            throw new IllegalArgumentException("CPF esta com caracteres repetidos ou diferente do numeracao padrao");
         }
     }
 

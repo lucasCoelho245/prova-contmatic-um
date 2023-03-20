@@ -82,7 +82,7 @@ public class Auditoria {
         validarObjetoNulo(ipCriacao, ipDaCriacao, nomeClasseauditoria);
         validarStringVazio(ipCriacao, ipDaCriacao, nomeClasseauditoria);
         validarStringTamanhoMinimo(ipCriacao, 6, ipDaCriacao, nomeClasseauditoria);
-        validarStringTamanhoMaximo(ipCriacao, 12, ipDaCriacao, nomeClasseauditoria);
+        validarStringTamanhoMaximo(ipCriacao, 15, ipDaCriacao, nomeClasseauditoria);
         validarCaracterString(ipCriacao, ipDaCriacao, nomeClasseauditoria);
         validarIp(ipCriacao, ipDaCriacao, nomeClasseauditoria);
         this.ipCriacao = ipCriacao;
