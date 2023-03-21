@@ -28,7 +28,7 @@ public class EmpresaConstants {
     public static final List<Endereco> enderecos = new ArrayList<>();
 
     public static final List<Funcionario> funcionario = new ArrayList<>();
-    public static final Empresa empresaCompleta = new Empresa("502793028385", "Coca Cola Indústrias Ltda", enderecos, funcionario, contatos);
+    public static final Empresa empresaCompleta = new Empresa("502793028385", "Coca Cola", enderecos, funcionario, contatos);
     public static final Empresa empresaErrada = new Empresa("502993028385", "Coca Cola", enderecos, funcionario, contatos);
 
     public static final String TAMANHO_DE_EMPRESA_ESTA_ACIMA_DE_60_CARACTERES = ("Tamanho de string nome empresa em empresa está acima de 60 caracteres");

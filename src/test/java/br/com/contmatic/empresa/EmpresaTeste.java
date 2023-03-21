@@ -96,7 +96,7 @@ public class EmpresaTeste {
 
     @Test
     public void testEmpresaToString() {
-        String expectedString = "Empresa {cnpj= 502793028385, razaoSocial= Coca Cola Indústrias Ltda, enderecos= [Endereco {logradouro= cambuci, numero= 22, bairro= barata Ribeiro, cidade= 01235000, uf= MA, complemento= apto 61, cep= 01233300}], funcionarios= [Funcionario {nomeCompleto= nome, Cargos= [Cargo {nome= analista, codigo= 553}], cpf= 50279302835, salario= 1000, dataNascimento= 2024-12-02T12:00, empresa= [Empresa {cnpj= 26631884000176, razaoSocial= null, enderecos= null, funcionarios= null, contatos= null], Contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}]}], contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}]";
+        String expectedString = "Empresa {cnpj= 502793028385, razaoSocial= Coca Cola, enderecos= [Endereco {logradouro= cambuci, numero= 22, bairro= barata Ribeiro, cidade= 01235000, uf= MA, complemento= apto 61, cep= 01233300}], funcionarios= [Funcionario {nomeCompleto= nome, Cargos= [Cargo {nome= analista, codigo= 553}], cpf= 50279302835, salario= 1000, dataNascimento= 2024-12-02T12:00, empresa= [Empresa {cnpj= 26631884000176, razaoSocial= null, enderecos= null, funcionarios= null, contatos= null], Contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}]}], contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}]";
         assertEquals(expectedString, empresaCompleta.toString());
     }
 
@@ -175,7 +175,7 @@ public class EmpresaTeste {
     public void nao_deve_aceitar_numero_razao_social() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(RAZAO_SOCIAL_TEM_NUMEROS);
-        empresa.setRazaoSocial("SDSDWASD23432");
+        empresa.setRazaoSocial("234332323232");
     }
 
     @Test

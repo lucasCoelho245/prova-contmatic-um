@@ -128,7 +128,7 @@ public class AuditoriaTeste {
     @Test
     public void nao_deve_aceitar_login_caracter_especial() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(LOG_ALTERACAO_INVALIDA);
+        exceptionRule.expectMessage(LOG_LOGIN_CARACTER_ESPECIAL);
         auditoria.setLoginCriacao("sded&%");
         auditoria.setLoginAlteracao("sdvkjbsd&%");
     }
@@ -137,26 +137,30 @@ public class AuditoriaTeste {
     public void nao_deve_aceitar_data_alteracao_invalida() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(LOG_ALTERACAO_INVALIDA);
-        LocalDateTime dataAlteracao = LocalDateTime.of(2024, 13, 55, 25, 108);
+        LocalDateTime dataAlteracao = LocalDateTime.of(2024, 12, 30, 22, 12);
         auditoria.setDataAlteracao(dataAlteracao);
     }
 
     @Test
     public void nao_deve_aceitar_data_criacao_invalida() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(LOG_ALTERACAO_INVALIDA);
-        LocalDateTime dataCriacao = LocalDateTime.of(2024, 13, 55, 25, 108);
+        exceptionRule.expectMessage(LOG_CRIACAO_INVALIDA);
+        LocalDateTime dataCriacao = LocalDateTime.of(2024, 12, 30, 22, 12);
         auditoria.setDataCriacao(dataCriacao);
     }
 
     @Test
     public void nao_deve_aceitar_data_logout_invalida() {
-        LocalDateTime dataLogout = LocalDateTime.of(2024, 1, 1, 12, 30);
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(LOG_LOGOUT_INVALIDA);
+        LocalDateTime dataLogout = LocalDateTime.of(2024, 12, 30, 22, 12);
         auditoria.setDataLogout(dataLogout);
     }
 
     @Test
     public void nao_deve_aceitar_data_login_invalida() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(LOG_LOGIN_INVALIDA);
         LocalDateTime dataLogin = LocalDateTime.of(2024, 1, 1, 12, 30);
         auditoria.setDataLogin(dataLogin);
     }

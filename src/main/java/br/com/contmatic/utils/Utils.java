@@ -1,8 +1,6 @@
 package br.com.contmatic.utils;
 
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.regex.Pattern;
 
 public class Utils {

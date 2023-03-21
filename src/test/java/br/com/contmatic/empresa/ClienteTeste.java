@@ -45,7 +45,6 @@ public class ClienteTeste {
 
     @Test
     public void deve_aceitar_produto_correto() {
-
         cliente.setProdutos(produtos);
         assertEquals(cliente.getProdutos(), produtos);
     }

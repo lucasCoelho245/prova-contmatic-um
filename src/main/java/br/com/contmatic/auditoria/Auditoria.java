@@ -95,7 +95,7 @@ public class Auditoria {
     }
 
     public void setDataCriacao(LocalDateTime dataCriacao) {
-        ValidaDate.isValidLocalDateTime(dataCriacao, "data criação", nomeClasseauditoria);
+        ValidaDate.isValidLocalDateTime(dataCriacao, "data criacao", nomeClasseauditoria);
         this.dataCriacao = dataCriacao;
     }
 

@@ -77,7 +77,7 @@ public class FornecedorTeste {
 
     @Test
     public void testCargoToString() {
-        String expectedString = "Fornecedor {nome= julio, produtos= [], cnpj= 26631884000176, contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}], enderecos= []}";
+        String expectedString = "Fornecedor {nome= julio, produtos= [Produto {nome= produtoA, Id= 110, quantidade= 1000, valor= 1000}], cnpj= 26631884000176, contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}], enderecos= []}";
         assertEquals(expectedString, fornecedorCompleto.toString());
     }
 
