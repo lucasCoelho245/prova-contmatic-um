@@ -9,8 +9,9 @@ import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 import static br.com.contmatic.empresa.constants.cargo.CargoConstants.*;
+import static org.junit.rules.ExpectedException.none;
 
-public class CargoTeste {
+public class TestCargo {
     private Cargo cargo;
 
     @BeforeClass
@@ -24,18 +25,18 @@ public class CargoTeste {
 
     }
     @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
+    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_nome_correto() {
         cargo.setNome("lucas");
-        assertEquals(cargo.getNome(), "lucas");
+        assertEquals("lucas", cargo.getNome());
     }
 
     @Test
     public void deve_aceitar_setor_correto() {
         cargo.setSetor("tecnologia");
-        assertEquals(cargo.getSetor(), "tecnologia");
+        assertEquals("tecnologia", cargo.getSetor());
     }
 
     @Test
@@ -45,14 +46,20 @@ public class CargoTeste {
         assertEquals(cargo.getCodigo(), codigo);
     }
     @Test
-    public void testCargoEqualsAndHashCode() {
-        Cargo cargoPadrao = new Cargo("lucas", "contabilidade", 555);
-
+    public void testCargoHashCodeTrue() {
         assertEquals(CargoConstants.cargoCompleto.hashCode(), cargoPadrao.hashCode());
+    }
+    @Test
+    public void testCargoHashCodeFalse() {
         assertNotEquals(cargoCompleto.hashCode(), cargoErrado.hashCode());
-
-        assertTrue(cargoCompleto.equals(cargoPadrao));
-        assertFalse(cargoErrado.equals(cargoCompleto));
+    }
+    @Test
+    public void testCargoEqualsTrue() {
+        assertEquals(cargoPadrao, cargoCompleto);
+    }
+    @Test
+    public void testCargoEqualsFalse() {
+        assertNotEquals(cargoErrado, cargoCompleto);
     }
 
     @Test
@@ -63,14 +70,14 @@ public class CargoTeste {
     @Test
     public void nao_deve_aceitar_nome_menor_que_2() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(TAMANHO_DE_CARGO_ESTÁ_ABAIXO_DE_2_CARACTERES);
+        exceptionRule.expectMessage(TAMANHO_DE_CARGO_ESTA_ABAIXO_DE_2_CARACTERES);
         cargo.setNome("s");
     }
 
     @Test
     public void nao_deve_aceitar_nome_maior_que_60() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(TAMANHO_DE_CARGO_ESTÁ_ACIMA_DE_60_CARACTERES);
+        exceptionRule.expectMessage(TAMANHO_DE_CARGO_ESTA_ACIMA_DE_60_CARACTERES);
         cargo.setNome("shshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshsh");
     }
     @Test
@@ -115,7 +122,7 @@ public class CargoTeste {
     @Test
     public void nao_deve_aceitar_setor_maior_que_30() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(TAMANHO_DE_SETOR_DE_CARGO_ESTÁ_ACIMA_DE_30_CARACTERES);
+        exceptionRule.expectMessage(TAMANHO_DE_SETOR_DE_CARGO_ESTA_ACIMA_DE_30_CARACTERES);
         cargo.setSetor("shshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshsh");
     }
 
@@ -129,7 +136,7 @@ public class CargoTeste {
     @Test
     public void nao_deve_aceitar_codigo_menor_que_2() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(TAMANHO_DE_CODIGO_ESTÁ_ABAIXO_DE_2_CARACTERES);
+        exceptionRule.expectMessage(TAMANHO_DE_CODIGO_ESTA_ABAIXO_DE_2_CARACTERES);
         cargo.setCodigo(1);
     }
 

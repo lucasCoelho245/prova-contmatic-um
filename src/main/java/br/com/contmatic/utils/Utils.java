@@ -41,7 +41,9 @@ public class Utils {
     }
 
     public static void validarIp(String str, String nomeDoCampo, String classe) {
-        Pattern pattern = Pattern.compile("^(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
+        final String OCTETO_REGEX = "(25[0-5]|2[0-4]\\d|[01]?\\d\\d?)";
+        final String IP_REGEX = "^(" + OCTETO_REGEX + "\\.){3}" + OCTETO_REGEX + "$";
+        Pattern pattern = Pattern.compile(IP_REGEX);
         if (!pattern.matcher(str).matches()) {
             throw new IllegalArgumentException(nomeDoCampo + " em " + classe + " não é um ip válido ");
         }

@@ -57,7 +57,7 @@ public class Cliente {
 
     public void setProdutos(List<Produto> produtos) {
         validarStringTamanhoMinimo(produtos.toString(), 60, produtoCliente, nomeClasse);
-        validarStringTamanhoMaximo(produtos.toString(), 150, produtoCliente, nomeClasse);
+        validarStringTamanhoMaximo(produtos.toString(), 180, produtoCliente, nomeClasse);
         validarObjetoNulo(produtos, produtoCliente, nomeClasse);
         this.produtos = produtos;
     }

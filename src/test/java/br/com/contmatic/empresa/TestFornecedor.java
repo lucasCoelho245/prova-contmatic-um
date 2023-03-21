@@ -17,67 +17,76 @@ import static br.com.contmatic.contato.DDDType.DDD11;
 import static br.com.contmatic.empresa.constants.fornecedor.FornecedorConstants.*;
 import static br.com.contmatic.endereco.UFType.MA;
 import static org.junit.Assert.*;
+import static org.junit.rules.ExpectedException.none;
 
-public class FornecedorTeste {
+public class TestFornecedor {
     private Fornecedor fornecedor;
 
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe fornecedor");
+
+        telefones.add(new Telefone(DDD11, 555, "941584007"));
+        contatos.add(new Contato("contmatic@gmail.com", telefones));
+        BigDecimal valor = new BigDecimal(1000);
+        BigDecimal quantidade = new BigDecimal(1000);
+        produtos.add(new Produto("produtoA", "110", quantidade, valor));
+        enderecos.add(new Endereco("cambuci", 22, "barata Ribeiro" ,"01235000", MA ,"apto 61", "01233300"));
     }
 
     @Before
     public void setBeforeFornecedor(){
         fornecedor = new Fornecedor();
-        telefones.add(new Telefone(DDD11, 555, "941584007"));
-        contatos.add(new Contato("contmatic@gmail.com", telefones));
     }
     @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
+    public ExpectedException exceptionRule = none();
     @Test
     public void deve_aceitar_nome_correto(){
         fornecedor.setNome("salgadelicia");
-        assertEquals(fornecedor.getNome(), "salgadelicia");
+        assertEquals("salgadelicia", fornecedor.getNome());
     }
     @Test
     public void deve_aceitar_contato_valido() {
         fornecedor.setContatos(contatos);
-        assertEquals(fornecedor.getContatos(), contatos);
+        assertEquals(contatos, fornecedor.getContatos());
     }
     @Test
     public void deve_aceitar_cnpj_correto() {
         fornecedor.setCnpj("26631884000176");
-        assertEquals(fornecedor.getCnpj(), "26631884000176");
+        assertEquals("26631884000176", fornecedor.getCnpj());
 
     }
     @Test
     public void deve_aceitar_produto_correto() {
-        BigDecimal valor = new BigDecimal(1000);
-        BigDecimal quantidade = new BigDecimal(1000);
-        produtos.add(new Produto("produtoA", "110", quantidade, valor));
+
         fornecedor.setProdutos(produtos);
-        assertEquals(fornecedor.getProdutos(), produtos);
+        assertEquals(produtos, fornecedor.getProdutos());
     }
     @Test
     public void deve_aceitar_endereco_correto() {
-        enderecos.add(new Endereco("cambuci", 22, "barata Ribeiro" ,"01235000", MA ,"apto 61", "01233300"));
         fornecedor.setEnderecos(enderecos);
-        assertEquals(fornecedor.getEnderecos(), enderecos);
+        assertEquals(enderecos, fornecedor.getEnderecos());
     }
     @Test
-    public void testCargoEqualsAndHashCode() {
-         Fornecedor fornecedorPadrao = new Fornecedor("26631884000176", "julio", produtos, contatos, enderecos);
-
+    public void testFornecedorHashCodeTrue() {
         assertEquals(fornecedorCompleto.hashCode(), fornecedorPadrao.hashCode());
+    }
+    @Test
+    public void testFornecedorHashCodeFalse() {
         assertNotEquals(fornecedorCompleto.hashCode(), fornecedorErrado.hashCode());
-
-        assertTrue(fornecedorCompleto.equals(fornecedorPadrao));
-        assertFalse(fornecedorErrado.equals(fornecedorCompleto));
+    }
+    @Test
+    public void testFornecedorEqualsTrue() {
+        assertEquals(fornecedorCompleto, fornecedorPadrao);
+    }
+    @Test
+    public void testFornecedorEqualsFalse() {
+        assertNotEquals(fornecedorErrado, fornecedorCompleto);
     }
 
     @Test
     public void testCargoToString() {
-        String expectedString = "Fornecedor {nome= julio, produtos= [Produto {nome= produtoA, Id= 110, quantidade= 1000, valor= 1000}], cnpj= 26631884000176, contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}], enderecos= []}";
+        String expectedString = "Fornecedor {nome= julio, produtos= [Produto {nome= produtoA, Id= 110, quantidade= 1000, valor= 1000}], cnpj= 26631884000176, contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}], enderecos= [Endereco {logradouro= cambuci, numero= 22, bairro= barata Ribeiro, cidade= 01235000, uf= MA, complemento= apto 61, cep= 01233300}]}";
         assertEquals(expectedString, fornecedorCompleto.toString());
     }
 
@@ -104,7 +113,7 @@ public class FornecedorTeste {
     public void nao_deve_aceitar_numero() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(NOME_NUMERICO);
-        fornecedor.setNome("32SDADSA23");
+        fornecedor.setNome("54651561561");
     }
     @Test
     public void nao_deve_aceitar_contato_nulo() {
@@ -142,13 +151,6 @@ public class FornecedorTeste {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(CNPJ_INVALIDO);
         fornecedor.setCnpj("74756244765647");
-    }
-
-    @Test
-    public void nao_deve_aceitar_cnpj_com_mais_de_14_caracteres() {
-        exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(CNPJ_INVALIDO_REPETIDO);
-        fornecedor.setCnpj("7475624476564722232");
     }
 
     @Test

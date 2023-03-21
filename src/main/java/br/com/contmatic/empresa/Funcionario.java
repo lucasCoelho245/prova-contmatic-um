@@ -16,7 +16,7 @@ public class Funcionario {
 
     private String nome;
 
-    private List<Cargo> Cargos;
+    private List<Cargo> cargos;
 
     private BigDecimal salario;
 
@@ -37,7 +37,7 @@ public class Funcionario {
 
     public Funcionario(String nome, List<Cargo> cargos, String cpf, BigDecimal salario, LocalDateTime dataNascimento,  List<Empresa> empresa, List<Contato> contatos) {
         this.nome = nome;
-        Cargos = cargos;
+        this.cargos = cargos;
         this.cpf = cpf;
         this.salario = salario;
         this.dataNascimento = dataNascimento;
@@ -58,12 +58,12 @@ public class Funcionario {
     }
 
     public List<Cargo> getCargos() {
-        return Cargos;
+        return cargos;
     }
 
     public void setCargos(List<Cargo> cargos) {
         validarObjetoNulo(cargos.get(0), funcionarioCargo, nomeClasse);
-        Cargos = cargos;
+        this.cargos = cargos;
     }
 
     public List<Empresa> getEmpresa() {
@@ -131,7 +131,7 @@ public class Funcionario {
         builder.append("Funcionario {nomeCompleto= ");
         builder.append(nome);
         builder.append(", Cargos= ");
-        builder.append(Cargos);
+        builder.append(cargos);
         builder.append(", cpf= ");
         builder.append(cpf);
         builder.append(", salario= ");

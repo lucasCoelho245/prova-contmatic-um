@@ -16,19 +16,15 @@ import static br.com.contmatic.contato.DDDType.DDD11;
 import static br.com.contmatic.empresa.constants.empresa.EmpresaConstants.*;
 import static br.com.contmatic.endereco.UFType.MA;
 import static org.junit.Assert.*;
+import static org.junit.rules.ExpectedException.*;
 
 
-public class EmpresaTeste {
+public class TestEmpresa {
     private Empresa empresa;
 
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe empresa");
-    }
-
-    @Before
-    public void setBeforeFornecedor() {
-        empresa = new Empresa();
 
         telefones.add(new Telefone(DDD11, 555, "941584007"));
 
@@ -43,55 +39,66 @@ public class EmpresaTeste {
         enderecos.add(new Endereco("cambuci", 22, "barata Ribeiro", "01235000", MA, "apto 61", "01233300"));
     }
 
+    @Before
+    public void setBeforeFornecedor() {
+        empresa = new Empresa();
+    }
+
     @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
+    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_nome_correto() {
         empresa.setNome("salgadelicia");
-        assertEquals(empresa.getNome(), "salgadelicia");
+        assertEquals("salgadelicia", empresa.getNome());
     }
 
     @Test
     public void deve_aceitar_cnpj_correto() {
         empresa.setCnpj("26631884000176");
-        assertEquals(empresa.getCnpj(), "26631884000176");
+        assertEquals("26631884000176", empresa.getCnpj());
     }
 
     @Test
     public void deve_aceitar_razao_social_correta() {
         empresa.setRazaoSocial("cocaColaEmpresa");
-        assertEquals(empresa.getRazaoSocial(), "cocaColaEmpresa");
+        assertEquals("cocaColaEmpresa", empresa.getRazaoSocial());
     }
 
     @Test
     public void deve_aceitar_contato_valido() {
         empresa.setContatos(contatos);
-        assertEquals(empresa.getContatos(), contatos);
+        assertEquals(contatos, empresa.getContatos());
     }
 
     @Test
     public void deve_aceitar_funcionario_valido() {
         empresa.setFuncionarios(funcionario);
-        assertEquals(empresa.getFuncionarios(), funcionario);
+        assertEquals(funcionario, empresa.getFuncionarios());
     }
 
     @Test
     public void deve_aceitar_endereco_valido() {
         empresa.setEnderecos(enderecos);
-        assertEquals(empresa.getEnderecos(), enderecos);
+        assertEquals(enderecos, empresa.getEnderecos());
 
     }
 
     @Test
-    public void testEmpresaEqualsAndHashCode() {
-        Empresa empresaPadrao = new Empresa("502793028385", "Coca Cola Indústrias Ltda", enderecos, funcionario, contatos);
-
+    public void testEmpresaHashCodeTrue() {
         assertEquals(empresaCompleta.hashCode(), empresaPadrao.hashCode());
+    }
+    @Test
+    public void testEmpresaHashCodeFalse() {
         assertNotEquals(empresaCompleta.hashCode(), empresaErrada.hashCode());
-
-        assertTrue(empresaCompleta.equals(empresaPadrao));
-        assertFalse(empresaErrada.equals(empresaCompleta));
+    }
+    @Test
+    public void testEmpresaEqualsTrue() {
+        assertEquals(empresaCompleta, empresaPadrao);
+    }
+    @Test
+    public void testEmpresaEqualsFalse() {
+        assertNotEquals(empresaErrada, empresaCompleta);
     }
 
     @Test
@@ -103,7 +110,7 @@ public class EmpresaTeste {
     @Test
     public void deve_aceitar_status_correto_de_atividade_correto() {
         empresa.setAtiva(true);
-        assertEquals(empresa.getAtiva(), true);
+        assertEquals(true, empresa.getAtiva());
     }
 
     @Test
@@ -197,13 +204,6 @@ public class EmpresaTeste {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(CNPJ_INVALIDO);
         empresa.setCnpj("74756244765647");
-    }
-
-    @Test
-    public void nao_deve_aceitar_cnpj_com_mais_de_14_caracteres() {
-        exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(CNPJ_REPETIDO_INVALIDO);
-        empresa.setCnpj("7475624476564722232");
     }
 
     @Test

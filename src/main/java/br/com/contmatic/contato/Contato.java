@@ -8,8 +8,8 @@ import static br.com.contmatic.utils.Utils.*;
 public class Contato {
     private String email;
     private List<Telefone> telefones;
-    private String contatoEmpresa = "contato";
-    private String emailEmpresa = "email";
+    private static final String CONTATO_EMPRESA = "contato";
+
     public Contato() {
     }
 
@@ -23,11 +23,12 @@ public class Contato {
     }
 
     public void setEmail(String email) {
-        validarObjetoNulo(email, emailEmpresa, contatoEmpresa);
-        validarStringVazio(email, emailEmpresa, contatoEmpresa);
-        validarEmail(email, emailEmpresa, contatoEmpresa);
-        validarStringTamanhoMaximo(email, 60, emailEmpresa, contatoEmpresa);
-        validarStringTamanhoMinimo(email, 12, emailEmpresa, contatoEmpresa);
+        String emailEmpresa = "email";
+        validarObjetoNulo(email, emailEmpresa, CONTATO_EMPRESA);
+        validarStringVazio(email, emailEmpresa, CONTATO_EMPRESA);
+        validarEmail(email, emailEmpresa, CONTATO_EMPRESA);
+        validarStringTamanhoMaximo(email, 60, emailEmpresa, CONTATO_EMPRESA);
+        validarStringTamanhoMinimo(email, 12, emailEmpresa, CONTATO_EMPRESA);
         this.email = email;
     }
 
@@ -37,7 +38,7 @@ public class Contato {
     }
 
     public void setTelefones(List<Telefone> telefones) {
-        validarObjetoNulo(telefones.get(0), "telefones", contatoEmpresa);
+        validarObjetoNulo(telefones.get(0), "telefones", CONTATO_EMPRESA);
         this.telefones = telefones;
     }
 

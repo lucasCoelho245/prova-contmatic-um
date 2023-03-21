@@ -14,14 +14,10 @@ import java.util.List;
 import static br.com.contmatic.contato.DDDType.DDD11;
 import static br.com.contmatic.contatoTests.constants.contato.ContatoConstants.*;
 import static org.junit.Assert.*;
+import static org.junit.rules.ExpectedException.*;
 
-public class ContatoTeste {
+public class TestContato {
     private Contato contato;
-
-    List<Telefone> telefones = new ArrayList<>();
-
-    private Contato contatoErrado = new Contato("testeee@gmail.com", telefones);
-    private Contato contatoCompleto = new Contato("test@gmail.com", telefones);
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -34,21 +30,29 @@ public class ContatoTeste {
     }
 
     @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
+    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_email_correto() {
-        contato.setEmail("teste@gmail.com");
-        assertEquals(contato.getEmail(), "teste@gmail.com");
+        contato.setEmail("johndoe@example.com");
+        assertEquals("johndoe@example.com", contato.getEmail());
 
     }
     @Test
-    public void testContatoEqualsAndHashCode() {
+    public void testContatoHashCodeTrue() {
         assertEquals(contato.hashCode(), contato.hashCode());
+    }
+    @Test
+    public void testContatoHashCodeFalse() {
         assertNotEquals(contato.hashCode(), contatoErrado.hashCode());
-
-        assertTrue(contato.equals(contato));
-        assertFalse(contatoErrado.equals(contato));
+    }
+    @Test
+    public void testContatoEqualsTrue() {
+        assertEquals(contato, contato);
+    }
+    @Test
+    public void testContatoEqualsFalse() {
+        assertNotEquals(contatoErrado, contato);
     }
 
     @Test
@@ -103,6 +107,7 @@ public class ContatoTeste {
     public void nao_deve_aceitar_telefone_nulo() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(MSG_TELEFONE_NULO);
+        List<Telefone> telefones = new ArrayList<>();
         telefones.add(null);
         contato.setTelefones(telefones);
     }

@@ -10,8 +10,9 @@ import java.math.BigDecimal;
 
 import static br.com.contmatic.empresa.constants.produto.ProdutoConstants.*;
 import static org.junit.Assert.*;
+import static org.junit.rules.ExpectedException.none;
 
-public class ProdutoTeste {
+public class TestProduto {
 
     private Produto produto;
 
@@ -26,7 +27,7 @@ public class ProdutoTeste {
     }
 
     @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
+    public ExpectedException exceptionRule = none();
     @Test
     public void deve_aceitar_nome_correto() {
         produto.setNome("lucas");
@@ -43,24 +44,30 @@ public class ProdutoTeste {
     @Test
     public void aceitar_quantidade_correta() {
         produto.setQuantidade(quantidade);
-        assertEquals(produto.getQuantidade(), quantidade);
+        assertEquals(quantidade, produto.getQuantidade());
     }
 
     @Test
     public void aceitar_salario_correto() {
         produto.setValor(valor);
-        assertEquals(produto.getValor(), valor);
+        assertEquals(valor, produto.getValor());
     }
 
     @Test
-    public void testCargoEqualsAndHashCode() {
-        Produto produtoPadrao = new Produto("Produto soja", "3232", quantidade, valor);
-
+    public void testProdutoHashCodeTrue() {
         assertEquals(produtoCompleto.hashCode(), produtoPadrao.hashCode());
+    }
+    @Test
+    public void testProdutoHashCodeFalse() {
         assertNotEquals(produtoCompleto.hashCode(), produtoErrado.hashCode());
-
-        assertTrue(produtoCompleto.equals(produtoPadrao));
-        assertFalse(produtoErrado.equals(produtoCompleto));
+    }
+    @Test
+    public void testProdutoEqualsTrue() {
+        assertEquals(produtoCompleto, produtoPadrao);
+    }
+    @Test
+    public void testProdutoEqualsFalse() {
+        assertNotEquals(produtoErrado, produtoCompleto);
     }
 
     @Test

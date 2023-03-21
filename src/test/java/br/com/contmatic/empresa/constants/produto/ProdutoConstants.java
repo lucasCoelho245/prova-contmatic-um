@@ -19,5 +19,6 @@ public class ProdutoConstants {
     public static final String CAMPO_ID_VAZIO = ("O Campo id em produto está vazio");
     public static final String CAMPO_VALOR_MENOR = ("Tamanho de string valor em produto está abaixo de 3 caracteres");
     public static final String CAMPO_QUANTIDADE_MENOR = ("Tamanho de string quantidade em produto está abaixo de 1 caracteres");
+    public static final Produto produtoPadrao = new Produto("Produto soja", "3232", quantidade, valor);
 
 }

@@ -7,64 +7,64 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static br.com.contmatic.contato.DDDType.DDD11;
 import static br.com.contmatic.contato.DDDType.DDD12;
 import static br.com.contmatic.contatoTests.constants.telefone.TelefoneConstansts.*;
 import static org.junit.Assert.*;
+import static org.junit.rules.ExpectedException.none;
 
-public class TelefoneTeste {
+public class TestTelefone {
     private Telefone telefone;
-    private List<Telefone> telefoneErrado = new ArrayList<>();
-    private List<Telefone> telefoneCompleto = new ArrayList<>();
-    private List<Telefone> telefonePadrao = new ArrayList<>();
 
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe Telefone");
+        telefoneErrado.add(new Telefone(DDD12, 55555, "43433443"));
+        telefoneCompleto.add(new Telefone(DDD11, 555, "941584007"));
+        telefonePadrao.add(new Telefone(DDD11, 555, "941584007"));
     }
 
     @Before
     public void setBeforeProduto() {
         telefone = new Telefone();
-        telefoneErrado.add(new Telefone(DDD12, 55555, "43433443"));
-        telefoneCompleto.add(new Telefone(DDD11, 555, "941584007"));
-
     }
 
     @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
+    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_DDD_correto() {
         telefone.setDdd(DDD11);
-        assertEquals(telefone.getDdd(), DDD11);
+        assertEquals(DDD11, telefone.getDdd());
     }
 
     @Test
     public void deve_aceitar_numero_correto() {
         telefone.setNumero("941584007");
-        assertEquals(telefone.getNumero(), "941584007");
+        assertEquals("941584007", telefone.getNumero());
     }
 
     @Test
     public void deve_aceitar_ddi_correto() {
         Integer ddi = 55;
-        telefone.setDdi(55);
+        telefone.setDdi("55");
         assertEquals(telefone.getDdi(), ddi);
     }
     @Test
-    public void testContatoEqualsAndHashCode() {
-
-        telefonePadrao.add(new Telefone(DDD11, 555, "941584007"));
-
+    public void testContatoHashCodeTrue() {
         assertEquals(telefoneCompleto.hashCode(), telefonePadrao.hashCode());
+    }
+    @Test
+    public void testContatoHashCodeFalse() {
         assertNotEquals(telefoneCompleto.hashCode(), telefoneErrado.hashCode());
-
-        assertTrue(telefoneCompleto.equals(telefoneCompleto));
-        assertFalse(telefoneErrado.equals(telefoneCompleto));
+    }
+    @Test
+    public void testContatoEqualsTrue() {
+        assertEquals(telefoneCompleto, telefoneCompleto);
+    }
+    @Test
+    public void testContatoEqualsFalse() {
+        assertNotEquals(telefoneCompleto, telefoneErrado);
     }
 
     @Test
@@ -85,7 +85,13 @@ public class TelefoneTeste {
     public void nao_deve_aceitar_ddi_maior_que_3() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(MSG_DDI_MAIOR_DE_3_CARACTERES);
-        telefone.setDdi(44444444);
+        telefone.setDdi("44444444");
+    }
+    @Test
+    public void nao_deve_aceitar_ddi_com_letras() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(MSG_DDI_COM_CARACTERES);
+        telefone.setDdi("we");
     }
 
     @Test

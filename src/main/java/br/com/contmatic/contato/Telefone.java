@@ -33,11 +33,11 @@ public class Telefone {
         return ddi;
     }
 
-    public void setDdi(Integer ddi) {
+    public void setDdi(String ddi) {
         validarObjetoNulo(ddi, "DDI", nomeClasse);
-        validarStringTamanhoMaximo(String.valueOf(ddi), 3, "DDI", nomeClasse);
-        validarCaracterString(String.valueOf(ddi), "DDI", nomeClasse);
-        this.ddi = ddi;
+        validarStringTamanhoMaximo(ddi, 3, "DDI", nomeClasse);
+        validarCaracterString(ddi, "DDI", nomeClasse);
+        this.ddi = Integer.valueOf(ddi);
     }
 
     public String getNumero() {

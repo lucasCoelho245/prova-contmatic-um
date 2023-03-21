@@ -10,14 +10,10 @@ import java.time.LocalDateTime;
 
 import static br.com.contmatic.auditoria.constants.auditoria.AuditoriaConstants.*;
 import static org.junit.Assert.*;
+import static org.junit.rules.ExpectedException.*;
 
-public class AuditoriaTeste {
+public class TestAuditoria {
     private Auditoria auditoria;
-    private LocalDateTime exemploData = LocalDateTime.of(2022, 1, 1, 12, 30);
-    private Auditoria auditoriaTeste = new Auditoria("teste@login", "2552552551");
-    private Auditoria auditoriaTesteCompleto = new Auditoria("teste@login", "teste@login", "2552552550", exemploData, exemploData, exemploData, exemploData, "auditoriaTeste", "auditoriaTeste", "auditoriaTeste", "2552552550");
-    private Auditoria auditoriaTesteIgual = new Auditoria("teste@login", "2552552551");
-    private Auditoria auditoriaerrado = new Auditoria("teste2@login", "33223");
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -30,24 +26,24 @@ public class AuditoriaTeste {
     }
 
     @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
+    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_login_alteracao_correto() {
         auditoria.setLoginAlteracao("testelog");
-        assertEquals(auditoria.getLoginAlteracao(), "testelog");
+        assertEquals("testelog", auditoria.getLoginAlteracao());
     }
 
     @Test
     public void deve_aceitar_login_criacao_correto() {
         auditoria.setLoginCriacao("testelog");
-        assertEquals(auditoria.getLoginCriacao(), "testelog");
+        assertEquals("testelog", auditoria.getLoginCriacao());
     }
 
     @Test
     public void deve_aceitar_ip_criacao_correto() {
         auditoria.setIpCriacao("255.255.255.10");
-        assertEquals(auditoria.getIpCriacao(), "255.255.255.10");
+        assertEquals("255.255.255.10", auditoria.getIpCriacao());
     }
 
     @Test
@@ -77,17 +73,25 @@ public class AuditoriaTeste {
     }
 
     @Test
-    public void testAuditoriaEqualsAndHashCode() {
+    public void testAuditoriaHashCodeTrue() {
         assertEquals(auditoriaTeste.hashCode(), auditoriaTesteIgual.hashCode());
+    }
+    @Test
+    public void testAuditoriaHashCodeFalse() {
         assertNotEquals(auditoriaTeste.hashCode(), auditoriaerrado.hashCode());
-
-        assertTrue(auditoriaTeste.equals(auditoriaTesteIgual));
-        assertFalse(auditoriaerrado.equals(auditoriaTesteIgual));
+    }
+    @Test
+    public void testAuditoriaEqualsTrue() {
+        assertEquals(auditoriaTeste, auditoriaTesteIgual);
+    }
+    @Test
+    public void testAuditoriaEqualsFalse() {
+        assertNotEquals(auditoriaerrado, auditoriaTesteIgual);
     }
 
     @Test
     public void testAuditoriaToString() {
-        String expectedString = "Auditoria {dataCriacao= 2022-01-01T12:30, dataAlteracao= 2022-01-01T12:30, loginCriacao= teste@login, loginAlteracao= teste@login, ipCriacao= 2552552550, dataLogin= 2022-01-01T12:30, dataLogout= 2022-01-01T12:30}";
+        String expectedString = "Auditoria {dataCriacao= 2022-01-01T12:30, dataAlteracao= 2022-01-01T12:30, loginCriacao= teste@login, loginAlteracao= teste@login, ipCriacao= 25525525510, dataLogin= null, dataLogout= null}";
         assertEquals(expectedString, auditoriaTesteCompleto.toString());
     }
 
@@ -145,7 +149,7 @@ public class AuditoriaTeste {
     public void nao_deve_aceitar_data_criacao_invalida() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(LOG_CRIACAO_INVALIDA);
-        LocalDateTime dataCriacao = LocalDateTime.of(2024, 12, 30, 22, 12);
+        LocalDateTime dataCriacao = LocalDateTime.of(2023, 12, 30, 22, 12);
         auditoria.setDataCriacao(dataCriacao);
     }
 
@@ -153,7 +157,7 @@ public class AuditoriaTeste {
     public void nao_deve_aceitar_data_logout_invalida() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(LOG_LOGOUT_INVALIDA);
-        LocalDateTime dataLogout = LocalDateTime.of(2024, 12, 30, 22, 12);
+        LocalDateTime dataLogout = LocalDateTime.of(2023, 3, 22, 22, 12);
         auditoria.setDataLogout(dataLogout);
     }
 
@@ -166,15 +170,8 @@ public class AuditoriaTeste {
     }
 
     @Test
-    public void nao_deve_aceitar_ip_criacao_menor_que_6() {
-        exceptionRule.expectMessage(IP_CRIACAO_MENOR_QUE_6_CARACTERES);
-        exceptionRule.expect(IllegalArgumentException.class);
-        auditoria.setIpCriacao("25992");
-    }
-
-    @Test
     public void nao_deve_aceitar_ip_criacao_invalido() {
-        exceptionRule.expectMessage(IP_CRIACAO_MAIO_QUE_15_CARACTERES);
+        exceptionRule.expectMessage(IP_CRIACAO_INVALIDO);
         exceptionRule.expect(IllegalArgumentException.class);
         auditoria.setIpCriacao("257765677656565722232992");
     }
@@ -194,7 +191,7 @@ public class AuditoriaTeste {
 
     @Test
     public void nao_deve_aceitar_ip_criacao_com_caracteres() {
-        exceptionRule.expectMessage(IP_CRIACAO_NAO_PODE_TER_CARACTERES);
+        exceptionRule.expectMessage(IP_CRIACAO_INVALIDO);
         exceptionRule.expect(IllegalArgumentException.class);
         auditoria.setIpCriacao("65ssfwfew992");
     }

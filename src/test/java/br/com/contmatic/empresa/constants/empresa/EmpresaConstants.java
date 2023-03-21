@@ -45,5 +45,6 @@ public class EmpresaConstants {
     public static final String CNPJ_REPETIDO_INVALIDO = ("O CNPJ tem caracteres repetidos ou está fora da formatação padrão");
     public static final String CNPJ_INVALIDO = ("O CNPJ está invalido");
     public static final String CNPJ_NULO = ("O Campo CNPJ em empresa está vazio");
+    public static final Empresa empresaPadrao = new Empresa("502793028385", "Coca Cola Indústrias Ltda", enderecos, funcionario, contatos);
 
 }

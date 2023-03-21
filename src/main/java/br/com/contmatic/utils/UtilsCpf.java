@@ -6,9 +6,8 @@ import static java.lang.Integer.parseInt;
 
 public final class UtilsCpf {
     private UtilsCpf() {
+        throw new IllegalStateException("Utility class");
     }
-
-
     public static void validarCpf(String cpf, String nomeDoCampo, String classe) {
         validarObjetoNulo(cpf, nomeDoCampo, classe);
         validarStringVazio(cpf, nomeDoCampo, classe);
@@ -28,7 +27,7 @@ public final class UtilsCpf {
     }
 
     private static int[] separadorDigitos(String cpf) {
-        int digitos[] = new int[CPF_CARACTERS];
+        int[] digitos = new int[CPF_CARACTERS];
         for (int i = 0; i < CPF_CARACTERS; i++) {
             digitos[i] = parseInt(cpf.split("")[i]);
         }
@@ -42,11 +41,7 @@ public final class UtilsCpf {
     private static int calculosParaDigitoDois(int[] digitos, int digitoUm) {
         int digitoDois = (digitos[0] * NUM_CALCULAR_DIGITO_CPF_DECIMO) + (digitos[1] * NUM_CALCULAR_DIGITO_CPF_NONO) + (digitos[2] * NUM_CALCULAR_DIGITO_CPF_OITAVO) + (digitos[3] * NUM_CALCULAR_DIGITO_CPF_SETIMO) + (digitos[4] * NUM_CALCULAR_DIGITO_CPF_SEXTO)
                 + (digitos[5] * NUM_CALCULAR_DIGITO_CPF_QUINTO) + (digitos[6] * NUM_CALCULAR_DIGITO_CPF_QUARTO) + (digitos[7] * NUM_CALCULAR_DIGITO_CPF_TERCEIRO) + (digitos[8] * NUM_CALCULAR_DIGITO_CPF_SEGUNDO) + (digitoUm * NUM_CALCULAR_DIGITO_CPF_PRIMEIRO);
-        if (digitoDois % CPF_CARACTERS < 2) {
-            digitoDois = 0;
-        } else {
-            digitoDois = CPF_CARACTERS - (digitoDois % CPF_CARACTERS);
-        }
+        digitoDois = CPF_CARACTERS - (digitoDois % CPF_CARACTERS);
         return digitoDois;
     }
 
@@ -57,11 +52,7 @@ public final class UtilsCpf {
     private static int calculoParaDigitoUm(int[] digitos) {
         int digitoUm = (digitos[0] * NUM_CALCULAR_DIGITO_CPF_NONO) + (digitos[1] * NUM_CALCULAR_DIGITO_CPF_OITAVO) + (digitos[2] * NUM_CALCULAR_DIGITO_CPF_SETIMO) + (digitos[3] * NUM_CALCULAR_DIGITO_CPF_SEXTO) + (digitos[4] * NUM_CALCULAR_DIGITO_CPF_QUINTO)
                 + (digitos[5] * NUM_CALCULAR_DIGITO_CPF_QUARTO) + (digitos[6] * NUM_CALCULAR_DIGITO_CPF_TERCEIRO) + (digitos[7] * NUM_CALCULAR_DIGITO_CPF_SEGUNDO) + (digitos[8] * NUM_CALCULAR_DIGITO_CPF_PRIMEIRO);
-        if (digitoUm % CPF_CARACTERS < 2) {
-            digitoUm = 0;
-        } else {
-            digitoUm = CPF_CARACTERS - (digitoUm % CPF_CARACTERS);
-        }
+        digitoUm = CPF_CARACTERS - (digitoUm % CPF_CARACTERS);
         return digitoUm;
     }
 

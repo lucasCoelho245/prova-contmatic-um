@@ -31,17 +31,12 @@ public class Auditoria {
     public Auditoria() {
     }
 
-    public Auditoria(String loginCriacao, String loginAlteracao, String ipCriacao, LocalDateTime dataCriacao, LocalDateTime dataAlteracao, LocalDateTime dataLogin, LocalDateTime dataLogout, String nomeClasseauditoria, String loginDaCriacao, String loginDaAlteracao, String ipDaCriacao) {
+    public Auditoria(String loginCriacao, String loginAlteracao, String ipCriacao, LocalDateTime dataCriacao, LocalDateTime dataAlteracao, String ipDaCriacao) {
         this.loginCriacao = loginCriacao;
         this.loginAlteracao = loginAlteracao;
         this.ipCriacao = ipCriacao;
         this.dataCriacao = dataCriacao;
         this.dataAlteracao = dataAlteracao;
-        this.dataLogin = dataLogin;
-        this.dataLogout = dataLogout;
-        this.nomeClasseauditoria = nomeClasseauditoria;
-        this.loginDaCriacao = loginDaCriacao;
-        this.loginDaAlteracao = loginDaAlteracao;
         this.ipDaCriacao = ipDaCriacao;
     }
 
@@ -83,10 +78,10 @@ public class Auditoria {
     public void setIpCriacao(String ipCriacao) {
         validarObjetoNulo(ipCriacao, ipDaCriacao, nomeClasseauditoria);
         validarStringVazio(ipCriacao, ipDaCriacao, nomeClasseauditoria);
+        validarIp(ipCriacao, ipDaCriacao, nomeClasseauditoria);
+        validarCaracterString(ipCriacao, ipDaCriacao, nomeClasseauditoria);
         validarStringTamanhoMinimo(ipCriacao, 6, ipDaCriacao, nomeClasseauditoria);
         validarStringTamanhoMaximo(ipCriacao, 15, ipDaCriacao, nomeClasseauditoria);
-        validarCaracterString(ipCriacao, ipDaCriacao, nomeClasseauditoria);
-        validarIp(ipCriacao, ipDaCriacao, nomeClasseauditoria);
         this.ipCriacao = ipCriacao;
     }
 

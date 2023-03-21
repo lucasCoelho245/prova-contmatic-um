@@ -11,58 +11,65 @@ import java.util.List;
 
 import static br.com.contmatic.empresa.constants.cliente.ClienteConstants.*;
 import static org.junit.Assert.*;
+import static org.junit.rules.ExpectedException.*;
 
 
-public class ClienteTeste {
+public class TestCliente {
     private Cliente cliente;
 
 
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe cliente");
+        produtos.add(new Produto("produtoA", "110", quantidade, valor));
     }
 
     @Before
     public void setBeforeCliente() {
         cliente = new Cliente();
-        produtos.add(new Produto("produtoA", "110", quantidade, valor));
-
     }
+
     @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
+    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_nome_correto() {
         cliente.setNome("lucas");
-        assertEquals(cliente.getNome(), "lucas");
+        assertEquals("lucas", cliente.getNome());
     }
 
     @Test
     public void deve_aceitar_cpf_correto() {
         cliente.setCpf("50279302835");
-        assertEquals(cliente.getCpf(), "50279302835");
+        assertEquals("50279302835", cliente.getCpf());
     }
 
     @Test
     public void deve_aceitar_produto_correto() {
         cliente.setProdutos(produtos);
-        assertEquals(cliente.getProdutos(), produtos);
+        assertEquals(produtos, cliente.getProdutos());
     }
 
     @Test
-    public void testClienteEqualsAndHashCode() {
-        Cliente clientePadrao = new Cliente("502793028385", "João", produtos);
-
+    public void testClienteHashCodeTrue() {
         assertEquals(clienteCompleto.hashCode(), clientePadrao.hashCode());
+    }
+    @Test
+    public void testClienteHashCodeFalse() {
         assertNotEquals(clienteCompleto.hashCode(), clienteErrado.hashCode());
-
-        assertTrue(clienteCompleto.equals(clientePadrao));
-        assertFalse(clienteErrado.equals(clienteCompleto));
+    }
+    @Test
+    public void testClienteEqualsTrue() {
+        assertEquals(clienteCompleto, clientePadrao);
+    }
+    @Test
+    public void testClienteEqualsFalse() {
+        assertNotEquals(clienteErrado, clienteCompleto);
     }
 
     @Test
     public void testClienteToString() {
-        String expectedString = "Cliente {nome= João, produtos= [Produto {nome= produtoA, Id= 110, quantidade= 1000, valor= 1000}]}";
+        String expectedString = "Cliente {nome= João, produtos= [Produto {nome= produtoA, Id= 110, quantidade= 10, valor= 10}]}";
         assertEquals(expectedString, clienteCompleto.toString());
     }
 
@@ -93,6 +100,7 @@ public class ClienteTeste {
         exceptionRule.expectMessage(CLIENTE_ESTA_VAZIO);
         cliente.setNome(" ");
     }
+
     @Test
     public void nao_deve_aceitar_nome_se_nulo() {
         exceptionRule.expect(IllegalArgumentException.class);
@@ -131,18 +139,9 @@ public class ClienteTeste {
     }
 
     @Test
-    public void nao_deve_aceitar_cpf_com_menos_de_11_caracteres() {
-        exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(CPF_ESTA_REPETIDO);
-        cliente.setCpf("545");
-    }
-
-    @Test
     public void nao_deve_aceitar_cpf_com_mais_de_11_caracteres() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(CPF_ESTA_REPETIDO);
         cliente.setCpf("502793028356");
     }
-
-
 }

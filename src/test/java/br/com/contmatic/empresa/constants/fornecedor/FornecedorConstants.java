@@ -26,6 +26,7 @@ public class FornecedorConstants {
     public static final List<Endereco> enderecos = new ArrayList<>();
     public static final Fornecedor fornecedorCompleto = new Fornecedor("26631884000176", "julio", produtos, contatos, enderecos);
     public static final Fornecedor fornecedorErrado = new Fornecedor("25531884000176", "joao", produtos, contatos, enderecos);
+    public static final Fornecedor fornecedorPadrao = new Fornecedor("26631884000176", "julio", produtos, contatos, enderecos);
 
 
 }

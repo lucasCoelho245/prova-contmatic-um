@@ -9,8 +9,9 @@ import org.junit.rules.ExpectedException;
 import static br.com.contmatic.empresa.constants.endereco.enderecoConstants.*;
 import static br.com.contmatic.endereco.UFType.MA;
 import static org.junit.Assert.*;
+import static org.junit.rules.ExpectedException.*;
 
-public class EnderecoTeste {
+public class TestEndereco {
     private Endereco endereco;
 
     @BeforeClass
@@ -24,18 +25,18 @@ public class EnderecoTeste {
     }
 
     @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
+    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_logradouro_correto() {
         endereco.setLogradouro("avenida brasil");
-        assertEquals(endereco.getLogradouro(), "avenida brasil");
+        assertEquals("avenida brasil", endereco.getLogradouro());
     }
 
     @Test
     public void deve_aceitar_uf_correto() {
         endereco.setUf(MA);
-        assertEquals(endereco.getUf(), MA);
+        assertEquals(MA, endereco.getUf());
     }
 
     @Test
@@ -48,36 +49,43 @@ public class EnderecoTeste {
     @Test
     public void deve_aceitar_cep_correto() {
         endereco.setCep("01235-000");
-        assertEquals(endereco.getCep(), "01235-000");
+        assertEquals("01235-000", endereco.getCep());
     }
 
     @Test
     public void deve_aceitar_bairro_correto() {
         endereco.setBairro("barata ribeiro");
-        assertEquals(endereco.getBairro(), "barata ribeiro");
+        assertEquals("barata ribeiro", endereco.getBairro());
 
     }
 
     @Test
     public void deve_aceitar_cidade_correto() {
         endereco.setCidade("são paulo");
-        assertEquals(endereco.getCidade(), "são paulo");
+        assertEquals("são paulo", endereco.getCidade());
     }
 
     @Test
     public void deve_aceitar_complemento_correto() {
         endereco.setComplemento("apto61");
-        assertEquals(endereco.getComplemento(), "apto61");
+        assertEquals("apto61", endereco.getComplemento());
     }
 
     @Test
-    public void testEnderecoEqualsAndHashCode() {
-        Endereco enderecoPadrao = new Endereco("cambuci", 22, "barata Ribeiro", "01235000", MA, "apto 61", "01233300");
+    public void testEnderecoHashCodeTrue() {
         assertEquals(enderecoCompleto.hashCode(), enderecoPadrao.hashCode());
+    }
+    @Test
+    public void testEnderecoHashCodeFalse() {
         assertNotEquals(enderecoCompleto.hashCode(), enderecoErrado.hashCode());
-
-        assertTrue(enderecoCompleto.equals(enderecoPadrao));
-        assertFalse(enderecoErrado.equals(enderecoCompleto));
+    }
+    @Test
+    public void testEnderecoEqualsTrue() {
+        assertEquals(enderecoCompleto.hashCode(), enderecoPadrao.hashCode());
+    }
+    @Test
+    public void testEnderecoEqualsFalse() {
+        assertNotEquals(enderecoErrado, enderecoCompleto);
     }
 
     @Test
@@ -137,7 +145,7 @@ public class EnderecoTeste {
     @Test
     public void nao_deve_aceitar_cidade_com_mais_de_20_caracteres() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(CIDADE_CURTA);
+        exceptionRule.expectMessage(CIDADE_LONGA);
         endereco.setCidade("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
     }
 
