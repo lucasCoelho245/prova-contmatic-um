@@ -69,20 +69,20 @@ public class TestCargo {
     }
     @Test
     public void nao_deve_aceitar_nome_menor_que_2() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(TAMANHO_DE_CARGO_ESTA_ABAIXO_DE_2_CARACTERES);
         cargo.setNome("s");
     }
 
     @Test
     public void nao_deve_aceitar_nome_maior_que_60() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(TAMANHO_DE_CARGO_ESTA_ACIMA_DE_60_CARACTERES);
         cargo.setNome("shshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshsh");
     }
     @Test
     public void nome_nao_deve_aceitar_numeros() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(NOME_DE_CARGO_TEM_NUMEROS);
         cargo.setNome("3223232");
     }
@@ -102,7 +102,7 @@ public class TestCargo {
 
     @Test
     public void nao_deve_aceitar_nome_setor_menor_que_3() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(SETOR_NAO_DEVE_TER_MENOS_DE_3_CARACTERES);
         cargo.setSetor("s");
     }
@@ -121,7 +121,7 @@ public class TestCargo {
     }
     @Test
     public void nao_deve_aceitar_setor_maior_que_30() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(TAMANHO_DE_SETOR_DE_CARGO_ESTA_ACIMA_DE_30_CARACTERES);
         cargo.setSetor("shshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshsh");
     }
@@ -135,7 +135,7 @@ public class TestCargo {
 
     @Test
     public void nao_deve_aceitar_codigo_menor_que_2() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(TAMANHO_DE_CODIGO_ESTA_ABAIXO_DE_2_CARACTERES);
         cargo.setCodigo(1);
     }

@@ -131,7 +131,7 @@ public class TestFuncionario {
 
     @Test
     public void nao_deve_aceitar_salario_menor_que_4_caracteres() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(CAMPO_SALARIO_CURTO);
         BigDecimal salario = new BigDecimal(224);
         funcionario.setSalario(salario);

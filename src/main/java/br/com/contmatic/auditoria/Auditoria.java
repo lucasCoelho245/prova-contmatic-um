@@ -5,7 +5,8 @@ import br.com.contmatic.utils.ValidaDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import static br.com.contmatic.utils.Utils.*;
+import static br.com.contmatic.utils.ConstantesUtils.*;
+import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Auditoria {
 
@@ -23,21 +24,15 @@ public class Auditoria {
 
     private LocalDateTime dataLogout;
 
-    private String nomeClasseauditoria = "auditoria";
-    private String loginDaCriacao = "login criacao";
-    private String loginDaAlteracao = "login alteracao";
-    private String ipDaCriacao = "ipcriacao";
-
     public Auditoria() {
     }
 
-    public Auditoria(String loginCriacao, String loginAlteracao, String ipCriacao, LocalDateTime dataCriacao, LocalDateTime dataAlteracao, String ipDaCriacao) {
+    public Auditoria(String loginCriacao, String loginAlteracao, String ipCriacao, LocalDateTime dataCriacao, LocalDateTime dataAlteracao) {
         this.loginCriacao = loginCriacao;
         this.loginAlteracao = loginAlteracao;
         this.ipCriacao = ipCriacao;
         this.dataCriacao = dataCriacao;
         this.dataAlteracao = dataAlteracao;
-        this.ipDaCriacao = ipDaCriacao;
     }
 
     public Auditoria(String loginCriacao, String ipCriacao) {
@@ -50,11 +45,11 @@ public class Auditoria {
     }
 
     public void setLoginCriacao(String loginCriacao) {
-        validarObjetoNulo(loginCriacao, loginDaCriacao, nomeClasseauditoria);
-        validarStringVazio(loginCriacao, loginDaCriacao, nomeClasseauditoria);
-        validarCaracterEspecial(loginCriacao, loginDaCriacao, nomeClasseauditoria);
-        validarStringTamanhoMaximo(loginCriacao, 25, loginDaCriacao, nomeClasseauditoria);
-        validarStringTamanhoMinimo(loginCriacao, 2, loginDaCriacao, nomeClasseauditoria);
+        validarObjetoNulo(loginCriacao, LOGIN_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
+        validarStringVazio(loginCriacao, LOGIN_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
+        validarCaracterEspecial(loginCriacao, LOGIN_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
+        validarStringTamanhoMaximo(loginCriacao, 25, LOGIN_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
+        validarStringTamanhoMinimo(loginCriacao, 2, LOGIN_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
         this.loginCriacao = loginCriacao;
     }
 
@@ -63,11 +58,11 @@ public class Auditoria {
     }
 
     public void setLoginAlteracao(String loginAlteracao) {
-        validarObjetoNulo(loginAlteracao, loginDaAlteracao, nomeClasseauditoria);
-        validarStringVazio(loginAlteracao, loginDaAlteracao, nomeClasseauditoria);
-        validarStringTamanhoMaximo(loginAlteracao, 25, loginDaAlteracao, nomeClasseauditoria);
-        validarStringTamanhoMinimo(loginAlteracao, 2, loginDaAlteracao, nomeClasseauditoria);
-        validarCaracterEspecial(loginAlteracao, loginDaAlteracao, nomeClasseauditoria);
+        validarObjetoNulo(loginAlteracao, LOGIN_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
+        validarStringVazio(loginAlteracao, LOGIN_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
+        validarStringTamanhoMaximo(loginAlteracao, 25, LOGIN_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
+        validarStringTamanhoMinimo(loginAlteracao, 2, LOGIN_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
+        validarCaracterEspecial(loginAlteracao, LOGIN_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
         this.loginAlteracao = loginAlteracao;
     }
 
@@ -76,12 +71,12 @@ public class Auditoria {
     }
 
     public void setIpCriacao(String ipCriacao) {
-        validarObjetoNulo(ipCriacao, ipDaCriacao, nomeClasseauditoria);
-        validarStringVazio(ipCriacao, ipDaCriacao, nomeClasseauditoria);
-        validarIp(ipCriacao, ipDaCriacao, nomeClasseauditoria);
-        validarCaracterString(ipCriacao, ipDaCriacao, nomeClasseauditoria);
-        validarStringTamanhoMinimo(ipCriacao, 6, ipDaCriacao, nomeClasseauditoria);
-        validarStringTamanhoMaximo(ipCriacao, 15, ipDaCriacao, nomeClasseauditoria);
+        validarObjetoNulo(ipCriacao, IP_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
+        validarStringVazio(ipCriacao, IP_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
+        validarPatternIp(ipCriacao, IP_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
+        validarCaracterString(ipCriacao, IP_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
+        validarStringTamanhoMinimo(ipCriacao, 6, IP_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
+        validarStringTamanhoMaximo(ipCriacao, 15, IP_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
         this.ipCriacao = ipCriacao;
     }
 
@@ -90,7 +85,7 @@ public class Auditoria {
     }
 
     public void setDataCriacao(LocalDateTime dataCriacao) {
-        ValidaDate.isValidLocalDateTime(dataCriacao, "data criacao", nomeClasseauditoria);
+        ValidaDate.isValidLocalDateTime(dataCriacao, "data criacao", NOME_CLASSE_AUDITORIA);
         this.dataCriacao = dataCriacao;
     }
 
@@ -99,7 +94,7 @@ public class Auditoria {
     }
 
     public void setDataAlteracao(LocalDateTime dataAlteracao) {
-        ValidaDate.isValidLocalDateTime(dataAlteracao, "data alteracao", nomeClasseauditoria);
+        ValidaDate.isValidLocalDateTime(dataAlteracao, "data alteracao", NOME_CLASSE_AUDITORIA);
         this.dataAlteracao = dataAlteracao;
     }
 
@@ -108,7 +103,7 @@ public class Auditoria {
     }
 
     public void setDataLogin(LocalDateTime dataLogin) {
-        ValidaDate.isValidLocalDateTime(dataLogin, "data login", nomeClasseauditoria);
+        ValidaDate.isValidLocalDateTime(dataLogin, "data login", NOME_CLASSE_AUDITORIA);
         this.dataLogin = dataLogin;
     }
 
@@ -117,7 +112,7 @@ public class Auditoria {
     }
 
     public void setDataLogout(LocalDateTime dataLogout) {
-        ValidaDate.isValidLocalDateTime(dataLogout, "data logout", nomeClasseauditoria);
+        ValidaDate.isValidLocalDateTime(dataLogout, "data logout", NOME_CLASSE_AUDITORIA);
         this.dataLogout = dataLogout;
     }
 
@@ -126,12 +121,12 @@ public class Auditoria {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Auditoria auditoria = (Auditoria) o;
-        return ipCriacao.equals(auditoria.ipCriacao) && loginDaCriacao.equals(auditoria.loginDaCriacao);
+        return ipCriacao.equals(auditoria.ipCriacao) && LOGIN_DA_CRIACAO.equals(LOGIN_DA_CRIACAO);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ipCriacao, loginDaCriacao);
+        return Objects.hash(ipCriacao, LOGIN_DA_CRIACAO);
     }
 
     @Override

@@ -3,7 +3,8 @@ package br.com.contmatic.empresa;
 import java.util.List;
 import java.util.Objects;
 
-import static br.com.contmatic.utils.Utils.*;
+import static br.com.contmatic.utils.ConstantesUtils.*;
+import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static br.com.contmatic.utils.UtilsCpf.validarCpf;
 
 public class Cliente {
@@ -17,12 +18,6 @@ public class Cliente {
         return nome;
     }
 
-    private String nomeClasse = "cliente";
-
-    private String nomeCliente = "nome";
-
-    private String produtoCliente = "produto";
-    private String cpfCLiente = "cpf";
 
     public Cliente() {
     }
@@ -34,11 +29,11 @@ public class Cliente {
     }
 
     public void setNome(String nome) {
-        validarObjetoNulo(nome, nomeCliente, nomeClasse);
-        validarStringVazio(nome, nomeCliente, nomeClasse);
-        validarStringTamanhoMinimo(nome, 3, nomeCliente, nomeClasse);
-        validarStringTamanhoMaximo(nome, 60, nomeCliente, nomeClasse);
-        validarNumerosString(nome, nomeCliente, nomeClasse);
+        validarObjetoNulo(nome, NOME_CLIENTE, NOME_CLASSE_CLIENTE);
+        validarStringVazio(nome, NOME_CLIENTE, NOME_CLASSE_CLIENTE);
+        validarStringTamanhoMinimo(nome, 3, NOME_CLIENTE, NOME_CLASSE_CLIENTE);
+        validarStringTamanhoMaximo(nome, 60, NOME_CLIENTE, NOME_CLASSE_CLIENTE);
+        validarNumerosString(nome, NOME_CLIENTE, NOME_CLASSE_CLIENTE);
         this.nome = nome;
     }
 
@@ -51,14 +46,14 @@ public class Cliente {
     }
 
     public void setCpf(String cpf) {
-        validarCpf(cpf, cpfCLiente, nomeClasse);
+        validarCpf(cpf, CPF_CLIENTE, NOME_CLASSE_CLIENTE);
         this.cpf = cpf;
     }
 
     public void setProdutos(List<Produto> produtos) {
-        validarStringTamanhoMinimo(produtos.toString(), 60, produtoCliente, nomeClasse);
-        validarStringTamanhoMaximo(produtos.toString(), 180, produtoCliente, nomeClasse);
-        validarObjetoNulo(produtos, produtoCliente, nomeClasse);
+        validarStringTamanhoMinimo(produtos.toString(), 60, PRODUTO_CLIENTE, NOME_CLASSE_CLIENTE);
+        validarStringTamanhoMaximo(produtos.toString(), 180, PRODUTO_CLIENTE, NOME_CLASSE_CLIENTE);
+        validarObjetoNulo(produtos, PRODUTO_CLIENTE, NOME_CLASSE_CLIENTE);
         this.produtos = produtos;
     }
 

@@ -98,7 +98,7 @@ public class TestAuditoria {
 
     @Test
     public void nao_deve_aceitar_login_maior_que_25() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(LOG_CRIACAO);
 
 
@@ -108,7 +108,7 @@ public class TestAuditoria {
 
     @Test
     public void nao_deve_aceitar_login_menor_que_2() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(LOG_ALTERACAO);
         auditoria.setLoginCriacao("1");
         auditoria.setLoginAlteracao("1");
@@ -131,7 +131,7 @@ public class TestAuditoria {
 
     @Test
     public void nao_deve_aceitar_login_caracter_especial() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(LOG_LOGIN_CARACTER_ESPECIAL);
         auditoria.setLoginCriacao("sded&%");
         auditoria.setLoginAlteracao("sdvkjbsd&%");
@@ -172,7 +172,7 @@ public class TestAuditoria {
     @Test
     public void nao_deve_aceitar_ip_criacao_invalido() {
         exceptionRule.expectMessage(IP_CRIACAO_INVALIDO);
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         auditoria.setIpCriacao("257765677656565722232992");
     }
 
@@ -192,7 +192,7 @@ public class TestAuditoria {
     @Test
     public void nao_deve_aceitar_ip_criacao_com_caracteres() {
         exceptionRule.expectMessage(IP_CRIACAO_INVALIDO);
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         auditoria.setIpCriacao("65ssfwfew992");
     }
 

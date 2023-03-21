@@ -1,17 +1,15 @@
 package br.com.contmatic.empresa;
 
 import java.util.Objects;
+import static br.com.contmatic.utils.ConstantesUtils.*;
 
-import static br.com.contmatic.utils.Utils.*;
+import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Cargo {
     private String nome;
     private String setor;
     private Integer codigo;
 
-    private String setorCargo = "setorCargo";
-    private String nomeClasse = "cargo";
-    private String nomeCargo = "nome";
 
     public Cargo(String nome, String setor, Integer codigo) {
         this.nome = nome;
@@ -33,19 +31,19 @@ public class Cargo {
     }
 
     public void setSetor(String setor) {
-        validarObjetoNulo(setor, setorCargo, nomeClasse);
-        validarStringVazio(setor, setorCargo, nomeClasse);
-        validarStringTamanhoMinimo(setor, 2, setorCargo, nomeClasse);
-        validarStringTamanhoMaximo(setor, 30, setorCargo, nomeClasse);
+        validarObjetoNulo(setor, SETOR_CARGO, NOME_CLASSE_CARGO);
+        validarStringVazio(setor, SETOR_CARGO, NOME_CLASSE_CARGO);
+        validarStringTamanhoMinimo(setor, 2, SETOR_CARGO, NOME_CLASSE_CARGO);
+        validarStringTamanhoMaximo(setor, 30, SETOR_CARGO, NOME_CLASSE_CARGO);
         this.setor = setor;
     }
 
     public void setNome(String nome) {
-        validarObjetoNulo(nome, nomeCargo, nomeClasse);
-        validarStringVazio(nome, nomeCargo, nomeClasse);
-        validarStringTamanhoMinimo(nome, 2, nomeCargo, nomeClasse);
-        validarStringTamanhoMaximo(nome, 60, nomeCargo, nomeClasse);
-        validarNumerosString(nome, nomeCargo, nomeClasse);
+        validarObjetoNulo(nome, NOME_CARGO, NOME_CLASSE_CARGO);
+        validarStringVazio(nome, NOME_CARGO, NOME_CLASSE_CARGO);
+        validarStringTamanhoMinimo(nome, 2, NOME_CARGO, NOME_CLASSE_CARGO);
+        validarStringTamanhoMaximo(nome, 60, NOME_CARGO, NOME_CLASSE_CARGO);
+        validarNumerosString(nome, NOME_CARGO, NOME_CLASSE_CARGO);
         this.nome = nome;
     }
 
@@ -54,8 +52,8 @@ public class Cargo {
     }
 
     public void setCodigo(Integer codigo) {
-        validarObjetoNulo(codigo, "Codigo", nomeClasse);
-        validarStringTamanhoMinimo(codigo.toString(), 2, "Codigo", nomeClasse);
+        validarObjetoNulo(codigo, "Codigo", NOME_CLASSE_CARGO);
+        validarStringTamanhoMinimo(codigo.toString(), 2, "Codigo", NOME_CLASSE_CARGO);
         this.codigo = codigo;
     }
 

@@ -78,21 +78,21 @@ public class TestProduto {
 
     @Test
     public void nao_deve_aceitar_nome_menor_que_2() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(CAMPO_NOME_CURTO);
         produto.setNome("s");
     }
 
     @Test
     public void nao_deve_aceitar_nome_maior_que_60() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(CAMPO_NOME_LONGO);
         produto.setNome("shshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshsh");
     }
 
     @Test
     public void nome_nao_deve_aceitar_numeros() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(CAMPO_NOME_NUMEROS);
         produto.setNome("3223232");
     }
@@ -126,14 +126,14 @@ public class TestProduto {
 
     @Test
     public void nao_deve_aceitar_id_menor_que_2() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(CAMPO_ID_CURTO);
         produto.setId("s");
     }
 
     @Test
     public void nao_deve_aceitar_quantidade_menor_que_esperado() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(CAMPO_QUANTIDADE_MENOR);
         BigDecimal quantidade = new BigDecimal(0);
         produto.setQuantidade(quantidade);
@@ -141,7 +141,7 @@ public class TestProduto {
 
     @Test
     public void nao_deve_aceitar_valor_menor_que_esperado() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(CAMPO_VALOR_MENOR);
         BigDecimal valor = new BigDecimal(0);
         produto.setValor(valor);

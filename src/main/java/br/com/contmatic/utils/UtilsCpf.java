@@ -1,13 +1,11 @@
 package br.com.contmatic.utils;
 
 import static br.com.contmatic.utils.CpfUtilsConstants.*;
-import static br.com.contmatic.utils.Utils.*;
+import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static java.lang.Integer.parseInt;
 
 public final class UtilsCpf {
-    private UtilsCpf() {
-        throw new IllegalStateException("Utility class");
-    }
+    private UtilsCpf() {}
     public static void validarCpf(String cpf, String nomeDoCampo, String classe) {
         validarObjetoNulo(cpf, nomeDoCampo, classe);
         validarStringVazio(cpf, nomeDoCampo, classe);

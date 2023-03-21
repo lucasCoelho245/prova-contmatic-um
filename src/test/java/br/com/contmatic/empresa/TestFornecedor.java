@@ -92,13 +92,13 @@ public class TestFornecedor {
 
     @Test
     public void nao_deve_aceitar_mais_30_caracteres () {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(NOME_LONGO);
         fornecedor.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
     @Test
     public void nao_deve_aceitar_nome_menor_que_3() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(NOME_CURTO);
         fornecedor.setNome("s");
     }
@@ -111,7 +111,7 @@ public class TestFornecedor {
 
     @Test
     public void nao_deve_aceitar_numero() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(NOME_NUMERICO);
         fornecedor.setNome("54651561561");
     }

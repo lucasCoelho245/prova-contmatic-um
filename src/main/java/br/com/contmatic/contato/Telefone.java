@@ -2,14 +2,13 @@ package br.com.contmatic.contato;
 
 import java.util.Objects;
 
-import static br.com.contmatic.utils.Utils.*;
+import static br.com.contmatic.utils.ConstantesUtils.*;
+import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Telefone {
     private DDDType ddd;
     private Integer ddi;
     private String numero;
-    private String nomeClasse = "telefone";
-    private String numeroTelefone = "numero";
 
     public Telefone() {
     }
@@ -25,7 +24,7 @@ public class Telefone {
     }
 
     public void setDdd(DDDType ddd) {
-        validarObjetoNulo(ddd, "DDD", nomeClasse);
+        validarObjetoNulo(ddd, "DDD", NOME_CLASSE_TELEFONE);
         this.ddd = ddd;
     }
 
@@ -34,9 +33,9 @@ public class Telefone {
     }
 
     public void setDdi(String ddi) {
-        validarObjetoNulo(ddi, "DDI", nomeClasse);
-        validarStringTamanhoMaximo(ddi, 3, "DDI", nomeClasse);
-        validarCaracterString(ddi, "DDI", nomeClasse);
+        validarObjetoNulo(ddi, "DDI", NOME_CLASSE_TELEFONE);
+        validarStringTamanhoMaximo(ddi, 3, "DDI", NOME_CLASSE_TELEFONE);
+        validarCaracterString(ddi, "DDI", NOME_CLASSE_TELEFONE);
         this.ddi = Integer.valueOf(ddi);
     }
 
@@ -45,11 +44,11 @@ public class Telefone {
     }
 
     public void setNumero(String numero) {
-        validarObjetoNulo(numero, numeroTelefone, nomeClasse);
-        validarStringVazio(numero, numeroTelefone, nomeClasse);
-        validarStringSomenteNumeros(numero, numeroTelefone, nomeClasse);
-        validarStringTamanhoMinimo(numero, 8, numeroTelefone, nomeClasse);
-        validarStringTamanhoMaximo(numero, 10, numeroTelefone, nomeClasse);
+        validarObjetoNulo(numero, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
+        validarStringVazio(numero, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
+        validarStringSomenteNumeros(numero, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
+        validarStringTamanhoMinimo(numero, 8, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
+        validarStringTamanhoMaximo(numero, 10, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
         this.numero = numero;
     }
 

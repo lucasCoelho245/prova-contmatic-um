@@ -75,21 +75,21 @@ public class TestCliente {
 
     @Test
     public void nao_deve_aceitar_nome_menor_que_3() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(TAMANHO_DE_CLIENTE_ESTA_ABAIXO_DE_2_CARACTERES);
         cliente.setNome("sh");
     }
 
     @Test
     public void nao_deve_aceitar_nome_maior_que_60() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(TAMANHO_DE_CLIENTE_ESTA_ACIMA_DE_60_CARACTERES);
         cliente.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     @Test
     public void nao_deve_aceitar_nome_se_numeros() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(CLIENTE_ESTA_COM_CARACTERES_NUMEROS);
         cliente.setNome("5454545544");
     }
@@ -110,7 +110,7 @@ public class TestCliente {
 
     @Test
     public void nao_deve_aceitar_produto_se_nulo() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(PRODUTO_ESTA_ACIMA_DE_60_CARACTERES);
         List<Produto> produtos = new ArrayList<>();
         produtos.add(null);

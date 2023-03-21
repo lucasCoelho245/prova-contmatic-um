@@ -103,21 +103,21 @@ public class TestEndereco {
 
     @Test
     public void nao_deve_aceitar_bairro_com_menos_de_3_caracteres() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(BAIRRO_CURTO);
         endereco.setBairro("ww");
     }
 
     @Test
     public void nao_deve_aceitar_bairro_com_mais_de_20_caracteres() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(BAIRRO_LONGO);
         endereco.setBairro("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
     }
 
     @Test
     public void nao_deve_aceitar_bairro_com_numeros() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(BAIRRO_COM_NUMEROS);
         endereco.setBairro("74145");
     }
@@ -137,21 +137,21 @@ public class TestEndereco {
 
     @Test
     public void nao_deve_aceitar_cidade_com_menos_de_3_caracteres() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(CIDADE_CURTA);
         endereco.setCidade("ww");
     }
 
     @Test
     public void nao_deve_aceitar_cidade_com_mais_de_20_caracteres() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(CIDADE_LONGA);
         endereco.setCidade("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
     }
 
     @Test
     public void nao_deve_aceitar_cidade_com_numeros() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(CIDADE_COM_NUMEROS);
         endereco.setCidade("74145");
     }
@@ -165,14 +165,14 @@ public class TestEndereco {
 
     @Test
     public void nao_deve_aceitar_complemento_com_menos_de_3_caracteres() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(COMPLEMENTO_CURTO);
         endereco.setComplemento("ww");
     }
 
     @Test
     public void nao_deve_aceitar_complemento_com_mais_de_20_caracteres() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(COMPLEMENTO_LONGO);
         endereco.setComplemento("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
     }
@@ -192,7 +192,7 @@ public class TestEndereco {
 
     @Test
     public void nao_deve_aceitar_cep_invalido() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(CEP_INVALIDO);
         endereco.setCep("054515");
     }

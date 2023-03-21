@@ -2,7 +2,8 @@ package br.com.contmatic.endereco;
 
 import java.util.Objects;
 
-import static br.com.contmatic.utils.Utils.*;
+import static br.com.contmatic.utils.ValidadoresUtils.*;
+import static br.com.contmatic.utils.ConstantesUtils.*;
 
 public class Endereco {
     private String logradouro;
@@ -22,13 +23,7 @@ public class Endereco {
     public Endereco() {
     }
 
-    private String nomeClasse = "endereco";
-    private String enderecoLogradouro = "logradouro";
-    private String enderecoNumero = "numero";
-    private String enderecoBairro = "bairro";
-    private String enderecoCidade = "cidade";
-    private String enderecoComplemento = "complemento";
-    private String enderecoCep = "cep";
+
 
 
     public Endereco(String logradouro, Integer numero, String bairro, String cidade, UFType uf, String complemento, String cep) {
@@ -46,11 +41,11 @@ public class Endereco {
     }
 
     public void setLogradouro(String logradouro) {
-        validarObjetoNulo(logradouro, enderecoLogradouro, nomeClasse);
-        validarStringVazio(logradouro, enderecoLogradouro, nomeClasse);
-        validarStringTamanhoMinimo(logradouro, 3, enderecoLogradouro, nomeClasse);
-        validarNumerosString(logradouro, enderecoLogradouro, nomeClasse);
-        validarStringTamanhoMaximo(String.valueOf(numero), 20, enderecoLogradouro, nomeClasse);
+        validarObjetoNulo(logradouro, ENDERECO_LOGRADOURO, NOME_CLASSE_ENDERECO);
+        validarStringVazio(logradouro, ENDERECO_LOGRADOURO, NOME_CLASSE_ENDERECO);
+        validarStringTamanhoMinimo(logradouro, 3, ENDERECO_LOGRADOURO, NOME_CLASSE_ENDERECO);
+        validarNumerosString(logradouro, ENDERECO_LOGRADOURO, NOME_CLASSE_ENDERECO);
+        validarStringTamanhoMaximo(String.valueOf(numero), 20, ENDERECO_LOGRADOURO, NOME_CLASSE_ENDERECO);
         this.logradouro = logradouro;
     }
 
@@ -67,7 +62,7 @@ public class Endereco {
     }
 
     public void setNumero(Integer numero) {
-        validarObjetoNulo(numero, enderecoNumero, nomeClasse);
+        validarObjetoNulo(numero, ENDERECO_NUMERO, NOME_CLASSE_ENDERECO);
         this.numero = numero;
     }
 
@@ -76,11 +71,11 @@ public class Endereco {
     }
 
     public void setBairro(String bairro) {
-        validarObjetoNulo(bairro, enderecoBairro, nomeClasse);
-        validarStringVazio(bairro, enderecoBairro, nomeClasse);
-        validarStringTamanhoMinimo(bairro, 3, enderecoBairro, nomeClasse);
-        validarNumerosString(bairro, enderecoBairro, nomeClasse);
-        validarStringTamanhoMaximo(bairro, 20, enderecoBairro, nomeClasse);
+        validarObjetoNulo(bairro, ENDERECO_BAIRRO, NOME_CLASSE_ENDERECO);
+        validarStringVazio(bairro, ENDERECO_BAIRRO, NOME_CLASSE_ENDERECO);
+        validarStringTamanhoMinimo(bairro, 3, ENDERECO_BAIRRO, NOME_CLASSE_ENDERECO);
+        validarNumerosString(bairro, ENDERECO_BAIRRO, NOME_CLASSE_ENDERECO);
+        validarStringTamanhoMaximo(bairro, 20, ENDERECO_BAIRRO, NOME_CLASSE_ENDERECO);
         this.bairro = bairro;
     }
 
@@ -89,11 +84,11 @@ public class Endereco {
     }
 
     public void setCidade(String cidade) {
-        validarObjetoNulo(cidade, enderecoCidade, nomeClasse);
-        validarStringVazio(cidade, enderecoCidade, nomeClasse);
-        validarStringTamanhoMinimo(cidade, 3, enderecoCidade, nomeClasse);
-        validarNumerosString(cidade, enderecoCidade, nomeClasse);
-        validarStringTamanhoMaximo(cidade, 20, enderecoCidade, nomeClasse);
+        validarObjetoNulo(cidade, ENDERECO_CIDADE, NOME_CLASSE_ENDERECO);
+        validarStringVazio(cidade, ENDERECO_CIDADE, NOME_CLASSE_ENDERECO);
+        validarStringTamanhoMinimo(cidade, 3, ENDERECO_CIDADE, NOME_CLASSE_ENDERECO);
+        validarNumerosString(cidade, ENDERECO_CIDADE, NOME_CLASSE_ENDERECO);
+        validarStringTamanhoMaximo(cidade, 20, ENDERECO_CIDADE, NOME_CLASSE_ENDERECO);
         this.cidade = cidade;
     }
 
@@ -103,10 +98,10 @@ public class Endereco {
     }
 
     public void setComplemento(String complemento) {
-        validarObjetoNulo(complemento, enderecoComplemento, nomeClasse);
-        validarStringVazio(complemento, enderecoComplemento, nomeClasse);
-        validarStringTamanhoMinimo(complemento, 3, enderecoComplemento, nomeClasse);
-        validarStringTamanhoMaximo(complemento, 20, enderecoComplemento, nomeClasse);
+        validarObjetoNulo(complemento, ENDERECO_COMPLEMENTO, NOME_CLASSE_ENDERECO);
+        validarStringVazio(complemento, ENDERECO_COMPLEMENTO, NOME_CLASSE_ENDERECO);
+        validarStringTamanhoMinimo(complemento, 3, ENDERECO_COMPLEMENTO, NOME_CLASSE_ENDERECO);
+        validarStringTamanhoMaximo(complemento, 20, ENDERECO_COMPLEMENTO, NOME_CLASSE_ENDERECO);
         this.complemento = complemento;
     }
 
@@ -115,7 +110,7 @@ public class Endereco {
     }
 
     public void setCep(String cep) {
-        validarCep(cep, enderecoCep, nomeClasse);
+        validarPatternCep(cep, ENDERECO_CEP, NOME_CLASSE_ENDERECO);
         this.cep = cep;
     }
 

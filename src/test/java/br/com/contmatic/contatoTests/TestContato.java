@@ -84,21 +84,21 @@ public class TestContato {
 
     @Test
     public void nao_deve_aceitar_email_maior_que_60() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(MSG_EMAIL_MAIOR_QUE_60);
         contato.setEmail("444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444@gmail.com");
     }
 
     @Test
     public void nao_deve_aceitar_email_menor_que_6() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(MSG_EMAIL_MENOR_QUE_12);
         contato.setEmail("5@gmail.com");
     }
 
     @Test
     public void nao_deve_aceitar_email_invalido() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(MSG_EMAIL_INVALIDO);
         contato.setEmail("55232sdsdffsdfdsdffdsd656567s");
     }

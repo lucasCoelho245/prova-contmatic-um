@@ -6,7 +6,8 @@ import br.com.contmatic.endereco.Endereco;
 import java.util.List;
 import java.util.Objects;
 
-import static br.com.contmatic.utils.Utils.*;
+import static br.com.contmatic.utils.ConstantesUtils.*;
+import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static br.com.contmatic.utils.UtilsCnpj.validaCnpj;
 
 public class Fornecedor {
@@ -20,12 +21,7 @@ public class Fornecedor {
         return nome;
     }
 
-    private String nomeClasse = "fornecedor";
-    private String fornecedorEmpresa = "nome";
-    private String fornecedorProduto = "produtos";
-    private String fornecedorCnpj = "CNPJ";
-    private String fornecedorContato = "contatos";
-    private String fornecedorEndereco = "endereco";
+
 
     public Fornecedor() {
     }
@@ -39,11 +35,11 @@ public class Fornecedor {
     }
 
     public void setNome(String nome) {
-        validarObjetoNulo(nome, fornecedorEmpresa, nomeClasse);
-        validarStringVazio(nome, fornecedorEmpresa, nomeClasse);
-        validarStringTamanhoMinimo(nome, 3, fornecedorEmpresa, nomeClasse);
-        validarStringTamanhoMaximo(nome, 30, fornecedorEmpresa, nomeClasse);
-        validarNumerosString(nome, fornecedorEmpresa, nomeClasse);
+        validarObjetoNulo(nome, FORNECEDOR_EMPRESA, NOME_CLASSE_FORNECEDOR);
+        validarStringVazio(nome, FORNECEDOR_EMPRESA, NOME_CLASSE_FORNECEDOR);
+        validarStringTamanhoMinimo(nome, 3, FORNECEDOR_EMPRESA, NOME_CLASSE_FORNECEDOR);
+        validarStringTamanhoMaximo(nome, 30, FORNECEDOR_EMPRESA, NOME_CLASSE_FORNECEDOR);
+        validarNumerosString(nome, FORNECEDOR_EMPRESA, NOME_CLASSE_FORNECEDOR);
         this.nome = nome;
     }
 
@@ -52,7 +48,7 @@ public class Fornecedor {
     }
 
     public void setProdutos(List<Produto> produtos) {
-        validarObjetoNulo(produtos.get(0),  fornecedorProduto, nomeClasse);
+        validarObjetoNulo(produtos.get(0), FORNECEDOR_PRODUTO, NOME_CLASSE_FORNECEDOR);
         this.produtos = produtos;
     }
 
@@ -61,7 +57,7 @@ public class Fornecedor {
     }
 
     public void setCnpj(String cnpj) {
-        validaCnpj(cnpj, fornecedorCnpj, nomeClasse);
+        validaCnpj(cnpj, FORNECEDOR_CNPJ, NOME_CLASSE_FORNECEDOR);
         this.cnpj = cnpj;
     }
 
@@ -70,7 +66,7 @@ public class Fornecedor {
     }
 
     public void setContatos(List<Contato> contatos) {
-        validarObjetoNulo(contatos.get(0),  fornecedorContato, nomeClasse);
+        validarObjetoNulo(contatos.get(0), FORNECEDOR_CONTATO, NOME_CLASSE_FORNECEDOR);
         this.contatos = contatos;
     }
 
@@ -79,7 +75,7 @@ public class Fornecedor {
     }
 
     public void setEnderecos(List<Endereco> enderecos) {
-        validarObjetoNulo(enderecos.get(0), fornecedorEndereco, nomeClasse);
+        validarObjetoNulo(enderecos.get(0), FORNECEDOR_ENDERECO, NOME_CLASSE_FORNECEDOR);
         this.enderecos = enderecos;
     }
 

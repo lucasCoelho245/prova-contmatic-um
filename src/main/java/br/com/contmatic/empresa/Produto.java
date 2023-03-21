@@ -3,18 +3,15 @@ package br.com.contmatic.empresa;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import static br.com.contmatic.utils.Utils.*;
+import static br.com.contmatic.utils.ConstantesUtils.*;
+import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Produto {
     private String id;
     private String nome;
     private BigDecimal quantidade;
     private BigDecimal valor;
-    private String nomeClasse = "produto";
-    private String produtoNome = "nome";
-    private String produtoId = "id";
-    private String produtoQuantidade = "quantidade";
-    private String produtoValor = "valor";
+
 
     public Produto() {
     }
@@ -31,11 +28,11 @@ public class Produto {
     }
 
     public void setNome(String nome) {
-        validarObjetoNulo(nome, produtoNome, nomeClasse);
-        validarStringVazio(nome, produtoNome, nomeClasse);
-        validarStringTamanhoMinimo(nome, 3, produtoNome, nomeClasse);
-        validarNumerosString(nome, produtoNome, nomeClasse);
-        validarStringTamanhoMaximo(nome, 60, produtoNome, nomeClasse);
+        validarObjetoNulo(nome, PRODUTO_NOME, NOME_CLASSE_PRODUTO);
+        validarStringVazio(nome, PRODUTO_NOME, NOME_CLASSE_PRODUTO);
+        validarStringTamanhoMinimo(nome, 3, PRODUTO_NOME, NOME_CLASSE_PRODUTO);
+        validarNumerosString(nome, PRODUTO_NOME, NOME_CLASSE_PRODUTO);
+        validarStringTamanhoMaximo(nome, 60, PRODUTO_NOME, NOME_CLASSE_PRODUTO);
         this.nome = nome;
     }
 
@@ -44,9 +41,9 @@ public class Produto {
     }
 
     public void setId(String id) {
-        validarObjetoNulo(id, produtoId, nomeClasse);
-        validarStringVazio(id, produtoId, nomeClasse);
-        validarStringTamanhoMinimo(id, 2, produtoId, nomeClasse);
+        validarObjetoNulo(id, PRODUTO_ID, NOME_CLASSE_PRODUTO);
+        validarStringVazio(id, PRODUTO_ID, NOME_CLASSE_PRODUTO);
+        validarStringTamanhoMinimo(id, 2, PRODUTO_ID, NOME_CLASSE_PRODUTO);
         this.id = id;
     }
 
@@ -55,7 +52,7 @@ public class Produto {
     }
 
     public void setQuantidade(BigDecimal quantidade) {
-        validarStringTamanhoMinimo(String.valueOf(quantidade), 1, produtoQuantidade, nomeClasse);
+        validarStringTamanhoMinimo(String.valueOf(quantidade), 1, PRODUTO_QUANTIDADE, NOME_CLASSE_PRODUTO);
         this.quantidade = quantidade;
     }
 
@@ -64,7 +61,7 @@ public class Produto {
     }
 
     public void setValor(BigDecimal valor) {
-        validarStringTamanhoMinimo(String.valueOf(valor), 3, produtoValor, nomeClasse);
+        validarStringTamanhoMinimo(String.valueOf(valor), 3, PRODUTO_VALOR, NOME_CLASSE_PRODUTO);
         this.valor = valor;
     }
 

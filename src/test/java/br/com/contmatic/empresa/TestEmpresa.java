@@ -115,14 +115,14 @@ public class TestEmpresa {
 
     @Test
     public void nao_deve_aceitar_nome_com_mais_de_30_caracteres() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(TAMANHO_DE_EMPRESA_ESTA_ACIMA_DE_60_CARACTERES);
         empresa.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     @Test
     public void nao_deve_aceitar_nome_menor_que_3() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(TAMANHO_DE_EMPRESA_ESTA_ABAIXO_DE_3_CARACTERES);
         empresa.setNome("s");
     }
@@ -166,21 +166,21 @@ public class TestEmpresa {
 
     @Test
     public void nao_deve_aceitar_razao_social_menor_que_10() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(TAMANHO_DE_RAZAO_SOCIAL_ESTA_ABAIXO_DE_10_CARACTERES);
         empresa.setRazaoSocial("a");
     }
 
     @Test
     public void nao_deve_aceitar_razao_social_maior_que_60() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(TAMANHO_DE_RAZAO_SOCIAL_ESTA_ACIMA_DE_60_CARACTERES);
         empresa.setRazaoSocial("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     @Test
     public void nao_deve_aceitar_numero_razao_social() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(RAZAO_SOCIAL_TEM_NUMEROS);
         empresa.setRazaoSocial("234332323232");
     }

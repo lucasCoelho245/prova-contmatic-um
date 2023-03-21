@@ -83,13 +83,13 @@ public class TestTelefone {
 
     @Test
     public void nao_deve_aceitar_ddi_maior_que_3() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(MSG_DDI_MAIOR_DE_3_CARACTERES);
         telefone.setDdi("44444444");
     }
     @Test
     public void nao_deve_aceitar_ddi_com_letras() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(MSG_DDI_COM_CARACTERES);
         telefone.setDdi("we");
     }
@@ -103,21 +103,21 @@ public class TestTelefone {
 
     @Test
     public void nao_deve_aceitar_numero_maior_que_10() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(MSG_TELEFONE_MAIOR_DE_10_CARACTERES);
         telefone.setNumero("3487457845784578958756786");
     }
 
     @Test
     public void nao_deve_aceitar_numero_menor_que_8() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(MSG_TELEFONE_MENOR_DE_8_CARACTERES);
         telefone.setNumero("444");
     }
 
     @Test
     public void nao_deve_aceitar_numero_com_caracteres() {
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(MSG_TELEFONE_COM_LETRAS);
         telefone.setNumero("4fsdfgf");
     }

@@ -2,13 +2,13 @@ package br.com.contmatic.contato;
 
 import java.util.List;
 import java.util.Objects;
+import static br.com.contmatic.utils.ConstantesUtils.*;
 
-import static br.com.contmatic.utils.Utils.*;
+import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Contato {
     private String email;
     private List<Telefone> telefones;
-    private static final String CONTATO_EMPRESA = "contato";
 
     public Contato() {
     }
@@ -26,7 +26,7 @@ public class Contato {
         String emailEmpresa = "email";
         validarObjetoNulo(email, emailEmpresa, CONTATO_EMPRESA);
         validarStringVazio(email, emailEmpresa, CONTATO_EMPRESA);
-        validarEmail(email, emailEmpresa, CONTATO_EMPRESA);
+        validarPatternEmail(email, emailEmpresa, CONTATO_EMPRESA);
         validarStringTamanhoMaximo(email, 60, emailEmpresa, CONTATO_EMPRESA);
         validarStringTamanhoMinimo(email, 12, emailEmpresa, CONTATO_EMPRESA);
         this.email = email;

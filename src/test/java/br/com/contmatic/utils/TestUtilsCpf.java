@@ -5,7 +5,6 @@ import org.junit.Test;
 
 public class TestUtilsCpf {
     private UtilsCpf cpf;
-
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe CpfUtils");

@@ -1,13 +1,11 @@
 package br.com.contmatic.utils;
 
 import static br.com.contmatic.utils.CnpjUtilsConstants.*;
-import static br.com.contmatic.utils.Utils.*;
+import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static java.lang.Integer.parseInt;
 
 public class UtilsCnpj {
-    private UtilsCnpj() {
-        throw new IllegalStateException("Utility class");
-    }
+    private UtilsCnpj() {}
     public static void validaCnpj(String cnpj, String nomeDoCampo, String classe) {
         validarObjetoNulo(cnpj, nomeDoCampo, classe);
         validarStringVazio(cnpj, nomeDoCampo, classe);
