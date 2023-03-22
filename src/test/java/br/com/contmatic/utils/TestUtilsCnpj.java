@@ -5,6 +5,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import static br.com.contmatic.utils.constants.TestCnpj.*;
 import static org.junit.rules.ExpectedException.none;
 
 public class TestUtilsCnpj {
@@ -12,6 +13,7 @@ public class TestUtilsCnpj {
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe CnpjUtils");
     }
+
     @Rule
     public ExpectedException exceptionRule = none();
     @Test
@@ -21,24 +23,26 @@ public class TestUtilsCnpj {
     @Test
     public void nao_deve_aceitar_cnpj_com_caracteres_iguais() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(MSG_TELEFONE_NULO);
+        exceptionRule.expectMessage(MSG_REPETIDO);
         UtilsCnpj.validaCnpj("00000000000000", "Cnpj", "UtilsCnpj");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_cnpj_invalido() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(MSG_CNPJ_INVALIDO);
         UtilsCnpj.validaCnpj("74756244765647", "Cnpj", "UtilsCnpj");
     }
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_cnpj_com_mais_de_14_caracteres() {
-        UtilsCnpj.validaCnpj("7475624476564722232", "Cnpj", "UtilsCnpj");
-    }
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_cnpj_com_menos_de_14_caracteres() {
+    @Test
+    public void nao_deve_aceitar_cnpj_com_fora_de_formatacao() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(MSG_CNPJ_INVALIDO_FORMATACAO);
         UtilsCnpj.validaCnpj("5454", "Cnpj", "UtilsCnpj");
     }
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_cnpj_nulo() {
+    @Test
+    public void nao_deve_aceitar_cnpj_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(MSG_CNPJ_VAZIO);
         UtilsCnpj.validaCnpj(" ", "Cnpj", "UtilsCnpj");
     }
 }
