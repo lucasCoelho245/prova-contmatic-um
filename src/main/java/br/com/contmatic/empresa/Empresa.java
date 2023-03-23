@@ -1,17 +1,25 @@
 package br.com.contmatic.empresa;
 
 
+import br.com.contmatic.auditoria.Auditoria;
 import br.com.contmatic.contato.Contato;
 import br.com.contmatic.endereco.Endereco;
+import br.com.contmatic.utils.AuditoriaUtils;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
 import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static br.com.contmatic.utils.CnpjUtils.validaCnpj;
+import static java.net.InetAddress.getLocalHost;
+import static java.time.LocalDateTime.now;
 
-public class Empresa {
+public class Empresa extends Auditoria {
     private String nome;
 
     private String cnpj;
@@ -32,6 +40,7 @@ public class Empresa {
 
     public Empresa(String cnpj) {
         this.cnpj = cnpj;
+        setAuditoriaCriacao(this);
     }
 
     public Empresa(String cnpj, String razaoSocial, List<Endereco> endereco, List<Funcionario> funcionarios, List<Contato> contatos) {
@@ -40,6 +49,7 @@ public class Empresa {
         this.enderecos = endereco;
         this.funcionarios = funcionarios;
         this.contatos = contatos;
+        setAuditoriaCriacao(this);
     }
 
     public String getNome() {
@@ -51,6 +61,12 @@ public class Empresa {
         validarStringVazio(nome, nomeEmpresa, NOME_CLASSE_EMPRESA);
         validarStringTamanhoMaximo(nome, 60, nomeEmpresa, NOME_CLASSE_EMPRESA);
         validarStringTamanhoMinimo(nome, 2, nomeEmpresa, NOME_CLASSE_EMPRESA);
+        try {
+            this.setDataAlteracao(now());
+            this.setLoginAlteracao(getLocalHost().getHostName());
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
         this.nome = nome;
     }
 

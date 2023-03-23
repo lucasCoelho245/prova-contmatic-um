@@ -1,11 +1,10 @@
 package br.com.contmatic.auditoria;
 
-import br.com.contmatic.utils.ValidaDate;
-
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 import static br.com.contmatic.utils.ConstantsUtils.*;
+import static br.com.contmatic.utils.ValidaDate.isValidLocalDateTime;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Auditoria {
@@ -15,6 +14,8 @@ public class Auditoria {
     private String loginAlteracao;
 
     private String ipCriacao;
+
+    private String ipAlteracao;
 
     private LocalDateTime dataCriacao;
 
@@ -85,7 +86,7 @@ public class Auditoria {
     }
 
     public void setDataCriacao(LocalDateTime dataCriacao) {
-        ValidaDate.isValidLocalDateTime(dataCriacao, DATA_CRIACAO_AUDITORIA, NOME_CLASSE_AUDITORIA);
+        isValidLocalDateTime(dataCriacao, DATA_CRIACAO_AUDITORIA, NOME_CLASSE_AUDITORIA);
         this.dataCriacao = dataCriacao;
     }
 
@@ -94,7 +95,7 @@ public class Auditoria {
     }
 
     public void setDataAlteracao(LocalDateTime dataAlteracao) {
-        ValidaDate.isValidLocalDateTime(dataAlteracao, DATA_ALTERACAO_AUDITORIA, NOME_CLASSE_AUDITORIA);
+        isValidLocalDateTime(dataAlteracao, DATA_ALTERACAO_AUDITORIA, NOME_CLASSE_AUDITORIA);
         this.dataAlteracao = dataAlteracao;
     }
 
@@ -103,7 +104,7 @@ public class Auditoria {
     }
 
     public void setDataLogin(LocalDateTime dataLogin) {
-        ValidaDate.isValidLocalDateTime(dataLogin, DATA_LOGIN_AUDITORIA, NOME_CLASSE_AUDITORIA);
+        isValidLocalDateTime(dataLogin, DATA_LOGIN_AUDITORIA, NOME_CLASSE_AUDITORIA);
         this.dataLogin = dataLogin;
     }
 
@@ -112,7 +113,7 @@ public class Auditoria {
     }
 
     public void setDataLogout(LocalDateTime dataLogout) {
-        ValidaDate.isValidLocalDateTime(dataLogout, DATA_LOGOUT_AUDITORIA, NOME_CLASSE_AUDITORIA);
+        isValidLocalDateTime(dataLogout, DATA_LOGOUT_AUDITORIA, NOME_CLASSE_AUDITORIA);
         this.dataLogout = dataLogout;
     }
 
