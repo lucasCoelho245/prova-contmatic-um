@@ -2,7 +2,7 @@ package br.com.contmatic.utils;
 
 import java.time.LocalDateTime;
 
-import static br.com.contmatic.utils.UtilsConstantes.*;
+import static br.com.contmatic.utils.ConstantsUtils.*;
 
 public class ValidaDate {
 

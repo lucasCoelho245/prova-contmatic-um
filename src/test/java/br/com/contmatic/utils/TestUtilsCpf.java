@@ -5,7 +5,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static br.com.contmatic.utils.UtilsCpf.validarCpf;
+import static br.com.contmatic.utils.CpfUtils.validarCpf;
 import static br.com.contmatic.utils.constants.TestCpf.*;
 import static org.junit.rules.ExpectedException.none;
 

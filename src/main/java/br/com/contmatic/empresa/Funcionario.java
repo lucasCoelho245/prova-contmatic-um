@@ -8,9 +8,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
-import static br.com.contmatic.utils.UtilsConstantes.*;
+import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
-import static br.com.contmatic.utils.UtilsCpf.validarCpf;
+import static br.com.contmatic.utils.CpfUtils.validarCpf;
 
 public class Funcionario {
     private String cpf;
@@ -30,10 +30,7 @@ public class Funcionario {
     public Funcionario() {
     }
 
-
-
-
-    public Funcionario(String nome, List<Cargo> cargos, String cpf, BigDecimal salario, LocalDateTime dataNascimento,  List<Empresa> empresa, List<Contato> contatos) {
+    public Funcionario(String nome, List<Cargo> cargos, String cpf, BigDecimal salario, LocalDateTime dataNascimento, List<Empresa> empresa, List<Contato> contatos) {
         this.nome = nome;
         this.cargos = cargos;
         this.cpf = cpf;
@@ -60,7 +57,8 @@ public class Funcionario {
     }
 
     public void setCargos(List<Cargo> cargos) {
-        validarObjetoNulo(cargos.get(0), FUNCIONARIO_CARGO, NOME_CLASSE_FUNCIONARIO);
+        validarObjetoNulo(cargos, FUNCIONARIO_CARGO, NOME_CLASSE_FUNCIONARIO);
+        validarListVazia(cargos, FUNCIONARIO_CARGO, NOME_CLASSE_FUNCIONARIO);
         this.cargos = cargos;
     }
 
@@ -69,7 +67,8 @@ public class Funcionario {
     }
 
     public void setEmpresa(List<Empresa> empresa) {
-        validarObjetoNulo(empresa.get(0), FUNCIONARIO_EMPRESA, NOME_CLASSE_FUNCIONARIO);
+        validarObjetoNulo(empresa, FUNCIONARIO_EMPRESA, NOME_CLASSE_FUNCIONARIO);
+        validarListVazia(empresa, FUNCIONARIO_EMPRESA, NOME_CLASSE_FUNCIONARIO);
         this.empresas = empresa;
     }
 
@@ -78,7 +77,8 @@ public class Funcionario {
     }
 
     public void setContatos(List<Contato> contatos) {
-        validarObjetoNulo(contatos.get(0), "contatos", NOME_CLASSE_FUNCIONARIO);
+        validarObjetoNulo(contatos, CONTATOS_FUNCIONARIO, NOME_CLASSE_FUNCIONARIO);
+        validarListVazia(contatos, CONTATOS_FUNCIONARIO, NOME_CLASSE_FUNCIONARIO);
         this.contatos = contatos;
     }
 
@@ -87,7 +87,7 @@ public class Funcionario {
     }
 
     public void setCpf(String cpf) {
-        validarCpf(cpf, "contatos", NOME_CLASSE_FUNCIONARIO);
+        validarCpf(cpf, CPF_FUNCIONARIO, NOME_CLASSE_FUNCIONARIO);
         this.cpf = cpf;
     }
 
@@ -97,7 +97,7 @@ public class Funcionario {
     }
 
     public void setSalario(BigDecimal salario) {
-        validarStringTamanhoMinimo(String.valueOf(salario), 3, "Salario", NOME_CLASSE_FUNCIONARIO);
+        validarStringTamanhoMinimo(String.valueOf(salario), 3, SALARIO_FUNCIONARIO, NOME_CLASSE_FUNCIONARIO);
         this.salario = salario;
     }
 
@@ -106,7 +106,7 @@ public class Funcionario {
     }
 
     public void setDataNascimento(LocalDateTime dataNascimento) {
-        ValidaDate.isValidLocalDateTime(dataNascimento, "data nascimento", NOME_CLASSE_FUNCIONARIO);
+        ValidaDate.isValidLocalDateTime(dataNascimento, DATA_NASCIMENTO_FUNCIONARIO, NOME_CLASSE_FUNCIONARIO);
         this.dataNascimento = dataNascimento;
     }
 

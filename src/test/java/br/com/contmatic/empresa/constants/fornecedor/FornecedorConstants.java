@@ -15,8 +15,11 @@ public final class FornecedorConstants {
     public static final String NOME_LONGO = "Tamanho de string nome em fornecedor está acima de 30 caracteres";
     public static final String NOME_NUMERICO = "nome em fornecedor não pode ter caracteres numeros";
     public static final String CONTATO_NULO = "contatos em fornecedor não pode ser nulo";
+    public static final String CONTATO_VAZIO = "O Campo contatos em fornecedor está vazio";
     public static final String ENDERECO_NULO = "endereco em fornecedor não pode ser nulo";
+    public static final String ENDERECO_VAZIO = "O Campo endereco em fornecedor está vazio";
     public static final String PRODUTO_NULO = "produtos em fornecedor não pode ser nulo";
+    public static final String PRODUTO_VAZIO = "O Campo produtos em fornecedor está vazio";
     public static final String CNPJ_INVALIDO_REPETIDO = "O CNPJ tem caracteres repetidos ou está fora da formatação padrão";
     public static final String CNPJ_VAZIO = "O Campo CNPJ em fornecedor está vazio";
     public static final String CNPJ_INVALIDO = "O CNPJ está invalido";

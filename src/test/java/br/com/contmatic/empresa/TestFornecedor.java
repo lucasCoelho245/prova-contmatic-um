@@ -121,24 +121,42 @@ public class TestFornecedor {
     public void nao_deve_aceitar_contato_nulo() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(CONTATO_NULO);
+        List<Contato> contatos = null;
+        fornecedor.setContatos(contatos);
+    }
+    @Test
+    public void nao_deve_aceitar_contato_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CONTATO_VAZIO);
         List<Contato> contatos = new ArrayList<>();
-        contatos.add(null);
         fornecedor.setContatos(contatos);
     }
     @Test
     public void nao_deve_aceitar_enderecos_nulo() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(ENDERECO_NULO);
+        List<Endereco> enderecos = null;
+        fornecedor.setEnderecos(enderecos);
+    }
+    @Test
+    public void nao_deve_aceitar_enderecos_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(ENDERECO_VAZIO);
         List<Endereco> enderecos = new ArrayList<>();
-        enderecos.add(null);
         fornecedor.setEnderecos(enderecos);
     }
     @Test
     public void nao_deve_aceitar_produtos_nulo() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(PRODUTO_NULO);
+        List<Produto> produtos = null;
+        fornecedor.setProdutos(produtos);
+    }
+    @Test
+    public void nao_deve_aceitar_produtos_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(PRODUTO_VAZIO);
         List<Produto> produtos = new ArrayList<>();
-        produtos.add(null);
         fornecedor.setProdutos(produtos);
     }
     @Test

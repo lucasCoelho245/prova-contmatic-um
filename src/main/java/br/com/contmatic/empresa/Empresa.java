@@ -7,9 +7,9 @@ import br.com.contmatic.endereco.Endereco;
 import java.util.List;
 import java.util.Objects;
 
-import static br.com.contmatic.utils.UtilsConstantes.*;
+import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
-import static br.com.contmatic.utils.UtilsCnpj.validaCnpj;
+import static br.com.contmatic.utils.CnpjUtils.validaCnpj;
 
 public class Empresa {
     private String nome;
@@ -25,7 +25,6 @@ public class Empresa {
     private List<Funcionario> funcionarios;
 
     private List<Contato> contatos;
-
 
 
     public Empresa() {
@@ -48,7 +47,6 @@ public class Empresa {
     }
 
     public void setNome(String nome) {
-        String nomeEmpresa = "nome empresa";
         validarObjetoNulo(nome, nomeEmpresa, NOME_CLASSE_EMPRESA);
         validarStringVazio(nome, nomeEmpresa, NOME_CLASSE_EMPRESA);
         validarStringTamanhoMaximo(nome, 60, nomeEmpresa, NOME_CLASSE_EMPRESA);
@@ -61,7 +59,6 @@ public class Empresa {
     }
 
     public void setAtiva(Boolean ativa) {
-        String empresaAtiva = "empresa Ativa";
         validarObjetoNulo(ativa, empresaAtiva, NOME_CLASSE_EMPRESA);
         validarObjetoNulo(ativa, empresaAtiva, NOME_CLASSE_EMPRESA);
         this.ativa = ativa;
@@ -73,8 +70,8 @@ public class Empresa {
 
 
     public void setContatos(List<Contato> contatos) {
-        String contatoEmpresa = "contatos";
-        validarObjetoNulo(contatos.get(0), contatoEmpresa, NOME_CLASSE_EMPRESA);
+        validarListVazia(contatos, contatoEmpresa, NOME_CLASSE_EMPRESA);
+        validarObjetoNulo(contatos, contatoEmpresa, NOME_CLASSE_EMPRESA);
         this.contatos = contatos;
     }
 
@@ -109,8 +106,8 @@ public class Empresa {
     }
 
     public void setEnderecos(List<Endereco> enderecos) {
-        String empresaEndereco = "endereco";
-        validarObjetoNulo(enderecos.get(0), empresaEndereco, NOME_CLASSE_EMPRESA);
+        validarObjetoNulo(enderecos, empresaEndereco, NOME_CLASSE_EMPRESA);
+        validarListVazia(enderecos, empresaEndereco, NOME_CLASSE_EMPRESA);
         this.enderecos = enderecos;
     }
 
@@ -119,8 +116,8 @@ public class Empresa {
     }
 
     public void setFuncionarios(List<Funcionario> funcionarios) {
-        String empresaFuncionario = "funcionario";
-        validarObjetoNulo(funcionarios.get(0), empresaFuncionario, NOME_CLASSE_EMPRESA);
+        validarObjetoNulo(funcionarios, EMPRESA_FUNCIONARIO, NOME_CLASSE_EMPRESA);
+        validarListVazia(funcionarios, EMPRESA_FUNCIONARIO, NOME_CLASSE_EMPRESA);
         this.funcionarios = funcionarios;
     }
 

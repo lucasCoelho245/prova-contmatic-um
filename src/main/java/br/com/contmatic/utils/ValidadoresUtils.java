@@ -1,6 +1,7 @@
 package br.com.contmatic.utils;
 
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 import static br.com.contmatic.utils.ValidadoresConstants.*;
@@ -74,7 +75,10 @@ public class ValidadoresUtils {
             throw new IllegalArgumentException("O Campo " + nomeDoCampo + " em " + classe + " está vazio");
         }
     }
-
-
+    public static void validarListVazia(List<?> lst, String nomeDoCampo, String classe) {
+        if (lst.isEmpty()) {
+            throw new IllegalArgumentException("O Campo " + nomeDoCampo + " em " + classe + " está vazio");
+        }
+    }
 
 }

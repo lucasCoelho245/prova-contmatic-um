@@ -3,9 +3,9 @@ package br.com.contmatic.empresa;
 import java.util.List;
 import java.util.Objects;
 
-import static br.com.contmatic.utils.UtilsConstantes.*;
+import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
-import static br.com.contmatic.utils.UtilsCpf.validarCpf;
+import static br.com.contmatic.utils.CpfUtils.validarCpf;
 
 public class Cliente {
     private String cpf;
@@ -17,7 +17,6 @@ public class Cliente {
     public String getNome() {
         return nome;
     }
-
 
     public Cliente() {
     }
@@ -51,9 +50,8 @@ public class Cliente {
     }
 
     public void setProdutos(List<Produto> produtos) {
-        validarStringTamanhoMinimo(produtos.toString(), 60, PRODUTO_CLIENTE, NOME_CLASSE_CLIENTE);
-        validarStringTamanhoMaximo(produtos.toString(), 180, PRODUTO_CLIENTE, NOME_CLASSE_CLIENTE);
         validarObjetoNulo(produtos, PRODUTO_CLIENTE, NOME_CLASSE_CLIENTE);
+        validarListVazia(produtos, PRODUTO_CLIENTE, NOME_CLASSE_CLIENTE);
         this.produtos = produtos;
     }
 

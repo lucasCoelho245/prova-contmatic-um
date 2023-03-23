@@ -13,7 +13,8 @@ public final class ClienteConstants {
     public static final String CLIENTE_ESTA_COM_CARACTERES_NUMEROS = ("nome em cliente não pode ter caracteres numeros");
     public static final String CLIENTE_ESTA_VAZIO = ("O Campo nome em cliente está vazio");
     public static final String CLIENTE_ESTA_NULO = ("nome em cliente não pode ser nulo");
-    public static final String PRODUTO_ESTA_ACIMA_DE_60_CARACTERES = ("Tamanho de string produto em cliente está abaixo de 60 caracteres");
+    public static final String PRODUTO_ESTA_NULO = "produto em cliente não pode ser nulo";
+    public static final String PRODUTO_ESTA_VAZIO = "O Campo produto em cliente está vazio";
     public static final String CPF_ESTA_VAZIO = ("O Campo cpf em cliente está vazio");
     public static final String CPF_ESTA_INVALIDO = ("O CPF está invalido");
     public static final String CPF_ESTA_REPETIDO = ("CPF esta com caracteres repetidos ou diferente do numeracao padrao");

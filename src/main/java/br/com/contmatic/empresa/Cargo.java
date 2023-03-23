@@ -1,7 +1,7 @@
 package br.com.contmatic.empresa;
 
 import java.util.Objects;
-import static br.com.contmatic.utils.UtilsConstantes.*;
+import static br.com.contmatic.utils.ConstantsUtils.*;
 
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 
@@ -52,8 +52,8 @@ public class Cargo {
     }
 
     public void setCodigo(Integer codigo) {
-        validarObjetoNulo(codigo, "Codigo", NOME_CLASSE_CARGO);
-        validarStringTamanhoMinimo(codigo.toString(), 2, "Codigo", NOME_CLASSE_CARGO);
+        validarObjetoNulo(codigo, CODIGO_CARGO, NOME_CLASSE_CARGO);
+        validarStringTamanhoMinimo(codigo.toString(), 2, CODIGO_CARGO, NOME_CLASSE_CARGO);
         this.codigo = codigo;
     }
 

@@ -109,10 +109,16 @@ public class TestCliente {
 
     @Test
     public void nao_deve_aceitar_produto_se_nulo() {
-        exceptionRule.expect(IllegalStateException.class);
-        exceptionRule.expectMessage(PRODUTO_ESTA_ACIMA_DE_60_CARACTERES);
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(PRODUTO_ESTA_NULO);
+        List<Produto> produtos = null;
+        cliente.setProdutos(produtos);
+    }
+    @Test
+    public void nao_deve_aceitar_produto_se_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(PRODUTO_ESTA_VAZIO);
         List<Produto> produtos = new ArrayList<>();
-        produtos.add(null);
         cliente.setProdutos(produtos);
     }
 

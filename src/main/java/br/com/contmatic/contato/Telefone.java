@@ -2,7 +2,7 @@ package br.com.contmatic.contato;
 
 import java.util.Objects;
 
-import static br.com.contmatic.utils.UtilsConstantes.*;
+import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Telefone {
@@ -24,7 +24,7 @@ public class Telefone {
     }
 
     public void setDdd(DDDType ddd) {
-        validarObjetoNulo(ddd, "DDD", NOME_CLASSE_TELEFONE);
+        validarObjetoNulo(ddd, NOME_DDD_TELEFONE, NOME_CLASSE_TELEFONE);
         this.ddd = ddd;
     }
 
@@ -33,9 +33,9 @@ public class Telefone {
     }
 
     public void setDdi(String ddi) {
-        validarObjetoNulo(ddi, "DDI", NOME_CLASSE_TELEFONE);
-        validarStringTamanhoMaximo(ddi, 3, "DDI", NOME_CLASSE_TELEFONE);
-        validarCaracterString(ddi, "DDI", NOME_CLASSE_TELEFONE);
+        validarObjetoNulo(ddi, NOME_DDI_TELEFONE, NOME_CLASSE_TELEFONE);
+        validarStringTamanhoMaximo(ddi, 3, NOME_DDI_TELEFONE, NOME_CLASSE_TELEFONE);
+        validarCaracterString(ddi, NOME_DDI_TELEFONE, NOME_CLASSE_TELEFONE);
         this.ddi = Integer.valueOf(ddi);
     }
 

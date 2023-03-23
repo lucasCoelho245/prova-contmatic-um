@@ -1,11 +1,11 @@
 package br.com.contmatic.utils;
 
-import static br.com.contmatic.utils.CnpjUtilsConstants.*;
+import static br.com.contmatic.utils.CnpCpfjUtilsConstants.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static java.lang.Integer.parseInt;
 
-public class UtilsCnpj {
-    private UtilsCnpj() {}
+public class CnpjUtils {
+    private CnpjUtils() {}
     public static void validaCnpj(String cnpj, String nomeDoCampo, String classe) {
         validarObjetoNulo(cnpj, nomeDoCampo, classe);
         validarStringVazio(cnpj, nomeDoCampo, classe);
@@ -20,13 +20,13 @@ public class UtilsCnpj {
 
     private static void verificaDigitosCnpj(int[] digitos, int digitoUm, int digitoDois) {
         if (!(digitos[12] == digitoUm && digitos[13] == digitoDois)) {
-            throw new IllegalArgumentException("O CNPJ está invalido");
+            throw new IllegalArgumentException(EXCEPTION_CNPJ);
         }
     }
 
     private static void basicErrosCnpj(String eCnpj) {
         if (basicErrorCnpjVerifier(eCnpj)) {
-            throw new IllegalArgumentException("O CNPJ tem caracteres repetidos ou está fora da formatação padrão");
+            throw new IllegalArgumentException(EXCEPTION_CNPJ_REPETIDO);
         }
     }
 
@@ -62,14 +62,14 @@ public class UtilsCnpj {
     }
 
     private static boolean basicErrorCnpjVerifier(String cnpj) {
-        return cnpj.equals("00000000000000") || cnpj.equals("11111111111111") || cnpj.equals("22222222222222")
-                || cnpj.equals("33333333333333") || cnpj.equals("44444444444444") || cnpj.equals("55555555555555")
-                || cnpj.equals("66666666666666") || cnpj.equals("77777777777777") || cnpj.equals("88888888888888")
-                || cnpj.equals("99999999999999") || (cnpj.length() != CARACTERES_CNPJ);
+        return cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_ZERO) || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_UM) || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_DOIS)
+                || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_TRES) || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_QUATRO) || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_CINCO)
+                || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_SEIS) || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_SETE) || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_OITO)
+                || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_NOVE) || (cnpj.length() != CARACTERES_CNPJ);
     }
 
     private static int div(int dividendo) {
-        return dividendo - (dividendo / CnpjUtilsConstants.VALOR_ABAIXO_DOS_PRIMEIROS_CARACTERES_SEM_DIGITOS) * CnpjUtilsConstants.VALOR_ABAIXO_DOS_PRIMEIROS_CARACTERES_SEM_DIGITOS;
+        return dividendo - (dividendo / CnpCpfjUtilsConstants.VALOR_ABAIXO_DOS_PRIMEIROS_CARACTERES_SEM_DIGITOS) * CnpCpfjUtilsConstants.VALOR_ABAIXO_DOS_PRIMEIROS_CARACTERES_SEM_DIGITOS;
     }
 }
 

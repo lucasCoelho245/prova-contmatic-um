@@ -107,8 +107,14 @@ public class TestContato {
     public void nao_deve_aceitar_telefone_nulo() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(MSG_TELEFONE_NULO);
+        List<Telefone> telefones = null;
+        contato.setTelefones(telefones);
+    }
+    @Test
+    public void nao_deve_aceitar_telefone_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(MSG_TELEFONE_VAZIO);
         List<Telefone> telefones = new ArrayList<>();
-        telefones.add(null);
         contato.setTelefones(telefones);
     }
 }

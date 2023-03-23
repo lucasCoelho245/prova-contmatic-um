@@ -2,7 +2,7 @@ package br.com.contmatic.contato;
 
 import java.util.List;
 import java.util.Objects;
-import static br.com.contmatic.utils.UtilsConstantes.*;
+import static br.com.contmatic.utils.ConstantsUtils.*;
 
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 
@@ -23,7 +23,6 @@ public class Contato {
     }
 
     public void setEmail(String email) {
-        String emailEmpresa = "email";
         validarObjetoNulo(email, emailEmpresa, CONTATO_EMPRESA);
         validarStringVazio(email, emailEmpresa, CONTATO_EMPRESA);
         validarPatternEmail(email, emailEmpresa, CONTATO_EMPRESA);
@@ -38,7 +37,8 @@ public class Contato {
     }
 
     public void setTelefones(List<Telefone> telefones) {
-        validarObjetoNulo(telefones.get(0), "telefones", CONTATO_EMPRESA);
+        validarObjetoNulo(telefones, telefoneEmpresa, CONTATO_EMPRESA);
+        validarListVazia(telefones, telefoneEmpresa, CONTATO_EMPRESA);
         this.telefones = telefones;
     }
 

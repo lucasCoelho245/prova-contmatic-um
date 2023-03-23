@@ -5,7 +5,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static br.com.contmatic.utils.UtilsCnpj.validaCnpj;
+import static br.com.contmatic.utils.CnpjUtils.validaCnpj;
 import static br.com.contmatic.utils.constants.TestCnpj.*;
 import static org.junit.rules.ExpectedException.none;
 

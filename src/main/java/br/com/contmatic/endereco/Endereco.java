@@ -3,7 +3,7 @@ package br.com.contmatic.endereco;
 import java.util.Objects;
 
 import static br.com.contmatic.utils.ValidadoresUtils.*;
-import static br.com.contmatic.utils.UtilsConstantes.*;
+import static br.com.contmatic.utils.ConstantsUtils.*;
 
 public class Endereco {
     private String logradouro;
@@ -22,9 +22,6 @@ public class Endereco {
 
     public Endereco() {
     }
-
-
-
 
     public Endereco(String logradouro, Integer numero, String bairro, String cidade, UFType uf, String complemento, String cep) {
         this.logradouro = logradouro;

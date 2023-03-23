@@ -1,11 +1,11 @@
 package br.com.contmatic.utils;
 
-import static br.com.contmatic.utils.CpfUtilsConstants.*;
+import static br.com.contmatic.utils.CnpCpfjUtilsConstants.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static java.lang.Integer.parseInt;
 
-public final class UtilsCpf {
-    private UtilsCpf() {}
+public final class CpfUtils {
+    private CpfUtils() {}
     public static void validarCpf(String cpf, String nomeDoCampo, String classe) {
         validarObjetoNulo(cpf, nomeDoCampo, classe);
         validarStringVazio(cpf, nomeDoCampo, classe);
@@ -14,13 +14,13 @@ public final class UtilsCpf {
         int digitoUm = getDigitoUm(digitos);
         int digitoDois = getDigitoDois(digitos, digitoUm);
         if (!(digitoUm == digitos[9] && digitoDois == digitos[10])) {
-            throw new IllegalArgumentException("O CPF está invalido");
+            throw new IllegalArgumentException(EXEPTION_CPF);
         }
     }
 
     private static void errosCnpjBasicos(String cpf) {
         if (verificaCaracteresBasicos(cpf)) {
-            throw new IllegalArgumentException("CPF esta com caracteres repetidos ou diferente do numeracao padrao");
+            throw new IllegalArgumentException(EXEPTION_CPF_REPETIDO);
         }
     }
 
@@ -55,9 +55,9 @@ public final class UtilsCpf {
     }
 
     private static boolean verificaCaracteresBasicos(String cpf) {
-        return cpf.length() != CPF_CARACTERS || cpf.equals("00000000000") || cpf.equals("11111111111") || cpf.equals("22222222222")
-                || cpf.equals("33333333333") || cpf.equals("44444444444") || cpf.equals("55555555555")
-                || cpf.equals("66666666666") || cpf.equals("77777777777") || cpf.equals("88888888888")
-                || cpf.equals("99999999999");
+        return cpf.length() != CPF_CARACTERS || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_ZERO) || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_UM) || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_DOIS)
+                || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_TRES) || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_QUATRO) || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_CINCO)
+                || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_SEIS) || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_SETE) || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_OITO)
+                || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_NOVE);
     }
 }

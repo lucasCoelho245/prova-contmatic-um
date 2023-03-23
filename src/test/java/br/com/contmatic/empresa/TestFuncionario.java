@@ -104,17 +104,29 @@ public class TestFuncionario {
     public void nao_deve_aceitar_cargo_nulo() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(CAMPO_FUNCIONARIO_ESTA_NULO);
+        List<Cargo> cargos = null;
+        funcionario.setCargos(cargos);
+    }
+    @Test
+    public void nao_deve_aceitar_cargo_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CAMPO_FUNCIONARIO_ESTA_VAZIO);
         List<Cargo> cargos = new ArrayList<>();
-        cargos.add(null);
         funcionario.setCargos(cargos);
     }
 
     @Test
-    public void nao_deve_aceitar_empresa_nula() {
+    public void nao_deve_aceitar_empresa_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CAMPO_EMPRESA_ESTA_VAZIO);
+        List<Empresa> empresas = new ArrayList<>();
+        funcionario.setEmpresa(empresas);
+    }
+    @Test
+    public void nao_deve_aceitar_empresa_nulo() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(CAMPO_EMPRESA_ESTA_NULO);
-        List<Empresa> empresas = new ArrayList<>();
-        empresas.add(null);
+        List<Empresa> empresas = null;
         funcionario.setEmpresa(empresas);
     }
 
@@ -122,8 +134,14 @@ public class TestFuncionario {
     public void nao_deve_contato_nula() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(CAMPO_CONTATOS_ESTA_NULO);
+        List<Contato> contatos = null;
+        funcionario.setContatos(contatos);
+    }
+    @Test
+    public void nao_deve_contato_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CAMPO_CONTATOS_ESTA_VAZIO);
         List<Contato> contatos = new ArrayList<>();
-        contatos.add(null);
         funcionario.setContatos(contatos);
     }
 

@@ -12,12 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class FuncionarioConstants {
-    public static final String CAMPO_FUNCIONARIO_ESTA_NULO = ("cargo em funcionario não pode ser nulo");
-    public static final String CAMPO_EMPRESA_ESTA_NULO = ("empresa em funcionario não pode ser nulo");
-    public static final String CAMPO_CONTATOS_ESTA_NULO = ("contatos em funcionario não pode ser nulo");
-    public static final String CAMPO_SALARIO_CURTO = ("Tamanho de string Salario em funcionario está abaixo de 3 caracteres");
-    public static final String CAMPO_DATA_NASCIMENTO_INVALIDA = ("a data do campo data nascimento em funcionario esta com ano invalido");
-    public static final String CPF_INVALIDO = ("CPF esta com caracteres repetidos ou diferente do numeracao padrao");
+    public static final String CAMPO_FUNCIONARIO_ESTA_NULO = "cargo em funcionario não pode ser nulo";
+    public static final String CAMPO_FUNCIONARIO_ESTA_VAZIO = "O Campo cargo em funcionario está vazio";
+    public static final String CAMPO_EMPRESA_ESTA_NULO = "empresa em funcionario não pode ser nulo";
+    public static final String CAMPO_EMPRESA_ESTA_VAZIO = "O Campo empresa em funcionario está vazio";
+    public static final String CAMPO_CONTATOS_ESTA_NULO = "contatos em funcionario não pode ser nulo";
+    public static final String CAMPO_CONTATOS_ESTA_VAZIO = "O Campo contatos em funcionario está vazio";
+    public static final String CAMPO_SALARIO_CURTO = "Tamanho de string Salario em funcionario está abaixo de 3 caracteres";
+    public static final String CAMPO_DATA_NASCIMENTO_INVALIDA = "a data do campo data nascimento em funcionario esta com ano invalido";
+    public static final String CPF_INVALIDO = "CPF esta com caracteres repetidos ou diferente do numeracao padrao";
     public static final BigDecimal salario = new BigDecimal(1000);
     public static final LocalDateTime dataNascimento = LocalDateTime.of(2022, 2, 1, 22, 12);
     public static final List<Empresa> empresas = new ArrayList<>();

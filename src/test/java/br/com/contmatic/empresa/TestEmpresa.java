@@ -28,17 +28,11 @@ public class TestEmpresa {
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe empresa");
-
         telefones.add(new Telefone(DDD11, 555, "941584007"));
-
         contatos.add(new Contato("contmatic@gmail.com", telefones));
-
         cargos.add(new Cargo("analista", "desenvolvimento", 553));
-
         empresas.add(new Empresa("26631884000176"));
-
         funcionario.add(new Funcionario("nome", cargos, "50279302835", salario, data, empresas, contatos));
-
         enderecos.add(new Endereco("cambuci", 22, "barata Ribeiro", "01235000", MA, "apto 61", "01233300"));
     }
 
@@ -81,7 +75,6 @@ public class TestEmpresa {
     public void deve_aceitar_endereco_valido() {
         empresa.setEnderecos(enderecos);
         assertEquals(enderecos, empresa.getEnderecos());
-
     }
 
     @Test
@@ -154,13 +147,35 @@ public class TestEmpresa {
         exceptionRule.expectMessage(CAMPO_RAZAO_SOCIAL_ESTA_NULO);
         empresa.setRazaoSocial(null);
     }
+    @Test
+    public void nao_deve_aceitar_endereco_nulo() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CAMPO_ENDERECO_NULO);
+        List<Endereco> enderecoList = null;
+        empresa.setEnderecos(enderecoList);
+        assertEquals(enderecos, empresa.getEnderecos());
+    }
+    @Test
+    public void nao_deve_aceitar_endereco_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(CAMPO_ENDERECO_VAZIO);
+        List<Endereco> enderecoList = null;
+        empresa.setEnderecos(enderecoList);
+        assertEquals(enderecos, empresa.getEnderecos());
+    }
+    @Test
+    public void nao_deve_aceitar_funcionario_social_vazio() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(FUNCIONARIO_VAZIO);
+        List<Funcionario> funcionarios = new ArrayList<>();
+        empresa.setFuncionarios(funcionarios);
+    }
 
     @Test
-    public void nao_deve_aceitar_funcionario_social_nulo() {
+    public void nao_deve_aceitar_funcionario_social_nulosaaaa() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(CAMPO_FUNCIONARIO_ESTA_NULO);
-        List<Funcionario> funcionarios = new ArrayList<>();
-        funcionarios.add(null);
+        exceptionRule.expectMessage(FUNCIONARIO_NULO);
+        List<Funcionario> funcionarios = null;
         empresa.setFuncionarios(funcionarios);
     }
 
@@ -218,6 +233,12 @@ public class TestEmpresa {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(CNPJ_NULO);
         empresa.setCnpj(" ");
+    }
+    @Test
+    public void nao_deve_aceitar_contato_nulo() {
+        List<Contato> contatos = new ArrayList<>();
+        contatos.add(null);
+        empresa.setContatos(contatos);
     }
 
 

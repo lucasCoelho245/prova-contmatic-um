@@ -3,7 +3,7 @@ package br.com.contmatic.empresa;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import static br.com.contmatic.utils.UtilsConstantes.*;
+import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Produto {
