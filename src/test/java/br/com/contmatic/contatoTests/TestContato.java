@@ -63,7 +63,6 @@ public class TestContato {
     }
     @Test
     public void deve_aceitar_telefone_correto() {
-        List<Telefone> telefones = new ArrayList<>();
         telefones.add(new Telefone(DDD11, 5255 ,"1234"));
         contato.setTelefones(telefones);
         assertEquals(contato.getTelefones(), telefones);

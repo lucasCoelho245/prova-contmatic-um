@@ -147,6 +147,6 @@ public class TestCliente {
     public void nao_deve_aceitar_cpf_com_mais_de_11_caracteres() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(CPF_ESTA_REPETIDO);
-        cliente.setCpf("502793028356");
+        cliente.setCpf("507932322332302835");
     }
 }

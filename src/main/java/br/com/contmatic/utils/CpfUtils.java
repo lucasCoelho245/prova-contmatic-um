@@ -9,18 +9,19 @@ public final class CpfUtils {
     public static void validarCpf(String cpf, String nomeDoCampo, String classe) {
         validarObjetoNulo(cpf, nomeDoCampo, classe);
         validarStringVazio(cpf, nomeDoCampo, classe);
-        errosCnpjBasicos(cpf);
+        validarStringTamanhoMinimo(cpf, 10, nomeDoCampo, classe);
+        errosCPFBasicos(cpf);
         int[] digitos = separadorDigitos(cpf);
         int digitoUm = getDigitoUm(digitos);
         int digitoDois = getDigitoDois(digitos, digitoUm);
         if (!(digitoUm == digitos[9] && digitoDois == digitos[10])) {
-            throw new IllegalArgumentException(EXEPTION_CPF);
+            throw new IllegalArgumentException(EXCEPTION_CPF);
         }
     }
 
-    private static void errosCnpjBasicos(String cpf) {
+    private static void errosCPFBasicos(String cpf) {
         if (verificaCaracteresBasicos(cpf)) {
-            throw new IllegalArgumentException(EXEPTION_CPF_REPETIDO);
+            throw new IllegalArgumentException(EXCEPTION_CPF_REPETIDO);
         }
     }
 
@@ -55,9 +56,9 @@ public final class CpfUtils {
     }
 
     private static boolean verificaCaracteresBasicos(String cpf) {
-        return cpf.length() != CPF_CARACTERS || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_ZERO) || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_UM) || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_DOIS)
-                || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_TRES) || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_QUATRO) || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_CINCO)
-                || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_SEIS) || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_SETE) || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_OITO)
-                || cpf.equals(CPF_CPNJ_CARAC_REPETIDO_NOVE);
+        return cpf.length() != CPF_CARACTERS || cpf.equals(CPF_CARAC_REPETIDO_ZERO) || cpf.equals(CPF_CARAC_REPETIDO_UM) || cpf.equals(CPF_CARAC_REPETIDO_DOIS)
+                || cpf.equals(CPF_CARAC_REPETIDO_TRES) || cpf.equals(CPF_CARAC_REPETIDO_QUATRO) || cpf.equals(CPF_CARAC_REPETIDO_CINCO)
+                || cpf.equals(CPF_CARAC_REPETIDO_SEIS) || cpf.equals(CPF_CARAC_REPETIDO_SETE) || cpf.equals(CPF_CARAC_REPETIDO_OITO)
+                || cpf.equals(CPF_CARAC_REPETIDO_SETE);
     }
 }

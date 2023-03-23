@@ -62,10 +62,10 @@ public class CnpjUtils {
     }
 
     private static boolean basicErrorCnpjVerifier(String cnpj) {
-        return cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_ZERO) || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_UM) || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_DOIS)
-                || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_TRES) || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_QUATRO) || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_CINCO)
-                || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_SEIS) || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_SETE) || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_OITO)
-                || cnpj.equals(CPF_CPNJ_CARAC_REPETIDO_NOVE) || (cnpj.length() != CARACTERES_CNPJ);
+        return cnpj.equals(CPNJ_CARAC_REPETIDO_ZERO) || cnpj.equals(CPNJ_CARAC_REPETIDO_UM) || cnpj.equals(CPNJ_CARAC_REPETIDO_DOIS)
+                || cnpj.equals(CPNJ_CARAC_REPETIDO_TRES) || cnpj.equals(CPNJ_CARAC_REPETIDO_QUATRO) || cnpj.equals(CPNJ_CARAC_REPETIDO_CINCO)
+                || cnpj.equals(CPNJ_CARAC_REPETIDO_SEIS) || cnpj.equals(CPNJ_CARAC_REPETIDO_SETE) || cnpj.equals(CPNJ_CARAC_REPETIDO_OITO)
+                || cnpj.equals(CNPJ_CARAC_REPETIDO_NOVE) || (cnpj.length() != CARACTERES_CNPJ);
     }
 
     private static int div(int dividendo) {
