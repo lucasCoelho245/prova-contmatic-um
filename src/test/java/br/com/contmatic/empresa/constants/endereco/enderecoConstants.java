@@ -5,7 +5,7 @@ import br.com.contmatic.endereco.Endereco;
 import static br.com.contmatic.endereco.UFType.AP;
 import static br.com.contmatic.endereco.UFType.MA;
 
-public class enderecoConstants {
+public final class enderecoConstants {
     public static final Endereco enderecoCompleto = new Endereco("cambuci", 22, "barata Ribeiro" ,"01235000", MA ,"apto 61", "01233300");;
     public static final Endereco enderecoErrado = new Endereco("cambu", 232, "barata" ,"01231000", AP ,"apto", "01235300");;
     public static final String NUMERO_NULO = ("numero em endereco não pode ser nulo");

@@ -3,7 +3,7 @@ package br.com.contmatic.empresa;
 import java.util.List;
 import java.util.Objects;
 
-import static br.com.contmatic.utils.ConstantesUtils.*;
+import static br.com.contmatic.utils.UtilsConstantes.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static br.com.contmatic.utils.UtilsCpf.validarCpf;
 

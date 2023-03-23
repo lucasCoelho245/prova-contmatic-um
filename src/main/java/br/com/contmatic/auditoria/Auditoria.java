@@ -5,7 +5,7 @@ import br.com.contmatic.utils.ValidaDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import static br.com.contmatic.utils.ConstantesUtils.*;
+import static br.com.contmatic.utils.UtilsConstantes.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Auditoria {
@@ -121,7 +121,7 @@ public class Auditoria {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Auditoria auditoria = (Auditoria) o;
-        return ipCriacao.equals(auditoria.ipCriacao) && LOGIN_DA_CRIACAO.equals(LOGIN_DA_CRIACAO);
+        return ipCriacao.equals(auditoria.ipCriacao) && loginCriacao.equals(auditoria.loginCriacao);
     }
 
     @Override

@@ -13,8 +13,10 @@ import static org.junit.Assert.*;
 import static org.junit.rules.ExpectedException.none;
 
 public class TestProduto {
-
     private Produto produto;
+
+    @Rule
+    public ExpectedException exceptionRule = none();
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -25,9 +27,6 @@ public class TestProduto {
     public void setBeforeProduto() {
         produto = new Produto();
     }
-
-    @Rule
-    public ExpectedException exceptionRule = none();
     @Test
     public void deve_aceitar_nome_correto() {
         produto.setNome("lucas");

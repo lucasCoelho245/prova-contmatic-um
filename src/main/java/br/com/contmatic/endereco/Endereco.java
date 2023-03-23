@@ -3,7 +3,7 @@ package br.com.contmatic.endereco;
 import java.util.Objects;
 
 import static br.com.contmatic.utils.ValidadoresUtils.*;
-import static br.com.contmatic.utils.ConstantesUtils.*;
+import static br.com.contmatic.utils.UtilsConstantes.*;
 
 public class Endereco {
     private String logradouro;

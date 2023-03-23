@@ -9,7 +9,7 @@ import br.com.contmatic.endereco.Endereco;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FornecedorConstants {
+public final class FornecedorConstants {
     public static final String NOME_VAZIO = "O Campo nome em fornecedor está vazio";
     public static final String NOME_CURTO = "Tamanho de string nome em fornecedor está abaixo de 3 caracteres";
     public static final String NOME_LONGO = "Tamanho de string nome em fornecedor está acima de 30 caracteres";

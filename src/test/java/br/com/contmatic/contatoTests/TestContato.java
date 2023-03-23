@@ -19,6 +19,9 @@ import static org.junit.rules.ExpectedException.*;
 public class TestContato {
     private Contato contato;
 
+    @Rule
+    public ExpectedException exceptionRule = none();
+
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe Contato");
@@ -28,9 +31,6 @@ public class TestContato {
     public void setBeforeProduto() {
         contato = new Contato();
     }
-
-    @Rule
-    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_email_correto() {

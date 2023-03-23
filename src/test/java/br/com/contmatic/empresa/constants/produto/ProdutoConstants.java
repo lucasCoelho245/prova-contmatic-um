@@ -4,7 +4,7 @@ import br.com.contmatic.empresa.Produto;
 
 import java.math.BigDecimal;
 
-public class ProdutoConstants {
+public final class ProdutoConstants {
     public static final BigDecimal valor = new BigDecimal(1000);
     public static final BigDecimal quantidade = new BigDecimal(12);
     public static final Produto produtoCompleto = new Produto("Produto soja", "3232", quantidade, valor);

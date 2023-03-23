@@ -2,13 +2,15 @@ package br.com.contmatic.utils;
 
 import java.time.LocalDateTime;
 
-public class ValidaDate {
-    private static final LocalDateTime localDate = LocalDateTime.now();
+import static br.com.contmatic.utils.UtilsConstantes.*;
 
-    private static final Integer ANO_ATUAL = localDate.getYear();
-    private static final Integer MES_ATUAL = localDate.getMonthValue();
-    private static final Integer DIA_ATUAL = localDate.getDayOfMonth();
-    private static final String DATA_CAMPO = "a data do campo ";
+public class ValidaDate {
+
+    private ValidaDate() {
+    }
+
+
+
     public static void isValidLocalDateTime(LocalDateTime data, String nomeDoCampo, String classe) {
         validarAno(data.getYear(), nomeDoCampo, classe);
         validarMes(data.getMonthValue(), nomeDoCampo, classe);

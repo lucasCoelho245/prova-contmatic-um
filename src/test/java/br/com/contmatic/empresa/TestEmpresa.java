@@ -22,6 +22,9 @@ import static org.junit.rules.ExpectedException.*;
 public class TestEmpresa {
     private Empresa empresa;
 
+    @Rule
+    public ExpectedException exceptionRule = none();
+
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe empresa");
@@ -43,9 +46,6 @@ public class TestEmpresa {
     public void setBeforeFornecedor() {
         empresa = new Empresa();
     }
-
-    @Rule
-    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_nome_correto() {

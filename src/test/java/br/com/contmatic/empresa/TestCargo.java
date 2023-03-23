@@ -14,18 +14,18 @@ import static org.junit.rules.ExpectedException.none;
 public class TestCargo {
     private Cargo cargo;
 
+    @Rule
+    public ExpectedException exceptionRule = none();
+
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe Cargo");
     }
-
     @Before
     public void setBeforeCargo() {
         cargo = new Cargo();
 
     }
-    @Rule
-    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_nome_correto() {

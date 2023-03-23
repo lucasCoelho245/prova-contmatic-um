@@ -5,7 +5,7 @@ import br.com.contmatic.contato.Telefone;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TelefoneConstansts {
+public final class TelefoneConstansts {
     public static final String MSG_DDI_NULO = ("DDI em telefone não pode ser nulo");
     public static final String MSG_DDI_MAIOR_DE_3_CARACTERES = ("Tamanho de string DDI em telefone está acima de 3 caracteres");
     public static final String MSG_DDI_COM_CARACTERES = ("DDI em telefone não pode ter caracteres");

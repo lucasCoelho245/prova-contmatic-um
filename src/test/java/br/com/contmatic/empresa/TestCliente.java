@@ -17,6 +17,8 @@ import static org.junit.rules.ExpectedException.*;
 public class TestCliente {
     private Cliente cliente;
 
+    @Rule
+    public ExpectedException exceptionRule = none();
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -28,9 +30,6 @@ public class TestCliente {
     public void setBeforeCliente() {
         cliente = new Cliente();
     }
-
-    @Rule
-    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_nome_correto() {

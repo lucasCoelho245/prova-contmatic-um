@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FuncionarioConstants {
+public final class FuncionarioConstants {
     public static final String CAMPO_FUNCIONARIO_ESTA_NULO = ("cargo em funcionario não pode ser nulo");
     public static final String CAMPO_EMPRESA_ESTA_NULO = ("empresa em funcionario não pode ser nulo");
     public static final String CAMPO_CONTATOS_ESTA_NULO = ("contatos em funcionario não pode ser nulo");

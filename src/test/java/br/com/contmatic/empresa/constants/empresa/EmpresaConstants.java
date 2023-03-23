@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmpresaConstants {
+public final class EmpresaConstants {
     public static final BigDecimal salario = new BigDecimal(1000);
 
     public static final List<Empresa> empresas = new ArrayList<>();

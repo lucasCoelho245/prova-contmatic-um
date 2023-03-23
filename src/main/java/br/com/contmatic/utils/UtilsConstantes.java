@@ -1,8 +1,10 @@
 package br.com.contmatic.utils;
 
-public final class ConstantesUtils {
+import java.time.LocalDateTime;
 
-    private ConstantesUtils() {}
+public final class UtilsConstantes {
+
+    private UtilsConstantes() {}
     public static final String NOME_CLASSE_AUDITORIA = "auditoria";
     public static final String LOGIN_DA_CRIACAO = "login criacao";
     public static final String LOGIN_DA_ALTERACAO = "login alteracao";
@@ -40,4 +42,9 @@ public final class ConstantesUtils {
     public static final String ENDERECO_CIDADE = "cidade";
     public static final String ENDERECO_COMPLEMENTO = "complemento";
     public static final String ENDERECO_CEP = "cep";
+    public static final LocalDateTime localDate = LocalDateTime.now();
+    public static final Integer ANO_ATUAL = localDate.getYear();
+    public static final Integer MES_ATUAL = localDate.getMonthValue();
+    public static final Integer DIA_ATUAL = localDate.getDayOfMonth();
+    public static final String DATA_CAMPO = "a data do campo ";
 }

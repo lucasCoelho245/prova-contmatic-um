@@ -19,9 +19,10 @@ import static org.junit.Assert.*;
 import static org.junit.rules.ExpectedException.none;
 
 public class TestFuncionario {
-
-
     private Funcionario funcionario;
+
+    @Rule
+    public ExpectedException exceptionRule = none();
 
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -33,9 +34,6 @@ public class TestFuncionario {
     public void setBeforeFornecedor() {
         funcionario = new Funcionario();
     }
-
-    @Rule
-    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_nome_correto() {

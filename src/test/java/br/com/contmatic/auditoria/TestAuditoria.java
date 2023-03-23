@@ -15,6 +15,9 @@ import static org.junit.rules.ExpectedException.*;
 public class TestAuditoria {
     private Auditoria auditoria;
 
+    @Rule
+    public ExpectedException exceptionRule = none();
+
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe Auditoria");
@@ -24,9 +27,6 @@ public class TestAuditoria {
     public void setBeforeauditoria() {
         auditoria = new Auditoria();
     }
-
-    @Rule
-    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_login_alteracao_correto() {
@@ -91,7 +91,7 @@ public class TestAuditoria {
 
     @Test
     public void testAuditoriaToString() {
-        String expectedString = "Auditoria {dataCriacao= 2022-01-01T12:30, dataAlteracao= 2022-01-01T12:30, loginCriacao= teste@login, loginAlteracao= teste@login, ipCriacao= 25525525510, dataLogin= null, dataLogout= null}";
+        String expectedString = "Auditoria {dataCriacao= 2022-01-01T12:30, dataAlteracao= 2022-01-01T12:30, loginCriacao= testelogin, loginAlteracao= teste@login, ipCriacao= 25525525510, dataLogin= null, dataLogout= null}";
         assertEquals(expectedString, auditoriaTesteCompleto.toString());
     }
 

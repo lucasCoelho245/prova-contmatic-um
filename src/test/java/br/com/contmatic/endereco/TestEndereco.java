@@ -14,6 +14,9 @@ import static org.junit.rules.ExpectedException.*;
 public class TestEndereco {
     private Endereco endereco;
 
+    @Rule
+    public ExpectedException exceptionRule = none();
+
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe fornecedor");
@@ -23,9 +26,6 @@ public class TestEndereco {
     public void setBeforeEndereco() {
         endereco = new Endereco();
     }
-
-    @Rule
-    public ExpectedException exceptionRule = none();
 
     @Test
     public void deve_aceitar_logradouro_correto() {

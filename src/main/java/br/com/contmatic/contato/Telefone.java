@@ -2,7 +2,7 @@ package br.com.contmatic.contato;
 
 import java.util.Objects;
 
-import static br.com.contmatic.utils.ConstantesUtils.*;
+import static br.com.contmatic.utils.UtilsConstantes.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Telefone {
@@ -46,7 +46,7 @@ public class Telefone {
     public void setNumero(String numero) {
         validarObjetoNulo(numero, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
         validarStringVazio(numero, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
-        validarStringSomenteNumeros(numero, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
+        validarCaracterString(numero, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
         validarStringTamanhoMinimo(numero, 8, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
         validarStringTamanhoMaximo(numero, 10, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
         this.numero = numero;
