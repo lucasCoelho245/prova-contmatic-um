@@ -45,6 +45,11 @@ public class TestAuditoria {
         auditoria.setIpCriacao("255.255.255.10");
         assertEquals("255.255.255.10", auditoria.getIpCriacao());
     }
+    @Test
+    public void deve_aceitar_ip_alteracao_correto() {
+        auditoria.setIpAlteracao("255.255.255.10");
+        assertEquals("255.255.255.10", auditoria.getIpAlteracao());
+    }
 
     @Test
     public void deve_aceitar_data_alteracao_correta() {
@@ -100,8 +105,6 @@ public class TestAuditoria {
     public void nao_deve_aceitar_login_maior_que_25() {
         exceptionRule.expect(IllegalStateException.class);
         exceptionRule.expectMessage(LOG_CRIACAO);
-
-
         auditoria.setLoginCriacao("4288r342342342487qrRETRTRIUHIHIHJIHRIHGRSIHGRSIHGIHJIHGFSIHJOIHJOIHDGFSHFGHJDFFHJFJHJF");
         auditoria.setLoginAlteracao("4288r342342342487qrRETRTRIUHIHIHJIHRIHGRSIHGRSIHGIHJIHGFSIHJOIHJOIHDGFSHFGHJDFFHJFJHJF");
     }
@@ -194,6 +197,32 @@ public class TestAuditoria {
         exceptionRule.expectMessage(IP_CRIACAO_INVALIDO);
         exceptionRule.expect(IllegalStateException.class);
         auditoria.setIpCriacao("65ssfwfew992");
+    }
+    @Test
+    public void nao_deve_aceitar_ip_alteracao_invalido() {
+        exceptionRule.expectMessage(IP_ALTERACAO_INVALIDO);
+        exceptionRule.expect(IllegalStateException.class);
+        auditoria.setIpAlteracao("257765677656565722232992");
+    }
+
+    @Test
+    public void nao_deve_aceitar_ip_alteracao_nulo() {
+        exceptionRule.expectMessage(IP_ALTERACAO_NULO);
+        exceptionRule.expect(IllegalArgumentException.class);
+        auditoria.setIpAlteracao(null);
+    }
+    @Test
+    public void nao_deve_aceitar_ip_alteracao_vazio() {
+        exceptionRule.expectMessage(IP_ALTERACAO_VAZIO);
+        exceptionRule.expect(IllegalArgumentException.class);
+        auditoria.setIpAlteracao("");
+    }
+
+    @Test
+    public void nao_deve_aceitar_ip_alteracao_com_caracteres() {
+        exceptionRule.expectMessage(IP_ALTERACAO_INVALIDO);
+        exceptionRule.expect(IllegalStateException.class);
+        auditoria.setIpAlteracao("65ssfwfew992");
     }
 
 

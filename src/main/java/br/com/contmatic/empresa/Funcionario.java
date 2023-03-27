@@ -1,5 +1,6 @@
 package br.com.contmatic.empresa;
 
+import br.com.contmatic.auditoria.Auditoria;
 import br.com.contmatic.contato.Contato;
 import br.com.contmatic.utils.ValidaDate;
 
@@ -8,11 +9,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
 import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static br.com.contmatic.utils.CpfUtils.validarCpf;
 
-public class Funcionario {
+public class Funcionario extends Auditoria {
     private String cpf;
 
     private String nome;
@@ -38,6 +41,7 @@ public class Funcionario {
         this.dataNascimento = dataNascimento;
         this.empresas = empresa;
         this.contatos = contatos;
+        setAuditoriaCriacao(this);
     }
 
     public String getNome() {
@@ -49,6 +53,7 @@ public class Funcionario {
         validarStringTamanhoMaximo(nome, 40, FUNCIONARIO_NOME, NOME_CLASSE_FUNCIONARIO);
         validarNumerosString(nome, FUNCIONARIO_NOME, NOME_CLASSE_FUNCIONARIO);
         validarObjetoNulo(nome, FUNCIONARIO_NOME, NOME_CLASSE_FUNCIONARIO);
+        setAuditoriaAlteracao(this);
         this.nome = nome;
     }
 
@@ -59,6 +64,7 @@ public class Funcionario {
     public void setCargos(List<Cargo> cargos) {
         validarObjetoNulo(cargos, FUNCIONARIO_CARGO, NOME_CLASSE_FUNCIONARIO);
         validarListVazia(cargos, FUNCIONARIO_CARGO, NOME_CLASSE_FUNCIONARIO);
+        setAuditoriaAlteracao(this);
         this.cargos = cargos;
     }
 
@@ -88,6 +94,7 @@ public class Funcionario {
 
     public void setCpf(String cpf) {
         validarCpf(cpf, CPF_FUNCIONARIO, NOME_CLASSE_FUNCIONARIO);
+        setAuditoriaAlteracao(this);
         this.cpf = cpf;
     }
 
@@ -98,6 +105,7 @@ public class Funcionario {
 
     public void setSalario(BigDecimal salario) {
         validarStringTamanhoMinimo(String.valueOf(salario), 3, SALARIO_FUNCIONARIO, NOME_CLASSE_FUNCIONARIO);
+        setAuditoriaAlteracao(this);
         this.salario = salario;
     }
 
@@ -107,6 +115,7 @@ public class Funcionario {
 
     public void setDataNascimento(LocalDateTime dataNascimento) {
         ValidaDate.isValidLocalDateTime(dataNascimento, DATA_NASCIMENTO_FUNCIONARIO, NOME_CLASSE_FUNCIONARIO);
+        setAuditoriaAlteracao(this);
         this.dataNascimento = dataNascimento;
     }
 

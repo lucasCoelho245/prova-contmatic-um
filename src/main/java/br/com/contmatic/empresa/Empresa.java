@@ -4,20 +4,15 @@ package br.com.contmatic.empresa;
 import br.com.contmatic.auditoria.Auditoria;
 import br.com.contmatic.contato.Contato;
 import br.com.contmatic.endereco.Endereco;
-import br.com.contmatic.utils.AuditoriaUtils;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
 import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
+import static br.com.contmatic.utils.CnpjUtils.validaCnpj;
 import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
-import static br.com.contmatic.utils.CnpjUtils.validaCnpj;
-import static java.net.InetAddress.getLocalHost;
-import static java.time.LocalDateTime.now;
 
 public class Empresa extends Auditoria {
     private String nome;
@@ -61,12 +56,7 @@ public class Empresa extends Auditoria {
         validarStringVazio(nome, nomeEmpresa, NOME_CLASSE_EMPRESA);
         validarStringTamanhoMaximo(nome, 60, nomeEmpresa, NOME_CLASSE_EMPRESA);
         validarStringTamanhoMinimo(nome, 2, nomeEmpresa, NOME_CLASSE_EMPRESA);
-        try {
-            this.setDataAlteracao(now());
-            this.setLoginAlteracao(getLocalHost().getHostName());
-        } catch (UnknownHostException e) {
-            throw new RuntimeException(e);
-        }
+        setAuditoriaAlteracao(this);
         this.nome = nome;
     }
 
@@ -77,6 +67,7 @@ public class Empresa extends Auditoria {
     public void setAtiva(Boolean ativa) {
         validarObjetoNulo(ativa, empresaAtiva, NOME_CLASSE_EMPRESA);
         validarObjetoNulo(ativa, empresaAtiva, NOME_CLASSE_EMPRESA);
+        setAuditoriaAlteracao(this);
         this.ativa = ativa;
     }
 
@@ -88,6 +79,7 @@ public class Empresa extends Auditoria {
     public void setContatos(List<Contato> contatos) {
         validarListVazia(contatos, contatoEmpresa, NOME_CLASSE_EMPRESA);
         validarObjetoNulo(contatos, contatoEmpresa, NOME_CLASSE_EMPRESA);
+        setAuditoriaAlteracao(this);
         this.contatos = contatos;
     }
 
@@ -98,6 +90,7 @@ public class Empresa extends Auditoria {
     public void setCnpj(String cnpj) {
         String cnpjEmpresa = "CNPJ";
         validaCnpj(cnpj, cnpjEmpresa, NOME_CLASSE_EMPRESA);
+        setAuditoriaAlteracao(this);
         this.cnpj = cnpj;
     }
 
@@ -113,6 +106,7 @@ public class Empresa extends Auditoria {
         validarStringTamanhoMinimo(razaoSocial, 10, empresaRazaoSocial, NOME_CLASSE_EMPRESA);
         validarStringTamanhoMaximo(razaoSocial, 60, empresaRazaoSocial, NOME_CLASSE_EMPRESA);
         validarNumerosString(razaoSocial, empresaRazaoSocial, NOME_CLASSE_EMPRESA);
+        setAuditoriaAlteracao(this);
         this.razaoSocial = razaoSocial;
     }
 
@@ -124,6 +118,7 @@ public class Empresa extends Auditoria {
     public void setEnderecos(List<Endereco> enderecos) {
         validarObjetoNulo(enderecos, empresaEndereco, NOME_CLASSE_EMPRESA);
         validarListVazia(enderecos, empresaEndereco, NOME_CLASSE_EMPRESA);
+        setAuditoriaAlteracao(this);
         this.enderecos = enderecos;
     }
 
@@ -134,6 +129,7 @@ public class Empresa extends Auditoria {
     public void setFuncionarios(List<Funcionario> funcionarios) {
         validarObjetoNulo(funcionarios, EMPRESA_FUNCIONARIO, NOME_CLASSE_EMPRESA);
         validarListVazia(funcionarios, EMPRESA_FUNCIONARIO, NOME_CLASSE_EMPRESA);
+        setAuditoriaAlteracao(this);
         this.funcionarios = funcionarios;
     }
 

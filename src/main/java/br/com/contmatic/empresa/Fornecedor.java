@@ -1,16 +1,19 @@
 package br.com.contmatic.empresa;
 
+import br.com.contmatic.auditoria.Auditoria;
 import br.com.contmatic.contato.Contato;
 import br.com.contmatic.endereco.Endereco;
 
 import java.util.List;
 import java.util.Objects;
 
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
 import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static br.com.contmatic.utils.CnpjUtils.validaCnpj;
 
-public class Fornecedor {
+public class Fornecedor extends Auditoria {
     private String cnpj;
     private String nome;
     private List<Produto> produtos;
@@ -30,6 +33,7 @@ public class Fornecedor {
         this.produtos = produtos;
         this.contatos = contatos;
         this.enderecos = enderecos;
+        setAuditoriaCriacao(this);
     }
 
     public void setNome(String nome) {
@@ -38,6 +42,7 @@ public class Fornecedor {
         validarStringTamanhoMinimo(nome, 3, FORNECEDOR_EMPRESA, NOME_CLASSE_FORNECEDOR);
         validarStringTamanhoMaximo(nome, 30, FORNECEDOR_EMPRESA, NOME_CLASSE_FORNECEDOR);
         validarNumerosString(nome, FORNECEDOR_EMPRESA, NOME_CLASSE_FORNECEDOR);
+        setAuditoriaAlteracao(this);
         this.nome = nome;
     }
 
@@ -48,6 +53,7 @@ public class Fornecedor {
     public void setProdutos(List<Produto> produtos) {
         validarObjetoNulo(produtos, FORNECEDOR_PRODUTO, NOME_CLASSE_FORNECEDOR);
         validarListVazia(produtos, FORNECEDOR_PRODUTO, NOME_CLASSE_FORNECEDOR);
+        setAuditoriaAlteracao(this);
         this.produtos = produtos;
     }
 
@@ -57,6 +63,7 @@ public class Fornecedor {
 
     public void setCnpj(String cnpj) {
         validaCnpj(cnpj, FORNECEDOR_CNPJ, NOME_CLASSE_FORNECEDOR);
+        setAuditoriaAlteracao(this);
         this.cnpj = cnpj;
     }
 
@@ -67,6 +74,7 @@ public class Fornecedor {
     public void setContatos(List<Contato> contatos) {
         validarObjetoNulo(contatos, FORNECEDOR_CONTATO, NOME_CLASSE_FORNECEDOR);
         validarListVazia(contatos, FORNECEDOR_CONTATO, NOME_CLASSE_FORNECEDOR);
+        setAuditoriaAlteracao(this);
         this.contatos = contatos;
     }
 
@@ -77,6 +85,7 @@ public class Fornecedor {
     public void setEnderecos(List<Endereco> enderecos) {
         validarObjetoNulo(enderecos, FORNECEDOR_ENDERECO, NOME_CLASSE_FORNECEDOR);
         validarListVazia(enderecos, FORNECEDOR_ENDERECO, NOME_CLASSE_FORNECEDOR);
+        setAuditoriaAlteracao(this);
         this.enderecos = enderecos;
     }
 

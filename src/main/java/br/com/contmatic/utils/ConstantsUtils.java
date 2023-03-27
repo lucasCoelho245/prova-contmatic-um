@@ -13,6 +13,7 @@ public final class ConstantsUtils {
     public static final String LOGIN_DA_CRIACAO = "login criacao";
     public static final String LOGIN_DA_ALTERACAO = "login alteracao";
     public static final String IP_DA_CRIACAO = "ipcriacao";
+    public static final String IP_DA_ALTERACAO = "ipAlteracao";
     public static final String CONTATO_EMPRESA = "contato";
     public static final String CPF_FUNCIONARIO = "CPF";
     public static final String NOME_CLASSE_TELEFONE = "telefone";

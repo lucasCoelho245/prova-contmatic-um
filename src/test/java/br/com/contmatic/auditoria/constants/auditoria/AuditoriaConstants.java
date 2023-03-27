@@ -15,8 +15,11 @@ public final class AuditoriaConstants {
     public static final String LOG_LOGOUT_INVALIDA = "a data do campo data logout em auditoria esta com dia invalido";
     public static final String LOG_LOGIN_INVALIDA = "a data do campo data login em auditoria esta com ano invalido";
     public static final String IP_CRIACAO_INVALIDO = "ipcriacao em auditoria não é um ip válido";
+    public static final String IP_ALTERACAO_INVALIDO = "ipAlteracao em auditoria não é um ip válido";
     public static final String IP_CRIACAO_NULO = "ipcriacao em auditoria não pode ser nulo";
+    public static final String IP_ALTERACAO_NULO = "ipAlteracao em auditoria não pode ser nulo";
     public static final String IP_CRIACAO_VAZIO = "O Campo ipcriacao em auditoria está vazio";
+    public static final String IP_ALTERACAO_VAZIO = "O Campo ipAlteracao em auditoria está vazio";
     public static final LocalDateTime exemploData = LocalDateTime.of(2022, 1, 1, 12, 30);
     public static final Auditoria auditoriaTeste = new Auditoria("testelogin", "2552552551");
     public static final Auditoria auditoriaTesteCompleto = new Auditoria("testelogin", "teste@login","25525525510" , exemploData, exemploData);

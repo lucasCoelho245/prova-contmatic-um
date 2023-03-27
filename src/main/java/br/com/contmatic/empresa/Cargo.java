@@ -1,11 +1,16 @@
 package br.com.contmatic.empresa;
 
+import br.com.contmatic.auditoria.Auditoria;
+
 import java.util.Objects;
+
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
 import static br.com.contmatic.utils.ConstantsUtils.*;
 
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 
-public class Cargo {
+public class Cargo extends Auditoria {
     private String nome;
     private String setor;
     private Integer codigo;
@@ -15,6 +20,7 @@ public class Cargo {
         this.nome = nome;
         this.setor = setor;
         this.codigo = codigo;
+        setAuditoriaCriacao(this);
     }
 
     public Cargo() {
@@ -35,6 +41,7 @@ public class Cargo {
         validarStringVazio(setor, SETOR_CARGO, NOME_CLASSE_CARGO);
         validarStringTamanhoMinimo(setor, 2, SETOR_CARGO, NOME_CLASSE_CARGO);
         validarStringTamanhoMaximo(setor, 30, SETOR_CARGO, NOME_CLASSE_CARGO);
+        setAuditoriaAlteracao(this);
         this.setor = setor;
     }
 
@@ -44,6 +51,7 @@ public class Cargo {
         validarStringTamanhoMinimo(nome, 2, NOME_CARGO, NOME_CLASSE_CARGO);
         validarStringTamanhoMaximo(nome, 60, NOME_CARGO, NOME_CLASSE_CARGO);
         validarNumerosString(nome, NOME_CARGO, NOME_CLASSE_CARGO);
+        setAuditoriaAlteracao(this);
         this.nome = nome;
     }
 
@@ -54,6 +62,7 @@ public class Cargo {
     public void setCodigo(Integer codigo) {
         validarObjetoNulo(codigo, CODIGO_CARGO, NOME_CLASSE_CARGO);
         validarStringTamanhoMinimo(codigo.toString(), 2, CODIGO_CARGO, NOME_CLASSE_CARGO);
+        setAuditoriaAlteracao(this);
         this.codigo = codigo;
     }
 

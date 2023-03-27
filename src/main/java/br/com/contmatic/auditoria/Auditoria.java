@@ -81,6 +81,20 @@ public class Auditoria {
         this.ipCriacao = ipCriacao;
     }
 
+    public String getIpAlteracao() {
+        return ipAlteracao;
+    }
+
+    public void setIpAlteracao(String ipAlteracao) {
+        validarObjetoNulo(ipAlteracao, IP_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
+        validarStringVazio(ipAlteracao, IP_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
+        validarPatternIp(ipAlteracao, IP_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
+        validarCaracterString(ipAlteracao, IP_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
+        validarStringTamanhoMinimo(ipAlteracao, 6, IP_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
+        validarStringTamanhoMaximo(ipAlteracao, 15, IP_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
+        this.ipAlteracao = ipAlteracao;
+    }
+
     public LocalDateTime getDataCriacao() {
         return dataCriacao;
     }

@@ -1,11 +1,15 @@
 package br.com.contmatic.endereco;
 
+import br.com.contmatic.auditoria.Auditoria;
+
 import java.util.Objects;
 
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static br.com.contmatic.utils.ConstantsUtils.*;
 
-public class Endereco {
+public class Endereco extends Auditoria {
     private String logradouro;
 
     private Integer numero;
@@ -31,6 +35,7 @@ public class Endereco {
         this.uf = uf;
         this.complemento = complemento;
         this.cep = cep;
+        setAuditoriaCriacao(this);
     }
 
     public String getLogradouro() {
@@ -43,6 +48,7 @@ public class Endereco {
         validarStringTamanhoMinimo(logradouro, 3, ENDERECO_LOGRADOURO, NOME_CLASSE_ENDERECO);
         validarNumerosString(logradouro, ENDERECO_LOGRADOURO, NOME_CLASSE_ENDERECO);
         validarStringTamanhoMaximo(String.valueOf(numero), 20, ENDERECO_LOGRADOURO, NOME_CLASSE_ENDERECO);
+        setAuditoriaAlteracao(this);
         this.logradouro = logradouro;
     }
 
@@ -51,6 +57,7 @@ public class Endereco {
     }
 
     public void setUf(UFType uf) {
+        setAuditoriaAlteracao(this);
         this.uf = uf;
     }
 
@@ -60,6 +67,7 @@ public class Endereco {
 
     public void setNumero(Integer numero) {
         validarObjetoNulo(numero, ENDERECO_NUMERO, NOME_CLASSE_ENDERECO);
+        setAuditoriaAlteracao(this);
         this.numero = numero;
     }
 
@@ -73,6 +81,7 @@ public class Endereco {
         validarStringTamanhoMinimo(bairro, 3, ENDERECO_BAIRRO, NOME_CLASSE_ENDERECO);
         validarNumerosString(bairro, ENDERECO_BAIRRO, NOME_CLASSE_ENDERECO);
         validarStringTamanhoMaximo(bairro, 20, ENDERECO_BAIRRO, NOME_CLASSE_ENDERECO);
+        setAuditoriaAlteracao(this);
         this.bairro = bairro;
     }
 
@@ -86,6 +95,7 @@ public class Endereco {
         validarStringTamanhoMinimo(cidade, 3, ENDERECO_CIDADE, NOME_CLASSE_ENDERECO);
         validarNumerosString(cidade, ENDERECO_CIDADE, NOME_CLASSE_ENDERECO);
         validarStringTamanhoMaximo(cidade, 20, ENDERECO_CIDADE, NOME_CLASSE_ENDERECO);
+        setAuditoriaAlteracao(this);
         this.cidade = cidade;
     }
 
@@ -99,6 +109,7 @@ public class Endereco {
         validarStringVazio(complemento, ENDERECO_COMPLEMENTO, NOME_CLASSE_ENDERECO);
         validarStringTamanhoMinimo(complemento, 3, ENDERECO_COMPLEMENTO, NOME_CLASSE_ENDERECO);
         validarStringTamanhoMaximo(complemento, 20, ENDERECO_COMPLEMENTO, NOME_CLASSE_ENDERECO);
+        setAuditoriaAlteracao(this);
         this.complemento = complemento;
     }
 

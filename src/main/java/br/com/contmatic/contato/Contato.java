@@ -1,12 +1,16 @@
 package br.com.contmatic.contato;
 
+import br.com.contmatic.auditoria.Auditoria;
+
 import java.util.List;
 import java.util.Objects;
-import static br.com.contmatic.utils.ConstantsUtils.*;
 
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
+import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 
-public class Contato {
+public class Contato extends Auditoria {
     private String email;
     private List<Telefone> telefones;
 
@@ -16,6 +20,7 @@ public class Contato {
     public Contato(String email, List<Telefone> telefones) {
         this.email = email;
         this.telefones = telefones;
+        setAuditoriaCriacao(this);
     }
 
     public String getEmail() {
@@ -28,6 +33,7 @@ public class Contato {
         validarPatternEmail(email, emailEmpresa, CONTATO_EMPRESA);
         validarStringTamanhoMaximo(email, 60, emailEmpresa, CONTATO_EMPRESA);
         validarStringTamanhoMinimo(email, 12, emailEmpresa, CONTATO_EMPRESA);
+        setAuditoriaAlteracao(this);
         this.email = email;
     }
 
@@ -39,6 +45,7 @@ public class Contato {
     public void setTelefones(List<Telefone> telefones) {
         validarObjetoNulo(telefones, telefoneEmpresa, CONTATO_EMPRESA);
         validarListVazia(telefones, telefoneEmpresa, CONTATO_EMPRESA);
+        setAuditoriaAlteracao(this);
         this.telefones = telefones;
     }
 

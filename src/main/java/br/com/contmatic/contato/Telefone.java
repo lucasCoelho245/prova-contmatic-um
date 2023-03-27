@@ -1,11 +1,15 @@
 package br.com.contmatic.contato;
 
+import br.com.contmatic.auditoria.Auditoria;
+
 import java.util.Objects;
 
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
 import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 
-public class Telefone {
+public class Telefone extends Auditoria {
     private DDDType ddd;
     private Integer ddi;
     private String numero;
@@ -17,6 +21,7 @@ public class Telefone {
         this.ddd = ddd;
         this.ddi = ddi;
         this.numero = numero;
+        setAuditoriaCriacao(this);
     }
 
     public DDDType getDdd() {
@@ -36,6 +41,7 @@ public class Telefone {
         validarObjetoNulo(ddi, NOME_DDI_TELEFONE, NOME_CLASSE_TELEFONE);
         validarStringTamanhoMaximo(ddi, 3, NOME_DDI_TELEFONE, NOME_CLASSE_TELEFONE);
         validarCaracterString(ddi, NOME_DDI_TELEFONE, NOME_CLASSE_TELEFONE);
+        setAuditoriaAlteracao(this);
         this.ddi = Integer.valueOf(ddi);
     }
 
@@ -49,6 +55,7 @@ public class Telefone {
         validarCaracterString(numero, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
         validarStringTamanhoMinimo(numero, 8, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
         validarStringTamanhoMaximo(numero, 10, NUMERO_TELEFONE, NOME_CLASSE_TELEFONE);
+        setAuditoriaAlteracao(this);
         this.numero = numero;
     }
 

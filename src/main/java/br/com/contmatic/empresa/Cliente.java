@@ -1,13 +1,16 @@
 package br.com.contmatic.empresa;
 
+import br.com.contmatic.auditoria.Auditoria;
+
 import java.util.List;
 import java.util.Objects;
 
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
 import static br.com.contmatic.utils.ConstantsUtils.*;
-import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static br.com.contmatic.utils.CpfUtils.validarCpf;
+import static br.com.contmatic.utils.ValidadoresUtils.*;
 
-public class Cliente {
+public class Cliente extends Auditoria {
     private String cpf;
 
     private String nome;
@@ -33,6 +36,7 @@ public class Cliente {
         validarStringTamanhoMinimo(nome, 3, NOME_CLIENTE, NOME_CLASSE_CLIENTE);
         validarStringTamanhoMaximo(nome, 60, NOME_CLIENTE, NOME_CLASSE_CLIENTE);
         validarNumerosString(nome, NOME_CLIENTE, NOME_CLASSE_CLIENTE);
+        setAuditoriaAlteracao(this);
         this.nome = nome;
     }
 
@@ -46,27 +50,28 @@ public class Cliente {
 
     public void setCpf(String cpf) {
         validarCpf(cpf, CPF_CLIENTE, NOME_CLASSE_CLIENTE);
+        setAuditoriaAlteracao(this);
         this.cpf = cpf;
     }
 
     public void setProdutos(List<Produto> produtos) {
         validarObjetoNulo(produtos, PRODUTO_CLIENTE, NOME_CLASSE_CLIENTE);
         validarListVazia(produtos, PRODUTO_CLIENTE, NOME_CLASSE_CLIENTE);
+        setAuditoriaAlteracao(this);
         this.produtos = produtos;
     }
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Cliente)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Cliente cliente = (Cliente) o;
-        return getNome().equals(cliente.getNome());
+        return cpf.equals(cliente.cpf);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNome());
+        return Objects.hash(cpf);
     }
 
     @Override

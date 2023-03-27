@@ -1,12 +1,16 @@
 package br.com.contmatic.empresa;
 
+import br.com.contmatic.auditoria.Auditoria;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
 import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 
-public class Produto {
+public class Produto extends Auditoria {
     private String id;
     private String nome;
     private BigDecimal quantidade;
@@ -21,6 +25,7 @@ public class Produto {
         this.id = id;
         this.quantidade = quantidade;
         this.valor = valor;
+        setAuditoriaCriacao(this);
     }
 
     public String getNome() {
@@ -33,6 +38,7 @@ public class Produto {
         validarStringTamanhoMinimo(nome, 3, PRODUTO_NOME, NOME_CLASSE_PRODUTO);
         validarNumerosString(nome, PRODUTO_NOME, NOME_CLASSE_PRODUTO);
         validarStringTamanhoMaximo(nome, 60, PRODUTO_NOME, NOME_CLASSE_PRODUTO);
+        setAuditoriaAlteracao(this);
         this.nome = nome;
     }
 
@@ -44,6 +50,7 @@ public class Produto {
         validarObjetoNulo(id, PRODUTO_ID, NOME_CLASSE_PRODUTO);
         validarStringVazio(id, PRODUTO_ID, NOME_CLASSE_PRODUTO);
         validarStringTamanhoMinimo(id, 2, PRODUTO_ID, NOME_CLASSE_PRODUTO);
+        setAuditoriaAlteracao(this);
         this.id = id;
     }
 
@@ -53,6 +60,7 @@ public class Produto {
 
     public void setQuantidade(BigDecimal quantidade) {
         validarStringTamanhoMinimo(String.valueOf(quantidade), 1, PRODUTO_QUANTIDADE, NOME_CLASSE_PRODUTO);
+        setAuditoriaAlteracao(this);
         this.quantidade = quantidade;
     }
 
@@ -62,6 +70,7 @@ public class Produto {
 
     public void setValor(BigDecimal valor) {
         validarStringTamanhoMinimo(String.valueOf(valor), 3, PRODUTO_VALOR, NOME_CLASSE_PRODUTO);
+        setAuditoriaAlteracao(this);
         this.valor = valor;
     }
 
