@@ -11,4 +11,5 @@ public final class ValidadoresConstants {
     public static final String IP_MASK = "^(" + OCTETO_REGEX + "\\.){3}" + OCTETO_REGEX + "$";
     public static final String NUMERO_MASK = "\\d+";
     public static final String CARACTER_MASK = "^[0-9.-]*$";
+    public static final String AUDITORIA_EXCEPTION = "Falha nas informações de auditoria";
 }
