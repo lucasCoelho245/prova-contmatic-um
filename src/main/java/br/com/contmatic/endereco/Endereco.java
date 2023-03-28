@@ -11,17 +11,11 @@ import static br.com.contmatic.utils.ConstantsUtils.*;
 
 public class Endereco extends Auditoria {
     private String logradouro;
-
     private Integer numero;
-
     private String bairro;
-
     private String cidade;
-
     private UFType uf;
-
     private String complemento;
-
     private String cep;
 
     public Endereco() {

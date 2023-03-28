@@ -24,7 +24,6 @@ public class TestCargo {
     @Before
     public void setBeforeCargo() {
         cargo = new Cargo();
-
     }
 
     @Test

@@ -9,8 +9,6 @@ public class ValidaDate {
     private ValidaDate() {
     }
 
-
-
     public static void isValidLocalDateTime(LocalDateTime data, String nomeDoCampo, String classe) {
         validarAno(data.getYear(), nomeDoCampo, classe);
         validarMes(data.getMonthValue(), nomeDoCampo, classe);

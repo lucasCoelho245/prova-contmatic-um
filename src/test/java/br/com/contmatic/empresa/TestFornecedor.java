@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class TestFornecedor {
         System.out.println("Iniciamos os testes na classe fornecedor");
 
         telefones.add(new Telefone(DDD11, 555, "941584007"));
-        contatos.add(new Contato("contmatic@gmail.com", telefones));
+        contatos.add(new Contato("test@gmail.com", telefones, "teste","255255255255", LocalDateTime.now()));
         BigDecimal valor = new BigDecimal(1000);
         BigDecimal quantidade = new BigDecimal(1000);
         produtos.add(new Produto("produtoA", "110", quantidade, valor));

@@ -16,7 +16,6 @@ public class Produto extends Auditoria {
     private BigDecimal quantidade;
     private BigDecimal valor;
 
-
     public Produto() {
     }
 

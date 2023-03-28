@@ -1,7 +1,6 @@
 package br.com.contmatic.utils;
 
 public final class ValidadoresConstants {
-    
     private ValidadoresConstants() {
     }
     public static final String CARACTER_ESPECIAL_MASK = "[^a-zA-Z0-9]";

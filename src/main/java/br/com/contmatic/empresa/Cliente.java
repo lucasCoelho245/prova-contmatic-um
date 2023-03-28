@@ -12,9 +12,7 @@ import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Cliente extends Auditoria {
     private String cpf;
-
     private String nome;
-
     private List<Produto> produtos;
 
     public String getNome() {

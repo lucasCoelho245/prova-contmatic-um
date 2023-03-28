@@ -73,7 +73,6 @@ public class TestTelefone {
         assertEquals(expectedString, telefoneCompleto.toString());
     }
 
-
     @Test
     public void nao_deve_aceitar_ddi_nulo() {
         exceptionRule.expect(IllegalArgumentException.class);

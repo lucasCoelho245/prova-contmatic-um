@@ -16,17 +16,11 @@ import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Empresa extends Auditoria {
     private String nome;
-
     private String cnpj;
-
     private String razaoSocial;
-
     private Boolean ativa;
-
     private List<Endereco> enderecos;
-
     private List<Funcionario> funcionarios;
-
     private List<Contato> contatos;
 
 

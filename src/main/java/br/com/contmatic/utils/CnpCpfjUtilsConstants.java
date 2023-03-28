@@ -21,7 +21,6 @@ public final class CnpCpfjUtilsConstants {
     public static final int VALOR_ABAIXO_DOS_PRIMEIROS_CARACTERES_SEM_DIGITOS = 11;
     public static final String EXCEPTION_CNPJ = "O CNPJ está invalido";
     public static final String EXCEPTION_CNPJ_REPETIDO = "O CNPJ tem caracteres repetidos ou está fora da formatação padrão";
-
     public static final int CPF_CARACTERS = 11;
     public static final int NUM_CALCULAR_DIGITO_CPF_PRIMEIRO = 2;
     public static final int NUM_CALCULAR_DIGITO_CPF_SEGUNDO = 3;

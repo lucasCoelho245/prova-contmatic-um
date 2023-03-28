@@ -28,13 +28,14 @@ public class Fornecedor extends Auditoria {
     }
 
     public Fornecedor(String cnpj, String nome, List<Produto> produtos, List<Contato> contatos, List<Endereco> enderecos) {
-        this.cnpj = cnpj;
+        this.setCnpj(cnpj);
         this.nome = nome;
         this.produtos = produtos;
         this.contatos = contatos;
         this.enderecos = enderecos;
         setAuditoriaCriacao(this);
     }
+
 
     public void setNome(String nome) {
         validarObjetoNulo(nome, FORNECEDOR_EMPRESA, NOME_CLASSE_FORNECEDOR);

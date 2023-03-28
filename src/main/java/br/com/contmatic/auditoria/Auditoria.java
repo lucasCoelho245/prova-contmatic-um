@@ -10,35 +10,31 @@ import static br.com.contmatic.utils.ValidadoresUtils.*;
 public class Auditoria {
 
     private String loginCriacao;
-
     private String loginAlteracao;
-
     private String ipCriacao;
-
     private String ipAlteracao;
-
     private LocalDateTime dataCriacao;
-
     private LocalDateTime dataAlteracao;
-
     private LocalDateTime dataLogin;
-
     private LocalDateTime dataLogout;
 
     public Auditoria() {
     }
 
-    public Auditoria(String loginCriacao, String loginAlteracao, String ipCriacao, LocalDateTime dataCriacao, LocalDateTime dataAlteracao) {
-        this.loginCriacao = loginCriacao;
-        this.loginAlteracao = loginAlteracao;
-        this.ipCriacao = ipCriacao;
-        this.dataCriacao = dataCriacao;
-        this.dataAlteracao = dataAlteracao;
+    public Auditoria(String loginCriacao, String loginAlteracao, String ipCriacao, String ipAlteracao, LocalDateTime dataCriacao, LocalDateTime dataAlteracao, LocalDateTime dataLogout, LocalDateTime dataLogin) {
+        this.setLoginCriacao(loginCriacao);
+        this.setLoginAlteracao(loginAlteracao);
+        this.setIpCriacao(ipCriacao);
+        this.setIpAlteracao(ipAlteracao);
+        this.setDataCriacao(dataCriacao);
+        this.setDataAlteracao(dataAlteracao);
+        this.setDataLogin(dataLogin);
+        this.setDataLogout(dataLogout);
     }
 
-    public Auditoria(String loginCriacao, String ipCriacao) {
-        this.loginCriacao = loginCriacao;
-        this.ipCriacao = ipCriacao;
+    public Auditoria(String loginAlteracao, String ipAlteracao) {
+        this.setLoginAlteracao(loginAlteracao);
+        this.setIpAlteracao(ipAlteracao);
     }
 
     public String getLoginCriacao() {

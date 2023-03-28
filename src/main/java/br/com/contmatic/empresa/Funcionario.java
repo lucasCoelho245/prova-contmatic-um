@@ -17,17 +17,11 @@ import static br.com.contmatic.utils.CpfUtils.validarCpf;
 
 public class Funcionario extends Auditoria {
     private String cpf;
-
     private String nome;
-
     private List<Cargo> cargos;
-
     private BigDecimal salario;
-
     private LocalDateTime dataNascimento;
-
     private List<Empresa> empresas;
-
     private List<Contato> contatos;
 
     public Funcionario() {
