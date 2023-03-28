@@ -19,7 +19,7 @@ public class Contato extends Auditoria {
     public Contato() {
     }
 
-    public Contato(String email, List<Telefone> telefones, String loginCriacao, String loginAlteracao, String ipCriacao, String ipAlteracao, LocalDateTime dataCriacao, LocalDateTime dataAlteracao ,LocalDateTime dataLogin, LocalDateTime dataLogout, Auditoria auditoria) {
+    public Contato(String email, List<Telefone> telefones, String loginCriacao, String loginAlteracao, String ipCriacao, String ipAlteracao, LocalDateTime dataCriacao, LocalDateTime dataAlteracao ,LocalDateTime dataLogin, LocalDateTime dataLogout) {
         this.email = email;
         this.telefones = telefones;
         this.auditoria = new Auditoria(loginCriacao, loginAlteracao, ipCriacao, ipAlteracao, dataCriacao, dataAlteracao, dataLogin, dataLogout);
