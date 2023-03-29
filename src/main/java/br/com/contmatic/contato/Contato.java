@@ -30,11 +30,11 @@ public class Contato extends Auditoria {
     }
 
     public void setEmail(String email) {
-        validarObjetoNulo(email, emailEmpresa, CONTATO_EMPRESA);
-        validarStringVazio(email, emailEmpresa, CONTATO_EMPRESA);
-        validarPatternEmail(email, emailEmpresa, CONTATO_EMPRESA);
-        validarStringTamanhoMaximo(email, 60, emailEmpresa, CONTATO_EMPRESA);
-        validarStringTamanhoMinimo(email, 12, emailEmpresa, CONTATO_EMPRESA);
+        validarObjetoNulo(email, EMAIL_EMPRESA, CONTATO_EMPRESA);
+        validarStringVazio(email, EMAIL_EMPRESA, CONTATO_EMPRESA);
+        validarPatternEmail(email, EMAIL_EMPRESA, CONTATO_EMPRESA);
+        validarStringTamanhoMaximo(email, 60, EMAIL_EMPRESA, CONTATO_EMPRESA);
+        validarStringTamanhoMinimo(email, 12, EMAIL_EMPRESA, CONTATO_EMPRESA);
         setAuditoriaAlteracao(this);
         this.email = email;
     }
@@ -45,8 +45,8 @@ public class Contato extends Auditoria {
     }
 
     public void setTelefones(List<Telefone> telefones) {
-        validarObjetoNulo(telefones, telefoneEmpresa, CONTATO_EMPRESA);
-        validarListVazia(telefones, telefoneEmpresa, CONTATO_EMPRESA);
+        validarObjetoNulo(telefones, TELEFONE_EMPRESA, CONTATO_EMPRESA);
+        validarListVazia(telefones, TELEFONE_EMPRESA, CONTATO_EMPRESA);
         setAuditoriaAlteracao(this);
         this.telefones = telefones;
     }

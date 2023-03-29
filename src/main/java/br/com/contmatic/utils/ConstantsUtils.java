@@ -4,7 +4,9 @@ import java.time.LocalDateTime;
 
 public final class ConstantsUtils {
 
-    private ConstantsUtils() {}
+    private ConstantsUtils() {
+    }
+
     public static final String NOME_CLASSE_AUDITORIA = "auditoria";
     public static final String DATA_CRIACAO_AUDITORIA = "data criacao";
     public static final String DATA_ALTERACAO_AUDITORIA = "data alteracao";
@@ -12,8 +14,8 @@ public final class ConstantsUtils {
     public static final String DATA_LOGOUT_AUDITORIA = "data logout";
     public static final String LOGIN_DA_CRIACAO = "login criacao";
     public static final String LOGIN_DA_ALTERACAO = "login alteracao";
-    public static final String IP_DA_CRIACAO = "ipcriacao";
-    public static final String IP_DA_ALTERACAO = "ipAlteracao";
+    public static final String IP_DA_CRIACAO = "255.255.255.10";
+    public static final String IP_DA_ALTERACAO = "255.255.255.10";
     public static final String CONTATO_EMPRESA = "contato";
     public static final String CPF_FUNCIONARIO = "CPF";
     public static final String NOME_CLASSE_TELEFONE = "telefone";
@@ -61,10 +63,9 @@ public final class ConstantsUtils {
     public static final String DATA_CAMPO = "a data do campo ";
     public static final String empresaAtiva = "empresa Ativa";
     public static final String contatoEmpresa = "contatos";
-    public static final String nomeEmpresa = "nome empresa";
-    public static final String emailEmpresa = "email";
-    public static final String telefoneEmpresa = "telefones";
+    public static final String NOME_EMPRESA = "nome empresa";
+    public static final String EMAIL_EMPRESA = "email";
+    public static final String TELEFONE_EMPRESA = "telefones";
     public static final String EMPRESA_FUNCIONARIO = "funcionario";
-    public static final String empresaEndereco = "endereco";
-
+    public static final String EMPRESA_ENDERECO = "endereco";
 }

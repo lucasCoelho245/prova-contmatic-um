@@ -48,10 +48,10 @@ public class Empresa extends Auditoria {
     }
 
     public void setNome(String nome) {
-        validarObjetoNulo(nome, nomeEmpresa, NOME_CLASSE_EMPRESA);
-        validarStringVazio(nome, nomeEmpresa, NOME_CLASSE_EMPRESA);
-        validarStringTamanhoMaximo(nome, 60, nomeEmpresa, NOME_CLASSE_EMPRESA);
-        validarStringTamanhoMinimo(nome, 2, nomeEmpresa, NOME_CLASSE_EMPRESA);
+        validarObjetoNulo(nome, NOME_EMPRESA, NOME_CLASSE_EMPRESA);
+        validarStringVazio(nome, NOME_EMPRESA, NOME_CLASSE_EMPRESA);
+        validarStringTamanhoMaximo(nome, 60, NOME_EMPRESA, NOME_CLASSE_EMPRESA);
+        validarStringTamanhoMinimo(nome, 2, NOME_EMPRESA, NOME_CLASSE_EMPRESA);
         setAuditoriaAlteracao(this);
         this.nome = nome;
     }
@@ -112,8 +112,8 @@ public class Empresa extends Auditoria {
     }
 
     public void setEnderecos(List<Endereco> enderecos) {
-        validarObjetoNulo(enderecos, empresaEndereco, NOME_CLASSE_EMPRESA);
-        validarListVazia(enderecos, empresaEndereco, NOME_CLASSE_EMPRESA);
+        validarObjetoNulo(enderecos, EMPRESA_ENDERECO, NOME_CLASSE_EMPRESA);
+        validarListVazia(enderecos, EMPRESA_ENDERECO, NOME_CLASSE_EMPRESA);
         setAuditoriaAlteracao(this);
         this.enderecos = enderecos;
     }
