@@ -15,30 +15,43 @@ import java.util.List;
 import static br.com.contmatic.contato.DDDType.DDD11;
 import static br.com.contmatic.empresa.constants.empresa.EmpresaConstants.*;
 import static br.com.contmatic.endereco.UFType.MA;
-import static org.junit.Assert.*;
-import static org.junit.rules.ExpectedException.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.rules.ExpectedException.none;
 
 
 public class TestEmpresa {
     private Empresa empresa;
-
+    private List<Empresa> empresas = new ArrayList<>();
+    private List<Contato> contatos = new ArrayList<>();
+    private List<Telefone> telefones = new ArrayList<>();
+    private List<Cargo> cargos = new ArrayList<>();
+    private List<Funcionario> funcionario = new ArrayList<>();
+    private List<Endereco> enderecos = new ArrayList<>();
+    Empresa empresaCompleta = new Empresa();
+    Empresa empresaErrada = new Empresa();
+    Empresa empresaPadrao = new Empresa();
     @Rule
     public ExpectedException exceptionRule = none();
 
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe empresa");
-        telefones.add(new Telefone(DDD11, "555", "941584007"));
-        contatos.add(new Contato("contmatic@gmail.com", telefones));
-        cargos.add(new Cargo("analista", "desenvolvimento", 553));
-        empresas.add(new Empresa("26631884000176"));
-        funcionario.add(new Funcionario("nome", cargos, "50279302835", salario, data, empresas, contatos));
-        enderecos.add(new Endereco("cambuci", 22, "barata Ribeiro", "01235000", MA, "apto 61", "01233300"));
+
     }
 
     @Before
-    public void setBeforeFornecedor() {
-        empresa = new Empresa();
+    public void setBeforeEmpresa() {
+        empresas.add(new Empresa("26631884000176"));
+        telefones.add(new Telefone(DDD11, "55", "941584007"));
+        contatos.add(new Contato("contmatic@gmail.com", telefones));
+        enderecos.add(new Endereco("cambuci", 22, "barata Ribeiro", "sao paulo", MA, "apto 61", "01235-000"));
+        cargos.add(new Cargo("analista", "desenvolvimento", 553));
+        funcionario.add(new Funcionario("nome", cargos, "50279302835", salario, data, empresas, contatos));
+        empresaCompleta = new Empresa("26631884000176", "Coca Cola inc", enderecos, funcionario, contatos);
+        empresaErrada = new Empresa("26631884000176", "Coca Cola inc", enderecos, funcionario, contatos);
+        empresaPadrao = new Empresa("26631884000176", "Coca Cola Indústrias Ltda", enderecos, funcionario, contatos);
+
     }
 
     @Test
@@ -81,14 +94,17 @@ public class TestEmpresa {
     public void testEmpresaHashCodeTrue() {
         assertEquals(empresaCompleta.hashCode(), empresaPadrao.hashCode());
     }
+
     @Test
     public void testEmpresaHashCodeFalse() {
         assertNotEquals(empresaCompleta.hashCode(), empresaErrada.hashCode());
     }
+
     @Test
     public void testEmpresaEqualsTrue() {
         assertEquals(empresaCompleta, empresaPadrao);
     }
+
     @Test
     public void testEmpresaEqualsFalse() {
         assertNotEquals(empresaErrada, empresaCompleta);
@@ -147,6 +163,7 @@ public class TestEmpresa {
         exceptionRule.expectMessage(CAMPO_RAZAO_SOCIAL_ESTA_NULO);
         empresa.setRazaoSocial(null);
     }
+
     @Test
     public void nao_deve_aceitar_endereco_nulo() {
         exceptionRule.expect(IllegalArgumentException.class);
@@ -155,6 +172,7 @@ public class TestEmpresa {
         empresa.setEnderecos(enderecoList);
         assertEquals(enderecos, empresa.getEnderecos());
     }
+
     @Test
     public void nao_deve_aceitar_endereco_vazio() {
         exceptionRule.expect(IllegalArgumentException.class);
@@ -163,6 +181,7 @@ public class TestEmpresa {
         empresa.setEnderecos(enderecoList);
         assertEquals(enderecos, empresa.getEnderecos());
     }
+
     @Test
     public void nao_deve_aceitar_funcionario_social_vazio() {
         exceptionRule.expect(IllegalArgumentException.class);
@@ -234,6 +253,7 @@ public class TestEmpresa {
         exceptionRule.expectMessage(CNPJ_NULO);
         empresa.setCnpj(" ");
     }
+
     @Test
     public void nao_deve_aceitar_contato_nulo() {
         List<Contato> contatos = new ArrayList<>();

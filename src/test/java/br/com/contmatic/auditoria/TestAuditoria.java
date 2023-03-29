@@ -42,13 +42,13 @@ public class TestAuditoria {
 
     @Test
     public void deve_aceitar_ip_criacao_correto() {
-        auditoria.setIpCriacao("255.255.255.10");
-        assertEquals("255.255.255.10", auditoria.getIpCriacao());
+        auditoria.setIpCriacao("192.168.0.1");
+        assertEquals("192.168.0.1", auditoria.getIpCriacao());
     }
     @Test
     public void deve_aceitar_ip_alteracao_correto() {
-        auditoria.setIpAlteracao("255.255.255.10");
-        assertEquals("255.255.255.10", auditoria.getIpAlteracao());
+        auditoria.setIpAlteracao("192.168.0.1");
+        assertEquals("192.168.0.1", auditoria.getIpAlteracao());
     }
 
     @Test

@@ -14,8 +14,8 @@ public final class ConstantsUtils {
     public static final String DATA_LOGOUT_AUDITORIA = "data logout";
     public static final String LOGIN_DA_CRIACAO = "login criacao";
     public static final String LOGIN_DA_ALTERACAO = "login alteracao";
-    public static final String IP_DA_CRIACAO = "255.255.255.10";
-    public static final String IP_DA_ALTERACAO = "255.255.255.10";
+    public static final String IP_DA_CRIACAO = "ip da criacao";
+    public static final String IP_DA_ALTERACAO = "ip da alteracao";
     public static final String CONTATO_EMPRESA = "contato";
     public static final String CPF_FUNCIONARIO = "CPF";
     public static final String NOME_CLASSE_TELEFONE = "telefone";

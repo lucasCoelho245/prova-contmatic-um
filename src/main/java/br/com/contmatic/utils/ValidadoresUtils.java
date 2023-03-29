@@ -42,12 +42,10 @@ public class ValidadoresUtils {
             throw new IllegalStateException(nomeDoCampo + " em " + classe + " não é um email válido ");
         }
     }
-
     public static void validarPatternIp(String str, String nomeDoCampo, String classe) {
-
         Pattern pattern = Pattern.compile(IP_MASK);
         if (!pattern.matcher(str).matches()) {
-            throw new IllegalStateException(nomeDoCampo + " em " + classe + " não é um ip válido ");
+            throw new IllegalStateException(nomeDoCampo + " em " + classe + " não é um ip válido");
         }
     }
 

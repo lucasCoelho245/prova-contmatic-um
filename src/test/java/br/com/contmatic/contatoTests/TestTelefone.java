@@ -22,9 +22,9 @@ public class TestTelefone {
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe Telefone");
-        telefoneErrado.add(new Telefone(DDD12, "55555", "43433443"));
-        telefoneCompleto.add(new Telefone(DDD11, "555", "941584007"));
-        telefonePadrao.add(new Telefone(DDD11, "555", "941584007"));
+        telefoneErrado.add(new Telefone(DDD12, "55", "941584007"));
+        telefoneCompleto.add(new Telefone(DDD11, "55", "941584007"));
+        telefonePadrao.add(new Telefone(DDD11, "55", "941584007"));
     }
 
     @Before
@@ -46,7 +46,7 @@ public class TestTelefone {
 
     @Test
     public void deve_aceitar_ddi_correto() {
-        Integer ddi = 55;
+        String ddi = "55";
         telefone.setDdi("55");
         assertEquals(telefone.getDdi(), ddi);
     }
@@ -69,7 +69,7 @@ public class TestTelefone {
 
     @Test
     public void testContatoToString() {
-        String expectedString = "[Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]";
+        String expectedString = "[Telefone {DDD= DDD11, DDDI= 55, numero= 941584007]";
         assertEquals(expectedString, telefoneCompleto.toString());
     }
 

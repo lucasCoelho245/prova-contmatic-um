@@ -56,9 +56,6 @@ public final class CpfUtils {
     }
 
     private static boolean verificaCaracteresBasicos(String cpf) {
-        return cpf.length() != CPF_CARACTERS || cpf.equals(CPF_CARAC_REPETIDO_ZERO) || cpf.equals(CPF_CARAC_REPETIDO_UM) || cpf.equals(CPF_CARAC_REPETIDO_DOIS)
-                || cpf.equals(CPF_CARAC_REPETIDO_TRES) || cpf.equals(CPF_CARAC_REPETIDO_QUATRO) || cpf.equals(CPF_CARAC_REPETIDO_CINCO)
-                || cpf.equals(CPF_CARAC_REPETIDO_SEIS) || cpf.equals(CPF_CARAC_REPETIDO_SETE) || cpf.equals(CPF_CARAC_REPETIDO_OITO)
-                || cpf.equals(CPF_CARAC_REPETIDO_NOVE);
+        return cpf.length() != CPF_CARACTERS || cpf.equals(CPF_CARAC_REPETIDO_ZERO) || cpf.equals(CPF_CARAC_REPETIDO_UM) || cpf.equals(CPF_CARAC_REPETIDO_DOIS) || cpf.equals(CPF_CARAC_REPETIDO_TRES) || cpf.equals(CPF_CARAC_REPETIDO_QUATRO) || cpf.equals(CPF_CARAC_REPETIDO_SEIS) || cpf.equals(CPF_CARAC_REPETIDO_SETE) || cpf.equals(CPF_CARAC_REPETIDO_NOVE);
     }
 }

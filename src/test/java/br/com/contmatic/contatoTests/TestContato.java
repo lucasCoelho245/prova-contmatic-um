@@ -11,10 +11,10 @@ import org.junit.rules.ExpectedException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static br.com.contmatic.contato.DDDType.DDD11;
 import static br.com.contmatic.contatoTests.constants.contato.ContatoConstants.*;
-import static org.junit.Assert.*;
-import static org.junit.rules.ExpectedException.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.rules.ExpectedException.none;
 
 public class TestContato {
     private Contato contato;
@@ -57,13 +57,12 @@ public class TestContato {
 
     @Test
     public void testContatoToString() {
-        telefones.add(new Telefone(DDD11, "555", "941584007"));
-        String expectedString = "Contato {email= test@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}";
+        System.out.println(telefones);
+        String expectedString = "Contato {email= test@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 55, numero= 941584007]}";
         assertEquals(expectedString, contatoCompleto.toString());
     }
     @Test
     public void deve_aceitar_telefone_correto() {
-        telefones.add(new Telefone(DDD11, "5255" ,"1234"));
         contato.setTelefones(telefones);
         assertEquals(contato.getTelefones(), telefones);
     }

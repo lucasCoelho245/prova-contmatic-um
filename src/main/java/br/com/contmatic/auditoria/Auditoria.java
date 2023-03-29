@@ -71,7 +71,6 @@ public class Auditoria {
         validarObjetoNulo(ipCriacao, IP_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
         validarStringVazio(ipCriacao, IP_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
         validarPatternIp(ipCriacao, IP_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
-        validarCaracterString(ipCriacao, IP_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
         validarStringTamanhoMinimo(ipCriacao, 6, IP_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
         validarStringTamanhoMaximo(ipCriacao, 15, IP_DA_CRIACAO, NOME_CLASSE_AUDITORIA);
         this.ipCriacao = ipCriacao;
@@ -85,7 +84,6 @@ public class Auditoria {
         validarObjetoNulo(ipAlteracao, IP_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
         validarStringVazio(ipAlteracao, IP_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
         validarPatternIp(ipAlteracao, IP_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
-        validarCaracterString(ipAlteracao, IP_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
         validarStringTamanhoMinimo(ipAlteracao, 6, IP_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
         validarStringTamanhoMaximo(ipAlteracao, 15, IP_DA_ALTERACAO, NOME_CLASSE_AUDITORIA);
         this.ipAlteracao = ipAlteracao;
