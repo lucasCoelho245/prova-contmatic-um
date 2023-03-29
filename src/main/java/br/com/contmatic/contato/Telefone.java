@@ -11,17 +11,18 @@ import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Telefone extends Auditoria {
     private DDDType ddd;
-    private Integer ddi;
+    private String ddi;
     private String numero;
 
     public Telefone() {
     }
 
-    public Telefone(DDDType ddd, Integer ddi, String numero) {
-        this.ddd = ddd;
-        this.ddi = ddi;
-        this.numero = numero;
+    public Telefone(DDDType ddd, String ddi, String numero) {
+        setDdd(ddd);
+        setDdi(ddi);
+        setNumero(numero);
         setAuditoriaCriacao(this);
+        setAuditoriaAlteracao(this);
     }
 
     public DDDType getDdd() {
@@ -33,7 +34,7 @@ public class Telefone extends Auditoria {
         this.ddd = ddd;
     }
 
-    public Integer getDdi() {
+    public String getDdi() {
         return ddi;
     }
 
@@ -42,7 +43,7 @@ public class Telefone extends Auditoria {
         validarStringTamanhoMaximo(ddi, 3, NOME_DDI_TELEFONE, NOME_CLASSE_TELEFONE);
         validarCaracterString(ddi, NOME_DDI_TELEFONE, NOME_CLASSE_TELEFONE);
         setAuditoriaAlteracao(this);
-        this.ddi = Integer.valueOf(ddi);
+        this.ddi = ddi;
     }
 
     public String getNumero() {

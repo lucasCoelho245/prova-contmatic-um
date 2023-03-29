@@ -9,9 +9,9 @@ import java.util.Objects;
 
 import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
 import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
+import static br.com.contmatic.utils.CnpjUtils.validaCnpj;
 import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
-import static br.com.contmatic.utils.CnpjUtils.validaCnpj;
 
 public class Fornecedor extends Auditoria {
     private String cnpj;
@@ -28,12 +28,13 @@ public class Fornecedor extends Auditoria {
     }
 
     public Fornecedor(String cnpj, String nome, List<Produto> produtos, List<Contato> contatos, List<Endereco> enderecos) {
-        this.setCnpj(cnpj);
-        this.nome = nome;
-        this.produtos = produtos;
-        this.contatos = contatos;
-        this.enderecos = enderecos;
+        setCnpj(cnpj);
+        setNome(nome);
+        setProdutos(produtos);
+        setContatos(contatos);
+        setEnderecos(enderecos);
         setAuditoriaCriacao(this);
+        setAuditoriaAlteracao(this);
     }
 
 

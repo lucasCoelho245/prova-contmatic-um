@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
 import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.CpfUtils.validarCpf;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
@@ -23,9 +24,11 @@ public class Cliente extends Auditoria {
     }
 
     public Cliente(String cpf, String nome, List<Produto> produtos) {
-        this.cpf = cpf;
-        this.nome = nome;
-        this.produtos = produtos;
+        setCpf(cpf);
+        setNome(nome);
+        setProdutos(produtos);
+        setAuditoriaCriacao(this);
+        setAuditoriaAlteracao(this);
     }
 
     public void setNome(String nome) {

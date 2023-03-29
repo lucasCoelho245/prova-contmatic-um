@@ -74,7 +74,7 @@ public class TestFuncionario {
     }
     @Test
     public void deve_aceitar_contato_correto() {
-        telefones.add(new Telefone(DDD11, 555, "941584007"));
+        telefones.add(new Telefone(DDD11, "555", "941584007"));
         contatos.add(new Contato("contmatic@gmail.com", telefones));
         funcionario.setContatos(contatos);
         assertEquals(contatos, funcionario.getContatos());

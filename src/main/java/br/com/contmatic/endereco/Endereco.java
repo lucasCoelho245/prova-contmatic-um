@@ -6,8 +6,8 @@ import java.util.Objects;
 
 import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
 import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
-import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static br.com.contmatic.utils.ConstantsUtils.*;
+import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Endereco extends Auditoria {
     private String logradouro;
@@ -22,13 +22,13 @@ public class Endereco extends Auditoria {
     }
 
     public Endereco(String logradouro, Integer numero, String bairro, String cidade, UFType uf, String complemento, String cep) {
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.uf = uf;
-        this.complemento = complemento;
-        this.cep = cep;
+        setLogradouro(logradouro);
+        setNumero(numero);
+        setBairro(bairro);
+        setCidade(cidade);
+        setUf(uf);
+        setComplemento(complemento);
+        setCep(cep);
         setAuditoriaCriacao(this);
     }
 

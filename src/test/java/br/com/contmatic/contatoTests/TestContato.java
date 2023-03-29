@@ -57,13 +57,13 @@ public class TestContato {
 
     @Test
     public void testContatoToString() {
-        telefones.add(new Telefone(DDD11, 555, "941584007"));
+        telefones.add(new Telefone(DDD11, "555", "941584007"));
         String expectedString = "Contato {email= test@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}";
         assertEquals(expectedString, contatoCompleto.toString());
     }
     @Test
     public void deve_aceitar_telefone_correto() {
-        telefones.add(new Telefone(DDD11, 5255 ,"1234"));
+        telefones.add(new Telefone(DDD11, "5255" ,"1234"));
         contato.setTelefones(telefones);
         assertEquals(contato.getTelefones(), telefones);
     }

@@ -28,7 +28,7 @@ public class TestEmpresa {
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe empresa");
-        telefones.add(new Telefone(DDD11, 555, "941584007"));
+        telefones.add(new Telefone(DDD11, "555", "941584007"));
         contatos.add(new Contato("contmatic@gmail.com", telefones));
         cargos.add(new Cargo("analista", "desenvolvimento", 553));
         empresas.add(new Empresa("26631884000176"));

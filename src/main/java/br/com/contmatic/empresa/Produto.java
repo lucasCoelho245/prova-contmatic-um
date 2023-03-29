@@ -20,11 +20,12 @@ public class Produto extends Auditoria {
     }
 
     public Produto(String nome, String id, BigDecimal quantidade, BigDecimal valor) {
-        this.nome = nome;
-        this.id = id;
-        this.quantidade = quantidade;
-        this.valor = valor;
+        setNome(nome);
+        setId(id);
+        setQuantidade(quantidade);
+        setValor(valor);
         setAuditoriaCriacao(this);
+        setAuditoriaAlteracao(this);
     }
 
     public String getNome() {

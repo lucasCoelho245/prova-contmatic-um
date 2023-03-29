@@ -12,8 +12,8 @@ import java.util.Objects;
 import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
 import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
 import static br.com.contmatic.utils.ConstantsUtils.*;
-import static br.com.contmatic.utils.ValidadoresUtils.*;
 import static br.com.contmatic.utils.CpfUtils.validarCpf;
+import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Funcionario extends Auditoria {
     private String cpf;
@@ -28,14 +28,15 @@ public class Funcionario extends Auditoria {
     }
 
     public Funcionario(String nome, List<Cargo> cargos, String cpf, BigDecimal salario, LocalDateTime dataNascimento, List<Empresa> empresa, List<Contato> contatos) {
-        this.nome = nome;
-        this.cargos = cargos;
-        this.cpf = cpf;
-        this.salario = salario;
-        this.dataNascimento = dataNascimento;
-        this.empresas = empresa;
-        this.contatos = contatos;
+        setNome(nome);
+        setCargos(cargos);
+        setCpf(cpf);
+        setSalario(salario);
+        setDataNascimento(dataNascimento);
+        setEmpresa(empresa);
+        setContatos(contatos);
         setAuditoriaCriacao(this);
+        setAuditoriaAlteracao(this);
     }
 
     public String getNome() {

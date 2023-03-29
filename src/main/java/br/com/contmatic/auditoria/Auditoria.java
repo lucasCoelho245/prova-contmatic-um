@@ -21,20 +21,20 @@ public class Auditoria {
     public Auditoria() {
     }
 
-    public Auditoria(String loginCriacao, String loginAlteracao, String ipCriacao, String ipAlteracao, LocalDateTime dataCriacao, LocalDateTime dataAlteracao, LocalDateTime dataLogout, LocalDateTime dataLogin) {
-        this.setLoginCriacao(loginCriacao);
-        this.setLoginAlteracao(loginAlteracao);
-        this.setIpCriacao(ipCriacao);
-        this.setIpAlteracao(ipAlteracao);
-        this.setDataCriacao(dataCriacao);
-        this.setDataAlteracao(dataAlteracao);
-        this.setDataLogin(dataLogin);
-        this.setDataLogout(dataLogout);
+    public Auditoria(String loginCriacao, String ipCriacao, LocalDateTime dataCriacao, LocalDateTime dataLogout, LocalDateTime dataLogin) {
+        setLoginCriacao(loginCriacao);
+        setIpCriacao(ipCriacao);
+        setDataCriacao(dataCriacao);
+        setDataLogin(dataLogin);
+        setDataLogout(dataLogout);
     }
 
-    public Auditoria(String loginAlteracao, String ipAlteracao) {
-        this.setLoginAlteracao(loginAlteracao);
-        this.setIpAlteracao(ipAlteracao);
+    public Auditoria(String loginAlteracao, LocalDateTime dataLogout, String ipAlteracao, LocalDateTime dataLogin, LocalDateTime dataAlteracao) {
+        setLoginAlteracao(loginAlteracao);
+        setDataLogin(dataLogin);
+        setIpAlteracao(ipAlteracao);
+        setDataLogout(dataLogout);
+        setDataAlteracao(dataAlteracao);
     }
 
     public String getLoginCriacao() {

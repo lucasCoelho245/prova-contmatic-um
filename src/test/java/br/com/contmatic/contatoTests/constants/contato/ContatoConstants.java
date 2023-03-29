@@ -16,7 +16,7 @@ public final class ContatoConstants {
     public static final String MSG_TELEFONE_NULO = "telefones em contato não pode ser nulo";
     public static final String MSG_TELEFONE_VAZIO = "O Campo telefones em contato está vazio";
     public static final List<Telefone> telefones = new ArrayList<>();
-    public static final Contato contatoErrado = new Contato("testeee@gmail.com", telefones, "teste","255255255255", LocalDateTime.now(), "cont@login", "cont@login", "25525525515", "25525525515", LocalDateTime.now(), LocalDateTime.now(), LocalDateTime.now());
-    public static final Contato contatoCompleto = new Contato("test@gmail.com", telefones, "teste","255255255255", LocalDateTime.now());
+    public static final Contato contatoErrado = new Contato("testeee@gmail.com", telefones);
+    public static final Contato contatoCompleto = new Contato("test@gmail.com", telefones);
 
 }

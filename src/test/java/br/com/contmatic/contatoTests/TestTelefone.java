@@ -22,9 +22,9 @@ public class TestTelefone {
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe Telefone");
-        telefoneErrado.add(new Telefone(DDD12, 55555, "43433443"));
-        telefoneCompleto.add(new Telefone(DDD11, 555, "941584007"));
-        telefonePadrao.add(new Telefone(DDD11, 555, "941584007"));
+        telefoneErrado.add(new Telefone(DDD12, "55555", "43433443"));
+        telefoneCompleto.add(new Telefone(DDD11, "555", "941584007"));
+        telefonePadrao.add(new Telefone(DDD11, "555", "941584007"));
     }
 
     @Before

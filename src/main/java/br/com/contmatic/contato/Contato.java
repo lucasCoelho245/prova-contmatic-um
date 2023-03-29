@@ -2,11 +2,11 @@ package br.com.contmatic.contato;
 
 import br.com.contmatic.auditoria.Auditoria;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
 import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
+import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
 import static br.com.contmatic.utils.ConstantsUtils.*;
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 
@@ -14,15 +14,15 @@ public class Contato extends Auditoria {
     private String email;
     private List<Telefone> telefones;
 
-    private Auditoria auditoria;
 
     public Contato() {
     }
 
-    public Contato(String email, List<Telefone> telefones, String loginCriacao, String loginAlteracao, String ipCriacao, String ipAlteracao, LocalDateTime dataCriacao, LocalDateTime dataAlteracao ,LocalDateTime dataLogin, LocalDateTime dataLogout) {
-        this.email = email;
-        this.telefones = telefones;
-        this.auditoria = new Auditoria(loginCriacao, loginAlteracao, ipCriacao, ipAlteracao, dataCriacao, dataAlteracao, dataLogin, dataLogout);
+    public Contato(String email, List<Telefone> telefones) {
+        setEmail(email);
+        setTelefones(telefones);
+        setAuditoriaAlteracao(this);
+        setAuditoriaCriacao(this);
     }
 
     public String getEmail() {

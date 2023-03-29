@@ -7,7 +7,6 @@ import java.util.Objects;
 import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaAlteracao;
 import static br.com.contmatic.utils.AuditoriaUtils.setAuditoriaCriacao;
 import static br.com.contmatic.utils.ConstantsUtils.*;
-
 import static br.com.contmatic.utils.ValidadoresUtils.*;
 
 public class Cargo extends Auditoria {
@@ -17,10 +16,11 @@ public class Cargo extends Auditoria {
 
 
     public Cargo(String nome, String setor, Integer codigo) {
-        this.nome = nome;
-        this.setor = setor;
-        this.codigo = codigo;
+        setNome(nome);
+        setSetor(setor);
+        setCodigo(codigo);
         setAuditoriaCriacao(this);
+        setAuditoriaAlteracao(this);
     }
 
     public Cargo() {

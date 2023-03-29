@@ -30,8 +30,8 @@ public class TestFornecedor {
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe fornecedor");
 
-        telefones.add(new Telefone(DDD11, 555, "941584007"));
-        contatos.add(new Contato("test@gmail.com", telefones, "teste","255255255255", LocalDateTime.now()));
+        telefones.add(new Telefone(DDD11, "555", "941584007"));
+        contatos.add(new Contato("test@gmail.com", telefones));
         BigDecimal valor = new BigDecimal(1000);
         BigDecimal quantidade = new BigDecimal(1000);
         produtos.add(new Produto("produtoA", "110", quantidade, valor));

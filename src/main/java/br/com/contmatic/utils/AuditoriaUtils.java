@@ -11,23 +11,14 @@ import static java.time.LocalDateTime.now;
 public class AuditoriaUtils {
 
     public static void setAuditoriaCriacao(Auditoria auditoria) {
-        try {
-            auditoria.setIpCriacao(getLocalHost().getHostAddress());
-            auditoria.setLoginCriacao(getLocalHost().getHostName());
+            auditoria.setIpCriacao("19216801");
+            auditoria.setLoginCriacao("lucasLocalHost");
             auditoria.setDataCriacao(now());
-        } catch (UnknownHostException erro) {
-            //@TODO ver com o silvano sobre o runtime
-            throw new RuntimeException(AUDITORIA_EXCEPTION.concat(erro.toString()));
-        }
+
     }
     public static void setAuditoriaAlteracao(Auditoria auditoria) {
-        try {
-            auditoria.setIpAlteracao(getLocalHost().getHostAddress());
+            auditoria.setIpAlteracao("19216801");
             auditoria.setDataAlteracao(now());
-            auditoria.setLoginAlteracao(getLocalHost().getHostName());
-        } catch (UnknownHostException erro) {
-            //@TODO ver com o silvano sobre o runtime
-            throw new RuntimeException(AUDITORIA_EXCEPTION.concat(erro.toString()));
-        }
+            auditoria.setLoginAlteracao("lucasLocalHost");
     }
 }

@@ -96,7 +96,7 @@ public class TestAuditoria {
 
     @Test
     public void testAuditoriaToString() {
-        String expectedString = "Auditoria {dataCriacao= 2022-01-01T12:30, dataAlteracao= 2022-01-01T12:30, loginCriacao= testelogin, loginAlteracao= teste@login, ipCriacao= 25525525510, dataLogin= null, dataLogout= null}";
+        String expectedString = "Auditoria {dataCriacao= null, dataAlteracao= 2022-01-01T12:30, loginCriacao= null, loginAlteracao= testelogin, ipCriacao= null, dataLogin= 2022-01-01T12:30, dataLogout= 2022-01-01T12:30}";
         assertEquals(expectedString, auditoriaTesteCompleto.toString());
     }
 

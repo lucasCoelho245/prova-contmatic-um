@@ -28,17 +28,19 @@ public class Empresa extends Auditoria {
     }
 
     public Empresa(String cnpj) {
-        this.cnpj = cnpj;
+        setCnpj(cnpj);
         setAuditoriaCriacao(this);
+        setAuditoriaAlteracao(this);
     }
 
     public Empresa(String cnpj, String razaoSocial, List<Endereco> endereco, List<Funcionario> funcionarios, List<Contato> contatos) {
-        this.cnpj = cnpj;
-        this.razaoSocial = razaoSocial;
-        this.enderecos = endereco;
-        this.funcionarios = funcionarios;
-        this.contatos = contatos;
+        setCnpj(cnpj);
+        setRazaoSocial(razaoSocial);
+        setEnderecos(endereco);
+        setFuncionarios(funcionarios);
+        setContatos(contatos);
         setAuditoriaCriacao(this);
+        setAuditoriaAlteracao(this);
     }
 
     public String getNome() {
