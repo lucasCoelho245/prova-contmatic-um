@@ -29,6 +29,9 @@ public class TestFornecedor {
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe fornecedor");
+        Fornecedor fornecedorCompleto = new Fornecedor("26631884000176", "julio", produtos, contatos, enderecos);
+         Fornecedor fornecedorErrado = new Fornecedor("25531884000176", "joao", produtos, contatos, enderecos);
+         Fornecedor fornecedorPadrao = new Fornecedor("26631884000176", "julio", produtos, contatos, enderecos);
 
         telefones.add(new Telefone(DDD11, "555", "941584007"));
         contatos.add(new Contato("test@gmail.com", telefones));

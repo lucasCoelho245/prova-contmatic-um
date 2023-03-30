@@ -3,6 +3,7 @@ package br.com.contmatic.empresa.constants.empresa;
 import br.com.contmatic.contato.Contato;
 import br.com.contmatic.contato.Telefone;
 import br.com.contmatic.empresa.Cargo;
+import br.com.contmatic.empresa.Empresa;
 import br.com.contmatic.empresa.Funcionario;
 import br.com.contmatic.endereco.Endereco;
 
@@ -13,12 +14,17 @@ import java.util.List;
 
 public final class EmpresaConstants {
     public static final BigDecimal salario = new BigDecimal(1000);
-    public static final List<Telefone> telefones = new ArrayList<>();
-    public static final List<Contato> contatos = new ArrayList<>();
-    public static final List<Cargo> cargos = new ArrayList<>();
-    public static final List<Endereco> enderecos = new ArrayList<>();
-    public static final List<Funcionario> funcionario = new ArrayList<>();
-    public static final LocalDateTime data = LocalDateTime.of(2002, 2, 2, 12, 0);
+    public static List<Telefone> telefones = new ArrayList<>();
+    public static List<Contato> contatos = new ArrayList<>();
+    public static  List<Cargo> cargos = new ArrayList<>();
+    public static List<Endereco> enderecos = new ArrayList<>();
+    public static  List<Funcionario> funcionario = new ArrayList<>();
+    public static Empresa empresaCompleta = new Empresa();
+    public static Empresa empresaErrada = new Empresa();
+    public static Empresa empresaPadrao = new Empresa();
+    public static List<Empresa> empresas = new ArrayList<>();
+
+    public static LocalDateTime data = LocalDateTime.of(2002, 2, 2, 12, 0);
 
     public static final String TAMANHO_DE_EMPRESA_ESTA_ACIMA_DE_60_CARACTERES = "Tamanho de string nome empresa em empresa está acima de 60 caracteres";
     public static final String TAMANHO_DE_EMPRESA_ESTA_ABAIXO_DE_3_CARACTERES = "Tamanho de string nome empresa em empresa está abaixo de 2 caracteres";

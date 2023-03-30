@@ -18,11 +18,11 @@ public final class ClienteConstants {
     public static final String CPF_ESTA_VAZIO = ("O Campo cpf em cliente está vazio");
     public static final String CPF_ESTA_INVALIDO = ("O CPF está invalido");
     public static final String CPF_ESTA_REPETIDO = ("CPF esta com caracteres repetidos ou diferente do numeracao padrao");
-    public static final List<Produto> produtos = new ArrayList<>();
-    public static final Cliente clienteCompleto = new Cliente("502793028385", "João", produtos);
-    public static final Cliente clienteErrado = new Cliente("2324354445", "julio", produtos);
-    public static final BigDecimal valor = new BigDecimal(10);
-    public static final BigDecimal quantidade = new BigDecimal(10);
-    public static final Cliente clientePadrao = new Cliente("502793028385", "João", produtos);
+    public static List<Produto> produtos = new ArrayList<>();
+    public static  Cliente clientePadrao = new Cliente();
+    public static Cliente clienteCompleto = new Cliente();
+    public static Cliente clienteErrado = new Cliente();
+    public static final BigDecimal valor = new BigDecimal(100);
+    public static final BigDecimal quantidade = new BigDecimal(100);
 
 }

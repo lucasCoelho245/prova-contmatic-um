@@ -22,15 +22,7 @@ import static org.junit.rules.ExpectedException.none;
 
 public class TestEmpresa {
     private Empresa empresa;
-    private List<Empresa> empresas = new ArrayList<>();
-    private List<Contato> contatos = new ArrayList<>();
-    private List<Telefone> telefones = new ArrayList<>();
-    private List<Cargo> cargos = new ArrayList<>();
-    private List<Funcionario> funcionario = new ArrayList<>();
-    private List<Endereco> enderecos = new ArrayList<>();
-    Empresa empresaCompleta = new Empresa();
-    Empresa empresaErrada = new Empresa();
-    Empresa empresaPadrao = new Empresa();
+
     @Rule
     public ExpectedException exceptionRule = none();
 
@@ -51,7 +43,6 @@ public class TestEmpresa {
         empresaCompleta = new Empresa("26631884000176", "Coca Cola inc", enderecos, funcionario, contatos);
         empresaErrada = new Empresa("26631884000176", "Coca Cola inc", enderecos, funcionario, contatos);
         empresaPadrao = new Empresa("26631884000176", "Coca Cola Indústrias Ltda", enderecos, funcionario, contatos);
-
     }
 
     @Test

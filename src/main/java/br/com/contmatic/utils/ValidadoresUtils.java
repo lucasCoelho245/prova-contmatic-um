@@ -11,13 +11,13 @@ public class ValidadoresUtils {
     }
 
     public static void validarStringTamanhoMinimo(String str, Integer minimo, String nomeDoCampo, String classe) {
-        if (str.length() <= minimo) {
+        if (str.length() < minimo) {
             throw new IllegalStateException("Tamanho de string " + nomeDoCampo + " em " + classe + " está abaixo de " + minimo + " caracteres ");
         }
     }
 
     public static void validarStringTamanhoMaximo(String str, Integer maximo, String nomeDoCampo, String classe) {
-        if (str.length() >= maximo) {
+        if (str.length() > maximo) {
             throw new IllegalStateException("Tamanho de string " + nomeDoCampo + " em " + classe + " está acima de " + maximo + " caracteres");
         }
     }

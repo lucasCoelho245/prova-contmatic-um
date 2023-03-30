@@ -24,6 +24,9 @@ public class TestCliente {
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe cliente");
         produtos.add(new Produto("produtoA", "110", quantidade, valor));
+        clienteErrado = new Cliente("12640907816", "julio", produtos);
+        clienteCompleto = new Cliente("50279302835", "João", produtos);
+        clientePadrao = new Cliente("50279302835", "João", produtos);
     }
 
     @Before
@@ -68,7 +71,7 @@ public class TestCliente {
 
     @Test
     public void testClienteToString() {
-        String expectedString = "Cliente {nome= João, produtos= [Produto {nome= produtoA, Id= 110, quantidade= 10, valor= 10}]}";
+        String expectedString = "Cliente {nome= João, produtos= [Produto {nome= produtoA, Id= 110, quantidade= 100, valor= 100}]}";
         assertEquals(expectedString, clienteCompleto.toString());
     }
 

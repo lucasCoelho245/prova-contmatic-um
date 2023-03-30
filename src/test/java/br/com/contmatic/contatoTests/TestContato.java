@@ -57,7 +57,6 @@ public class TestContato {
 
     @Test
     public void testContatoToString() {
-        System.out.println(telefones);
         String expectedString = "Contato {email= test@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 55, numero= 941584007]}";
         assertEquals(expectedString, contatoCompleto.toString());
     }
