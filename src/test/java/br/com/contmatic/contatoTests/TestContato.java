@@ -27,12 +27,12 @@ public class TestContato {
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe Contato");
+        telefones.add(new Telefone(DDD11, "55", "941584007"));
     }
 
     @Before
     public void setBeforeProduto() {
         contato = new Contato();
-        telefones.add(new Telefone(DDD11, "55", "941584007"));
         contatoErrado = new Contato("testeee@gmail.com", telefones);
         contatoCompleto = new Contato("test@gmail.com", telefones);
     }
