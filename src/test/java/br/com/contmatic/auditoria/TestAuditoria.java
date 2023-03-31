@@ -160,7 +160,7 @@ public class TestAuditoria {
     public void nao_deve_aceitar_data_logout_invalida() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(LOG_LOGOUT_INVALIDA);
-        LocalDateTime dataLogout = LocalDateTime.of(2023, 3, 30, 22, 12);
+        LocalDateTime dataLogout = LocalDateTime.of(2023, 3, 31, 22, 12);
         auditoria.setDataLogout(dataLogout);
     }
 

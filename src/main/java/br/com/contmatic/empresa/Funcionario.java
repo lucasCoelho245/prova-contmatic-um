@@ -99,7 +99,7 @@ public class Funcionario extends Auditoria {
     }
 
     public void setSalario(BigDecimal salario) {
-        validarStringTamanhoMinimo(String.valueOf(salario), 3, SALARIO_FUNCIONARIO, NOME_CLASSE_FUNCIONARIO);
+        validarStringTamanhoMinimo(String.valueOf(salario), 4, SALARIO_FUNCIONARIO, NOME_CLASSE_FUNCIONARIO);
         setAuditoriaAlteracao(this);
         this.salario = salario;
     }

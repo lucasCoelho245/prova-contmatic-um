@@ -90,7 +90,7 @@ public class TestEndereco {
 
     @Test
     public void testEnderecoToString() {
-        String expectedString = "Endereco {logradouro= cambuci, numero= 22, bairro= barata Ribeiro, cidade= 01235000, uf= MA, complemento= apto 61, cep= 01233300}";
+        String expectedString = "Endereco {logradouro= cambuci, numero= 22, bairro= barata Ribeiro, cidade= sao paulo, uf= MA, complemento= apto 61, cep= 01235-000}";
         assertEquals(expectedString, enderecoCompleto.toString());
     }
 

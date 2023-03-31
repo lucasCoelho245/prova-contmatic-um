@@ -6,8 +6,9 @@ import static br.com.contmatic.endereco.UFType.AP;
 import static br.com.contmatic.endereco.UFType.MA;
 
 public final class enderecoConstants {
-    public static final Endereco enderecoCompleto = new Endereco("cambuci", 22, "barata Ribeiro" ,"01235000", MA ,"apto 61", "01233300");;
-    public static final Endereco enderecoErrado = new Endereco("cambu", 232, "barata" ,"01231000", AP ,"apto", "01235300");;
+    public static final Endereco enderecoCompleto = new Endereco("cambuci", 22, "barata Ribeiro" ,"sao paulo", MA ,"apto 61", "01235-000");;
+    public static final Endereco enderecoErrado = new Endereco("cambu", 232, "barata" ,"sao bernardp", AP ,"sdsds", "77824-430");;
+    public static final Endereco enderecoPadrao = new Endereco("cambuci", 22, "barata Ribeiro" ,"sao paulo", MA ,"apto 61", "01235-000");
     public static final String NUMERO_NULO = ("numero em endereco não pode ser nulo");
     public static final String BAIRRO_CURTO = ("Tamanho de string bairro em endereco está abaixo de 3 caracteres");
     public static final String BAIRRO_LONGO = ("Tamanho de string bairro em endereco está acima de 20 caracteres");
@@ -23,7 +24,6 @@ public final class enderecoConstants {
     public static final String COMPLEMENTO_VAZIO = ("O Campo complemento em endereco está vazio");
     public static final String COMPLEMENTO_NULO = ("complemento em endereco não pode ser nulo");
     public static final String CEP_INVALIDO = ("cep em endereco não é válido");
-    public static final Endereco enderecoPadrao = new Endereco("cambuci", 22, "barata Ribeiro", "01235000", MA, "apto 61", "01233300");
 
 }
 

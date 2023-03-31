@@ -3,6 +3,8 @@ package br.com.contmatic.contatoTests.constants.contato;
 import br.com.contmatic.contato.Contato;
 import br.com.contmatic.contato.Telefone;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,8 +18,6 @@ public final class ContatoConstants {
     public static final String MSG_EMAIL_NULO = "email em contato não pode ser nulo";
     public static final String MSG_TELEFONE_NULO = "telefones em contato não pode ser nulo";
     public static final String MSG_TELEFONE_VAZIO = "O Campo telefones em contato está vazio";
-    public static final List<Telefone> telefones = Collections.singletonList(new Telefone(DDD11, "55", "941584007"));
-    public static final Contato contatoErrado = new Contato("testeee@gmail.com", telefones);
-    public static final Contato contatoCompleto = new Contato("test@gmail.com", telefones);
+    public static final List<Telefone> telefones = new ArrayList<>();
 
 }

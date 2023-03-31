@@ -59,7 +59,7 @@ public class Produto extends Auditoria {
     }
 
     public void setQuantidade(BigDecimal quantidade) {
-        validarStringTamanhoMinimo(String.valueOf(quantidade), 1, PRODUTO_QUANTIDADE, NOME_CLASSE_PRODUTO);
+        validarStringTamanhoMinimo(String.valueOf(quantidade), 2, PRODUTO_QUANTIDADE, NOME_CLASSE_PRODUTO);
         setAuditoriaAlteracao(this);
         this.quantidade = quantidade;
     }

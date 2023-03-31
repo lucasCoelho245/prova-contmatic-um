@@ -34,15 +34,8 @@ public class TestEmpresa {
 
     @Before
     public void setBeforeEmpresa() {
+        empresa = new Empresa();
         empresas.add(new Empresa("26631884000176"));
-        telefones.add(new Telefone(DDD11, "55", "941584007"));
-        contatos.add(new Contato("contmatic@gmail.com", telefones));
-        enderecos.add(new Endereco("cambuci", 22, "barata Ribeiro", "sao paulo", MA, "apto 61", "01235-000"));
-        cargos.add(new Cargo("analista", "desenvolvimento", 553));
-        funcionario.add(new Funcionario("nome", cargos, "50279302835", salario, data, empresas, contatos));
-        empresaCompleta = new Empresa("26631884000176", "Coca Cola inc", enderecos, funcionario, contatos);
-        empresaErrada = new Empresa("26631884000176", "Coca Cola inc", enderecos, funcionario, contatos);
-        empresaPadrao = new Empresa("26631884000176", "Coca Cola Indústrias Ltda", enderecos, funcionario, contatos);
     }
 
     @Test
@@ -103,7 +96,7 @@ public class TestEmpresa {
 
     @Test
     public void testEmpresaToString() {
-        String expectedString = "Empresa {cnpj= 502793028385, razaoSocial= Coca Cola, enderecos= [Endereco {logradouro= cambuci, numero= 22, bairro= barata Ribeiro, cidade= 01235000, uf= MA, complemento= apto 61, cep= 01233300}], funcionarios= [Funcionario {nomeCompleto= nome, Cargos= [Cargo {nome= analista, codigo= 553}], cpf= 50279302835, salario= 1000, dataNascimento= 2024-12-02T12:00, empresa= [Empresa {cnpj= 26631884000176, razaoSocial= null, enderecos= null, funcionarios= null, contatos= null], Contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}]}], contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}]";
+        String expectedString = "Empresa {cnpj= 26631884000176, razaoSocial= Coca Cola inc, enderecos= [Endereco {logradouro= cambuci, numero= 22, bairro= barata Ribeiro, cidade= sao paulo, uf= MA, complemento= apto 61, cep= 01235-000}], funcionarios= [Funcionario {nomeCompleto= nome, Cargos= [Cargo {nome= analista, codigo= 553}], cpf= 50279302835, salario= 1000, dataNascimento= 2002-02-02T12:00, empresa= [Empresa {cnpj= 26631884000176, razaoSocial= null, enderecos= null, funcionarios= null, contatos= null], Contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 55, numero= 941584007]}]}], contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 55, numero= 941584007]}]";
         assertEquals(expectedString, empresaCompleta.toString());
     }
 

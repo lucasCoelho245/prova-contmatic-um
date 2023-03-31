@@ -29,16 +29,6 @@ public class TestFornecedor {
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe fornecedor");
-        Fornecedor fornecedorCompleto = new Fornecedor("26631884000176", "julio", produtos, contatos, enderecos);
-         Fornecedor fornecedorErrado = new Fornecedor("25531884000176", "joao", produtos, contatos, enderecos);
-         Fornecedor fornecedorPadrao = new Fornecedor("26631884000176", "julio", produtos, contatos, enderecos);
-
-        telefones.add(new Telefone(DDD11, "555", "941584007"));
-        contatos.add(new Contato("test@gmail.com", telefones));
-        BigDecimal valor = new BigDecimal(1000);
-        BigDecimal quantidade = new BigDecimal(1000);
-        produtos.add(new Produto("produtoA", "110", quantidade, valor));
-        enderecos.add(new Endereco("cambuci", 22, "barata Ribeiro" ,"01235000", MA ,"apto 61", "01233300"));
     }
 
     @Before
@@ -92,7 +82,7 @@ public class TestFornecedor {
 
     @Test
     public void testCargoToString() {
-        String expectedString = "Fornecedor {nome= julio, produtos= [Produto {nome= produtoA, Id= 110, quantidade= 1000, valor= 1000}], cnpj= 26631884000176, contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}], enderecos= [Endereco {logradouro= cambuci, numero= 22, bairro= barata Ribeiro, cidade= 01235000, uf= MA, complemento= apto 61, cep= 01233300}]}";
+        String expectedString = "Fornecedor {nome= julio, produtos= [Produto {nome= produtoA, Id= 110, quantidade= 1000, valor= 1000}], cnpj= 51340283000151, contatos= [Contato {email= test@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}], enderecos= [Endereco {logradouro= cambuci, numero= 22, bairro= barata Ribeiro, cidade= sao paulo, uf= MA, complemento= apto 61, cep= 01235-000}]}";
         assertEquals(expectedString, fornecedorCompleto.toString());
     }
 

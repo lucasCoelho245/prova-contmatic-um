@@ -27,7 +27,6 @@ public class TestFuncionario {
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe fornecedor");
-        cargos.add(new Cargo("analista", "desenvolvimento", 553));
     }
 
     @Before
@@ -68,20 +67,19 @@ public class TestFuncionario {
     }
     @Test
     public void deve_aceitar_empresa_correto() {
+        List<Empresa> empresas = new ArrayList<>();
         empresas.add(new Empresa());
         funcionario.setEmpresa(empresas);
         assertEquals(empresas, funcionario.getEmpresa());
     }
     @Test
     public void deve_aceitar_contato_correto() {
-        telefones.add(new Telefone(DDD11, "555", "941584007"));
-        contatos.add(new Contato("contmatic@gmail.com", telefones));
         funcionario.setContatos(contatos);
         assertEquals(contatos, funcionario.getContatos());
     }
     @Test
     public void testCargoToString() {
-        String expectedString = "Funcionario {nomeCompleto= João, Cargos= [Cargo {nome= analista, codigo= 553}], cpf= 50279302835, salario= 1000, dataNascimento= 2022-02-01T22:12, empresa= [], Contatos= []}";
+        String expectedString = "Funcionario {nomeCompleto= João, Cargos= [Cargo {nome= analista, codigo= 553}], cpf= 50279302835, salario= 10000, dataNascimento= 2022-02-01T22:12, empresa= [Empresa {cnpj= 15423393000113, razaoSocial= null, enderecos= null, funcionarios= null, contatos= null], Contatos= [Contato {email= contmatic@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 555, numero= 941584007]}]}";
         assertEquals(expectedString, funcionarioCompleto.toString());
     }
     @Test

@@ -11,6 +11,7 @@ import org.junit.rules.ExpectedException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static br.com.contmatic.contato.DDDType.DDD11;
 import static br.com.contmatic.contatoTests.constants.contato.ContatoConstants.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -18,7 +19,8 @@ import static org.junit.rules.ExpectedException.none;
 
 public class TestContato {
     private Contato contato;
-
+    private Contato contatoErrado = new Contato();
+    private Contato contatoCompleto = new Contato();
     @Rule
     public ExpectedException exceptionRule = none();
 
@@ -30,6 +32,9 @@ public class TestContato {
     @Before
     public void setBeforeProduto() {
         contato = new Contato();
+        telefones.add(new Telefone(DDD11, "55", "941584007"));
+        contatoErrado = new Contato("testeee@gmail.com", telefones);
+        contatoCompleto = new Contato("test@gmail.com", telefones);
     }
 
     @Test
@@ -37,6 +42,11 @@ public class TestContato {
         contato.setEmail("johndoe@example.com");
         assertEquals("johndoe@example.com", contato.getEmail());
 
+    }
+    @Test
+    public void testContatoToString() {
+        String expectedString = "Contato {email= test@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 55, numero= 941584007]}";
+        assertEquals(expectedString, contatoCompleto.toString());
     }
     @Test
     public void testContatoHashCodeTrue() {
@@ -50,15 +60,10 @@ public class TestContato {
     public void testContatoEqualsTrue() {
         assertEquals(contato, contato);
     }
+
     @Test
     public void testContatoEqualsFalse() {
         assertNotEquals(contatoErrado, contato);
-    }
-
-    @Test
-    public void testContatoToString() {
-        String expectedString = "Contato {email= test@gmail.com, telefones= [Telefone {DDD= DDD11, DDDI= 55, numero= 941584007]}";
-        assertEquals(expectedString, contatoCompleto.toString());
     }
     @Test
     public void deve_aceitar_telefone_correto() {
