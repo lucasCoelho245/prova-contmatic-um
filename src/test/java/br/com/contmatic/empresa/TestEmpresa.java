@@ -1,7 +1,6 @@
 package br.com.contmatic.empresa;
 
 import br.com.contmatic.contato.Contato;
-import br.com.contmatic.contato.Telefone;
 import br.com.contmatic.endereco.Endereco;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -12,9 +11,7 @@ import org.junit.rules.ExpectedException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static br.com.contmatic.contato.DDDType.DDD11;
 import static br.com.contmatic.empresa.constants.empresa.EmpresaConstants.*;
-import static br.com.contmatic.endereco.UFType.MA;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.rules.ExpectedException.none;

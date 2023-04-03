@@ -15,7 +15,8 @@ import java.util.List;
 
 import static br.com.contmatic.contato.DDDType.DDD11;
 import static br.com.contmatic.empresa.constants.funcionario.FuncionarioConstants.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.rules.ExpectedException.none;
 
 public class TestFuncionario {
@@ -27,6 +28,10 @@ public class TestFuncionario {
     @BeforeClass
     public static void setUpBeforeClass() {
         System.out.println("Iniciamos os testes na classe fornecedor");
+        empresas.add(new Empresa("15423393000113"));
+        cargos.add(new Cargo("analista", "desenvolvimento", 553));
+        telefones.add(new Telefone(DDD11, "555", "941584007"));
+        contatos.add(new Contato("contmatic@gmail.com", telefones));
     }
 
     @Before

@@ -7,21 +7,19 @@ import br.com.contmatic.empresa.Empresa;
 import br.com.contmatic.empresa.Funcionario;
 import br.com.contmatic.endereco.Endereco;
 
-import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static br.com.contmatic.contato.DDDType.DDD11;
 import static br.com.contmatic.endereco.UFType.MA;
 
 public final class EmpresaConstants {
     public static final BigDecimal salario = new BigDecimal(1000);
     public static LocalDateTime data = LocalDateTime.of(2002, 2, 2, 12, 0);
     public static List<Empresa> empresas = new ArrayList<>();
-    public static List<Telefone> telefones = Arrays.asList(new Telefone(DDD11, "55", "941584007"));
+    public static List<Telefone> telefones = new ArrayList<>();
     public static List<Contato> contatos = Arrays.asList(new Contato("contmatic@gmail.com", telefones));
     public static  List<Cargo> cargos = Arrays.asList(new Cargo("analista", "desenvolvimento", 553));
     public static List<Endereco> enderecos = Arrays.asList(new Endereco("cambuci", 22, "barata Ribeiro", "sao paulo", MA, "apto 61", "01235-000"));
